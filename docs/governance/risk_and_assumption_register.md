@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — RISK, ASSUMPTION & DEPENDENCY REGISTERS
 
 **Document Version**: 1.0  
-**Phase**: Phase 0 (Governance & Scope)  
+**Phase**: Phase 0 (Governance & Scope Baseline)  
 **Classification**: Governance Control Register  
 
 ---

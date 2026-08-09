@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — PROJECT CHARTER & GOVERNANCE BASELINE
 
 **Document Version**: 1.0  
-**Phase**: Phase 0 (Governance & Scope)  
+**Phase**: Phase 0 (Governance & Scope Baseline)  
 **Project Name**: MarketVoice SEA  
 **Full Title**: Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System  
 **Project Position**: Independent Postgraduate/S2-Quality Academic & Portfolio Prototype  

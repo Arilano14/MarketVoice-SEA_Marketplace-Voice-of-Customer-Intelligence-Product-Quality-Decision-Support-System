@@ -1,0 +1,18 @@
+data_sources:
+  track_a:
+    source_id: "SRC-SHOPEE-2020-SENTIMENT"
+    source_name: "Shopee Code League 2020 - Sentiment Analysis Challenge"
+    publisher: "Shopee / Kaggle Community Archive"
+    source_type: "competition_dataset"
+    license_status: "UNVERIFIED"
+    redistribution_status: "RESTRICTED_LOCAL_ONLY"
+    expected_files:
+      - "train.csv"
+      - "test.csv"
+  track_b:
+    source_id: "SRC-SYNTHETIC-OPERATIONAL-EXTENSION"
+    source_name: "Deterministic Synthetic Operational Extension"
+    publisher: "MarketVoice SEA Generator"
+    source_type: "synthetic_data"
+    status: "CONDITIONAL"
+    is_synthetic_flag: true

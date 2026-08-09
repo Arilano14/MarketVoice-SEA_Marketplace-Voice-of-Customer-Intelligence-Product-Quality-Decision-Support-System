@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
 **Document Version**: 1.0  
-**Phase**: Phase 0 (Governance & Scope)  
+**Phase**: Phase 0 (Governance & Scope Baseline)  
 **Classification**: Phase Transition & Gate Control Document  
 
 ---
@@ -56,13 +56,13 @@ Phase 14 Portfolio & Research Release
 
 To verify the completion of Phase 0, the following audit checklist was evaluated:
 
-- [x] Project Charter & Governance Baseline created (`docs/00_governance/PROJECT_CHARTER.md`).
-- [x] Data Governance & Dual-Track Source Strategy created (`docs/00_governance/DATA_GOVERNANCE_POLICY.md`).
-- [x] Risk, Assumption, and Dependency Registers created (`docs/00_governance/RISK_AND_ASSUMPTION_REGISTER.md`).
-- [x] Business & System Requirements Baseline created (`docs/01_requirements/BUSINESS_AND_SYSTEM_REQUIREMENTS.md`).
-- [x] Requirements Traceability Matrix created (`docs/01_requirements/BUSINESS_AND_SYSTEM_REQUIREMENTS.md`).
-- [x] Project Definition of Done & Planned Deliverables Register created (`docs/PROJECT_DEFINITION_OF_DONE.md`).
-- [x] Canonical Roadmap & Phase Gate Specifications created (`docs/PHASE_GATES.md`).
+- [x] Project Charter & Governance Baseline created (`docs/governance/project_charter.md`).
+- [x] Data Governance & Dual-Track Source Strategy created (`docs/governance/data_governance_policy.md`).
+- [x] Risk, Assumption, and Dependency Registers created (`docs/governance/risk_and_assumption_register.md`).
+- [x] Business & System Requirements Baseline created (`docs/requirements/business_and_system_requirements.md`).
+- [x] Requirements Traceability Matrix created (`docs/requirements/business_and_system_requirements.md`).
+- [x] Project Definition of Done & Planned Deliverables Register created (`docs/governance/project_definition_of_done.md`).
+- [x] Canonical Roadmap & Phase Gate Specifications created (`docs/governance/phase_gates.md`).
 - [x] Zero code execution, zero ETL, zero DB creation, zero package installation occurred during Phase 0.
 - [x] 100% internal consistency across Charter, Scope, BQs, RQs, BIRs, FRs, NFRs, Risks, and Gates.
 

@@ -1,0 +1,16 @@
+project:
+  name: "MarketVoice SEA"
+  full_title: "Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System"
+  version: "0.1.0"
+  phase: "Phase 1 - Environment, Repository Foundation & Data Acquisition"
+
+paths:
+  data_raw: "data/raw"
+  data_interim: "data/interim"
+  data_processed: "data/processed"
+  data_metadata: "data/metadata"
+  logs: "logs"
+
+environment:
+  default_seed: 42
+  log_level: "INFO"

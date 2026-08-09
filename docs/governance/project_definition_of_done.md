@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — PROJECT DEFINITION OF DONE & DELIVERABLES REGISTER
 
 **Document Version**: 1.0  
-**Phase**: Phase 0 (Governance & Scope)  
+**Phase**: Phase 0 (Governance & Scope Baseline)  
 **Classification**: Quality Assurance & Project Verification Baseline  
 
 ---

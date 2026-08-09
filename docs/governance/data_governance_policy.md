@@ -58,7 +58,7 @@ All synthetic generation parameters must remain marked as `TO_BE_DEFINED` until 
 * **Random Generator Seed**: `TO_BE_DEFINED` (A documented fixed seed will be selected during implementation in Phase 3/6 to guarantee 100% reproducibility).
 * **Generation Volume**: `TO_BE_DEFINED` (Proportional to staged raw review row counts).
 * **Synthetic Schema & Distribution**: `TO_BE_DEFINED` (Designed to mirror realistic e-commerce operational data structures without simulating specific real-world entities).
-* **Generator Script Location**: `TO_BE_DEFINED` (e.g., `src/data/generate_synthetic_metadata.py` in Phase 6).
+* **Generator Script Location**: `TO_BE_DEFINED` (e.g., `src/marketvoice/data/synthetic_generator.py` in Phase 6).
 
 ### C. Mandatory Synthetic Labeling Rules
 If Track B synthetic data is generated:
