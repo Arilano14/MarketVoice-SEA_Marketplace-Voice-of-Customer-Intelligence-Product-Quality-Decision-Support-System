@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
-**Document Version**: 1.0  
-**Phase**: Phase 0 (Governance & Scope Baseline)  
+**Document Version**: 1.1 (Remediated)  
+**Phase**: Phase 1 (Environment, Repository Foundation & Data Acquisition)  
 **Classification**: Phase Transition & Gate Control Document  
 
 ---
@@ -52,37 +52,39 @@ Phase 14 Portfolio & Research Release
 
 ---
 
-## 3. PHASE 0 DEFINITION OF DONE & VALIDATION CHECKLIST
+## 3. PHASE 1 REMEDIATION AUDIT & CHECKLIST
 
-To verify the completion of Phase 0, the following audit checklist was evaluated:
+To verify the completion of Phase 1 Remediation, the following audit checklist was evaluated:
 
-- [x] Project Charter & Governance Baseline created (`docs/governance/project_charter.md`).
-- [x] Data Governance & Dual-Track Source Strategy created (`docs/governance/data_governance_policy.md`).
-- [x] Risk, Assumption, and Dependency Registers created (`docs/governance/risk_and_assumption_register.md`).
-- [x] Business & System Requirements Baseline created (`docs/requirements/business_and_system_requirements.md`).
-- [x] Requirements Traceability Matrix created (`docs/requirements/business_and_system_requirements.md`).
-- [x] Project Definition of Done & Planned Deliverables Register created (`docs/governance/project_definition_of_done.md`).
-- [x] Canonical Roadmap & Phase Gate Specifications created (`docs/governance/phase_gates.md`).
-- [x] Zero code execution, zero ETL, zero DB creation, zero package installation occurred during Phase 0.
-- [x] 100% internal consistency across Charter, Scope, BQs, RQs, BIRs, FRs, NFRs, Risks, and Gates.
+- [x] Phase 0 entry gate verified (`PHASE_0_GATE_STATUS = PASS`).
+- [x] Canonical source `[Open] Shopee Code League - Sentiment Analysis` (`shopee-sentiment-analysis`) on Kaggle established.
+- [x] Official competition file inventory (`train.csv`, `test.csv`, `sample_submission.csv`) registered.
+- [x] Phase 1 Data-Use Eligibility Audit documented (`docs/governance/data_governance_policy.md`).
+- [x] `data/metadata/source_manifest.csv` updated with canonical Kaggle metadata.
+- [x] `config/data_sources.yaml` updated with canonical Kaggle competition slug.
+- [x] n8n Custom Workflow Architecture Decision Record (`ADR-001`) documented.
+- [x] Permanent Git Remote policy locked (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Zero `git push` commands executed.
+- [x] `python scripts/environment/validate_environment.py` passes cleanly (`PASS`).
+- [x] `python -m unittest discover tests` passes 100%.
+- [x] Zero analytical dataset profiling, zero EDA, zero warehouse schema DDL, zero ML training executed.
 
 ---
 
-## 4. FORMAL PHASE 0 GATE EVALUATION
+## 4. FORMAL PHASE 1 GATE EVALUATION
 
 ```
 ====================================================================
-                   PHASE 0 GATE EVALUATION RESULT                   
+                  PHASE 1 GATE EVALUATION RESULT                    
 ====================================================================
 
-  PLAN_REVIEW_STATUS        = APPROVED
-  PHASE_0_EXECUTION_STATUS  = COMPLETED
-  PHASE_0_GATE_STATUS       = PASS
+  REMEDIATION_PLAN_STATUS   = APPROVED
+  PHASE_1_EXECUTION_STATUS  = COMPLETED
+  PHASE_1_GATE_STATUS       = PASS
 
 ====================================================================
 ```
 
 ### Gate Evaluation Rationale
-All Phase 0 governance documents, requirements baselines, deliverable registers, traceability matrices, and phase gate specifications have been successfully authored, validated, and saved in the `docs/` repository structure. 
+All Phase 1 remediation actions, canonical dataset specifications, governance policy updates, environment health checks, unit test suites, and remote Git write protections have been completely implemented and verified. 
 
-Zero prohibited actions occurred. The system is officially authorized to proceed to **Phase 1: Environment & Data Acquisition**.
+Zero prohibited remote Git operations or premature data analyses occurred. The project is officially authorized to proceed to **Phase 2: Dataset Forensic Audit**.

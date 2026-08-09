@@ -1,14 +1,22 @@
 data_sources:
   track_a:
+    canonical_challenge_name: "[Open] Shopee Code League - Sentiment Analysis"
+    competition_slug: "shopee-sentiment-analysis"
+    platform: "Kaggle"
+    organizer: "Shopee"
+    source_reference: "https://www.kaggle.com/c/shopee-sentiment-analysis"
     source_id: "SRC-SHOPEE-2020-SENTIMENT"
-    source_name: "Shopee Code League 2020 - Sentiment Analysis Challenge"
-    publisher: "Shopee / Kaggle Community Archive"
     source_type: "competition_dataset"
     license_status: "UNVERIFIED"
+    eligibility_audit: "LOCAL_PORTFOLIO_RESEARCH_PERMITTED"
     redistribution_status: "RESTRICTED_LOCAL_ONLY"
-    expected_files:
-      - "train.csv"
-      - "test.csv"
+    official_file_inventory:
+      - filename: "train.csv"
+        role: "labeled_training_data"
+      - filename: "test.csv"
+        role: "unlabeled_competition_test_data"
+      - filename: "sample_submission.csv"
+        role: "sample_output_schema"
   track_b:
     source_id: "SRC-SYNTHETIC-OPERATIONAL-EXTENSION"
     source_name: "Deterministic Synthetic Operational Extension"
@@ -16,3 +24,4 @@ data_sources:
     source_type: "synthetic_data"
     status: "CONDITIONAL"
     is_synthetic_flag: true
+    generator_parameters: "TO_BE_DEFINED_IN_PHASE_3"

@@ -1,6 +1,6 @@
 # MARKETVOICE SEA — REPOSITORY ARCHITECTURE & STRUCTURE
 
-**Document Version**: 1.0  
+**Document Version**: 1.1 (Remediated)  
 **Phase**: Phase 1 (Environment, Repository Foundation & Data Acquisition)  
 **Classification**: Software Engineering Documentation  
 
@@ -9,10 +9,10 @@
 ## 1. REPOSITORY STRUCTURE GOVERNANCE
 
 MarketVoice SEA strictly enforces standard software engineering repository layout rules:
-* **Function-Based Placement**: Files are placed strictly within their designated functional directory.
-* **Minimal Root Directory**: The repository root contains only mandatory project-level files (`README.md`, `LICENSE`, `pyproject.toml`, `.gitignore`, `.env.example`).
-* **No Tool/Assistant Footprint**: Development tools or assistant chat logs must never be committed to the repository.
-* **Git Version History**: Temporary, version-suffixed, or backup filenames (e.g. `final.py`, `test123.py`, `script_v2.py`) are strictly prohibited.
+* **Function-Based Placement**: Files are placed strictly within designated functional directories.
+* **Minimal Root Directory**: Root contains only mandatory configuration and documentation assets.
+* **No Tool/Assistant Footprint**: Assistant-specific chat logs or tool-named files are strictly prohibited.
+* **Strict Remote Git Policy**: Remote repository controls belong exclusively to the human user (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Assistant execution of `git push` or `git push --force` is strictly forbidden.
 
 ---
 
@@ -46,7 +46,7 @@ MarketVoice-SEA/
 │   └── requirements/             # BRD, SRS, RQs, and Requirements Traceability Matrix
 │
 ├── reports/                      # System validation reports & portfolio outputs
-│   └── validation/               # Phase validation audit reports
+│   └── validation/               # Phase validation & remediation audit reports
 │
 ├── scripts/                      # Operational automation utilities
 │   ├── data_acquisition/         # Dataset registration & checksum calculation
@@ -64,11 +64,10 @@ MarketVoice-SEA/
 
 ---
 
-## 3. FUTURE PHASE ARTIFACT PLACEMENT
+## 3. N8N WORKFLOW ARCHITECTURE DECISION RECORD
 
-To prevent clutter as the project advances across the 15 canonical phases:
-* **Phase 2–3**: Dataset audit logs → `reports/validation/`, BRD/SRS updates → `docs/requirements/`.
-* **Phase 5–6**: Database DDL & SQL ETL scripts → `src/marketvoice/etl/` and `src/marketvoice/db/`.
-* **Phase 8–9**: Model training modules → `src/marketvoice/models/`, ML reports → `reports/ml/`.
-* **Phase 10–11**: Priority engine & FastAPI microservice → `src/marketvoice/api/` and `src/marketvoice/decision/`.
-* **Phase 12**: Power BI template files (`.pbit`/`.pbix`) → `reports/bi/`.
+* **Decision ID**: `ADR-001-N8N-CUSTOM-WORKFLOW`
+* **Core Strategy**: `CORE_WORKFLOW = CUSTOM_PROJECT_WORKFLOW`. The n8n workflow for operational case routing (Phase 11) will be built custom (80–100% custom project logic).
+* **Reference Usage**: Public n8n templates may be used solely as architectural references for node patterns, batching, error handling, and routing logic.
+* **Scraping Boundary**: Live marketplace scraping is strictly barred (`LIVE_SHOPEE_SCRAPING = FALSE`).
+* **Inference Separation**: Python / FastAPI analytical microservice is the primary sentiment/aspect inference engine. n8n serves strictly as the operational workflow orchestrator.
