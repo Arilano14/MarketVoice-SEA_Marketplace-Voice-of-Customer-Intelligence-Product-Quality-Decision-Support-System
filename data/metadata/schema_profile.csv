@@ -1,0 +1,20 @@
+source_id,column_name,physical_dtype,logical_type,null_count,null_pct,blank_count,distinct_count,distinct_pct,candidate_key,business_meaning,quality_status
+SRC_PRDECT_ID_V1,Category,object,TEXT,0,0.0,0,29,0.537,NO,Raw attribute Category,VALID
+SRC_PRDECT_ID_V1,Product Name,object,TEXT,0,0.0,0,1308,24.2222,NO,Raw attribute Product Name,VALID
+SRC_PRDECT_ID_V1,Location,object,TEXT,0,0.0,0,61,1.1296,NO,Raw attribute Location,VALID
+SRC_PRDECT_ID_V1,Price,int64,INTEGER,0,0.0,0,555,10.2778,NO,Raw attribute Price,VALID
+SRC_PRDECT_ID_V1,Overall Rating,float64,NUMERIC,0,0.0,0,10,0.1852,NO,Raw attribute Overall Rating,VALID
+SRC_PRDECT_ID_V1,Number Sold,int64,INTEGER,0,0.0,0,1043,19.3148,NO,Raw attribute Number Sold,VALID
+SRC_PRDECT_ID_V1,Total Review,int64,INTEGER,0,0.0,0,958,17.7407,NO,Raw attribute Total Review,VALID
+SRC_PRDECT_ID_V1,Customer Rating,int64,INTEGER,0,0.0,0,5,0.0926,NO,Raw attribute Customer Rating,VALID
+SRC_PRDECT_ID_V1,Customer Review,object,TEXT,0,0.0,0,5305,98.2407,NO,Raw attribute Customer Review,VALID
+SRC_PRDECT_ID_V1,Sentiment,object,TEXT,0,0.0,0,2,0.037,NO,Raw attribute Sentiment,VALID
+SRC_PRDECT_ID_V1,Emotion,object,TEXT,0,0.0,0,5,0.0926,NO,Raw attribute Emotion,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,text,object,TEXT,0,0.0,0,37301,91.8585,NO,Raw attribute text,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,rating,int64,INTEGER,0,0.0,0,5,0.0123,NO,Raw attribute rating,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,category,object,TEXT,0,0.0,0,5,0.0123,NO,Raw attribute category,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,product_name,object,TEXT,0,0.0,0,3647,8.9812,NO,Raw attribute product_name,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,product_id,int64,IDENTIFIER,0,0.0,0,3664,9.0231,CANDIDATE_KEY,Raw attribute product_id,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,sold,object,TEXT,14,0.0345,1,305,0.7511,NO,Raw attribute sold,VALID_WITH_WARNING
+SRC_TOKOPEDIA_REVIEWS_2019,shop_id,int64,IDENTIFIER,0,0.0,0,158,0.3891,CANDIDATE_KEY,Raw attribute shop_id,VALID
+SRC_TOKOPEDIA_REVIEWS_2019,product_url,object,TEXT,0,0.0,0,3664,9.0231,NO,Raw attribute product_url,VALID

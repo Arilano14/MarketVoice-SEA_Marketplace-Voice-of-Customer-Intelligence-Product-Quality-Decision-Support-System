@@ -1,0 +1,9 @@
+capability_id,capability,required_data,source_a_status,source_b_status,project_support_status,evidence,limitation,future_action
+CAP-01,Customer Review Text Analytics,Review text,AVAILABLE,AVAILABLE,SUPPORTED,Customer Review (PRDECT) & text (Tokopedia),None,Stage text strings
+CAP-02,Rating Prediction Modeling,1-5 Star Rating,AVAILABLE,AVAILABLE,SUPPORTED,Customer Rating (PRDECT) & rating (Tokopedia),Class imbalance in 5-star,Class re-weighting in Phase 8
+CAP-03,Annotated Sentiment Benchmarking,Gold Sentiment Label,AVAILABLE,NOT_AVAILABLE,SUPPORTED_SOURCE_A,Sentiment column in PRDECT (Positive/Negative),Available on Source A only,Train supervised benchmark on Source A
+CAP-04,Annotated Emotion Classification,Gold Emotion Label,AVAILABLE,NOT_AVAILABLE,SUPPORTED_SOURCE_A,Emotion column in PRDECT (5 classes),Available on Source A only,Train multi-class emotion model on Source A
+CAP-05,Product-Level Quality BI,Product Identifier & Title,PARTIAL,AVAILABLE,SUPPORTED_SOURCE_B,product_id & product_name in Tokopedia,Source A lacks product_id,Build Product Master on Source B
+CAP-06,Seller / Shop Performance BI,Shop / Seller Identifier,NOT_AVAILABLE,AVAILABLE,SUPPORTED_SOURCE_B,shop_id in Tokopedia (158 shops),Source A lacks shop_id,Build Seller Master on Source B
+CAP-07,Temporal Review Analytics,Review Timestamp,NOT_AVAILABLE,NOT_AVAILABLE,NOT_SUPPORTED,Neither raw source contains review dates,Real time-series trend unsupported,Track B conditional synthetic timestamp setup in Phase 3/6
+CAP-08,Operational CS SLA & Ticket Handling,SLA & Ticket Logs,NOT_AVAILABLE,NOT_AVAILABLE,NOT_SUPPORTED,Neither raw source contains CS ticket logs,Operational workflow logs unsupported by raw data,Track B conditional synthetic workflow setup in Phase 10/11
