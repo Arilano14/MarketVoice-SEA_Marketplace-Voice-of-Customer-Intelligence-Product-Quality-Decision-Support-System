@@ -1,7 +1,8 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
-**Document Version**: 2.0 (Dual-Source Remediation & Phase 2 Gate PASS)  
+**Document Version**: 2.1 (Phase 2 Hardened & Frozen v1.0)  
 **Phase**: Phase 2 (Dataset Forensic Audit & Data Readiness)  
+**Data Foundation Version**: `DATA_FOUNDATION_VERSION = 1.0` (Frozen)  
 **Classification**: Phase Transition & Gate Control Document  
 
 ---
@@ -52,38 +53,44 @@ Phase 14 Portfolio & Research Release
 
 ---
 
-## 3. PHASE 2 FORENSIC AUDIT CHECKLIST
+## 3. PHASE 2 FINAL HARDENING CHECKLIST
 
-To verify the completion of Phase 2 Forensic Audit, the following audit checklist was evaluated:
-
-- [x] Canonical Source A (`SRC_PRDECT_ID_V1`, Mendeley DOI: `10.17632/574v66hf2v.1`) acquired & hash verified (`1dfdde6bb169ad57aab4211ecf45a75a4111b774ab43932f6d39c349bfd92bde`).
-- [x] Canonical Source B (`SRC_TOKOPEDIA_REVIEWS_2019`, HuggingFace `farhamu/tokopedia-product-reviews-2019`) acquired & hash verified (`dbffc29078db1894e60884c526fe4d0ccbc592f33fe95d2e5ac2d8f96336b7ed`).
-- [x] Raw directories strictly isolated under `data/raw/prdect_id/` and `data/raw/tokopedia_product_reviews_2019/`.
-- [x] Empirical schema profiling completed (Source A: 5,400 rows, 11 cols; Source B: 40,607 rows, 8 cols).
-- [x] Provided annotated labels (`Sentiment`, `Emotion`) confirmed present in Source A.
-- [x] Type forensics completed for Source B (`product_id`, `shop_id`, `sold`).
-- [x] Zero cross-source product or shop linkage enforced (`CROSS_SOURCE_LINKAGE = NOT_SUPPORTED`).
-- [x] System lineage model updated to `DATA_SOURCE` → `SOURCE_FILE` → `IMPORT_BATCH` → `STAGING`.
-- [x] `reports/validation/phase_02_dataset_forensic_audit_report.md` authored.
-- [x] Permanent Git Remote policy locked (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Zero `git push` commands executed.
-- [x] Zero database table creation, zero DDL execution, zero synthetic data generation occurred.
+- [x] Pre/Post SHA256 hashes 100% matched (`RAW_DATA_LOCKED = TRUE`).
+- [x] Derived standardized datasets generated in `data/interim/validated/`.
+- [x] System lineage key `source_record_key` 100% unique, 0 nulls.
+- [x] Cross-source text overlap (exact, normalized, near-duplicate) quantified.
+- [x] Label dependency crosstabs generated (STRONGLY_RATING_DEPENDENT).
+- [x] Source B entity cardinality mapped (`product_id` listing key verified).
+- [x] PRDECT product context stability evaluated.
+- [x] Advanced text forensics profiled (emojis, URLs, HTML entities, length statistics).
+- [x] Transformation contracts executed losslessly.
+- [x] Category harmonization mapped without fake categories.
+- [x] Human aspect annotation protocol defined (`docs/research/issue_annotation_protocol.md`).
+- [x] Track B synthetic data simulation policy locked (`is_synthetic = TRUE`).
+- [x] Reproducibility test 100% PASS.
+- [x] Permanent Git Remote policy locked (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Zero `git push` executed.
+- [x] Zero database table creation, zero DDL execution occurred.
 
 ---
 
-## 4. FORMAL PHASE 2 GATE EVALUATION
+## 4. FORMAL PHASE 2 GATE & DATA FOUNDATION FREEZE RESULT
 
 ```
 ====================================================================
-                  PHASE 2 GATE EVALUATION RESULT                    
+                  PHASE 2 FINAL GATE & FREEZE RESULT                
 ====================================================================
 
-  PHASE_2_EXECUTION_STATUS  = COMPLETED
-  PHASE_2_GATE_STATUS       = PASS
+  PHASE_2_EXECUTION_STATUS      = COMPLETED
+  PHASE_2_GATE_STATUS           = PASS
+  DATA_FOUNDATION_VERSION       = 1.0
+  RAW_DATA_LOCKED               = TRUE
+  STANDARDIZED_DATA_READY       = TRUE
+  DATABASE_IMPLEMENTATION_READY = TRUE
 
 ====================================================================
 ```
 
 ### Gate Evaluation Rationale
-All Phase 2 Definition of Done criteria, mandatory plan corrections, canonical acquisition steps, forensic schema checks, type analyses, and data quality registers have been satisfied and verified with empirical evidence.
+All Phase 2 Hardening workstreams, non-destructive interim layer generations, system lineage keys, cross-source overlap analyses, label dependency crosstabs, entity cardinalities, and text forensics have been completely executed and verified deterministically.
 
 The project is officially authorized to proceed to **Phase 3: Business & System Requirements**.

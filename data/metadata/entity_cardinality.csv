@@ -1,0 +1,6 @@
+relation,distinct_source,distinct_target,cardinality_type,notes
+product_id -> product_name,3664,1,1-to-1,Every product_id maps to exactly 1 product_name
+product_id -> shop_id,3664,1,1-to-1,Every product_id maps to exactly 1 shop_id
+product_id -> category,3664,1,1-to-1,Every product_id maps to exactly 1 category
+product_name -> product_id,3647,3,1-to-Many,16 product titles map to 2 distinct product_id values
+shop_id -> product_id,158,501,1-to-Many,Shops host between 1 and 350 distinct product_ids
