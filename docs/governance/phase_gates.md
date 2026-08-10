@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
-**Document Version**: 1.1 (Remediated)  
-**Phase**: Phase 1 (Environment, Repository Foundation & Data Acquisition)  
+**Document Version**: 2.0 (Dual-Source Remediation & Phase 2 Gate PASS)  
+**Phase**: Phase 2 (Dataset Forensic Audit & Data Readiness)  
 **Classification**: Phase Transition & Gate Control Document  
 
 ---
@@ -13,7 +13,7 @@ MarketVoice SEA strictly follows a 15-phase canonical project roadmap:
 ```
 Phase 0  Governance & Scope
 Phase 1  Environment & Data Acquisition
-Phase 2  Dataset Forensic Audit
+Phase 2  Dataset Forensic Audit & Data Readiness
 Phase 3  Business & System Requirements
 Phase 4  Research & Analytical Design
 Phase 5  Architecture & Data Model
@@ -52,39 +52,38 @@ Phase 14 Portfolio & Research Release
 
 ---
 
-## 3. PHASE 1 REMEDIATION AUDIT & CHECKLIST
+## 3. PHASE 2 FORENSIC AUDIT CHECKLIST
 
-To verify the completion of Phase 1 Remediation, the following audit checklist was evaluated:
+To verify the completion of Phase 2 Forensic Audit, the following audit checklist was evaluated:
 
-- [x] Phase 0 entry gate verified (`PHASE_0_GATE_STATUS = PASS`).
-- [x] Canonical source `[Open] Shopee Code League - Sentiment Analysis` (`shopee-sentiment-analysis`) on Kaggle established.
-- [x] Official competition file inventory (`train.csv`, `test.csv`, `sample_submission.csv`) registered.
-- [x] Phase 1 Data-Use Eligibility Audit documented (`docs/governance/data_governance_policy.md`).
-- [x] `data/metadata/source_manifest.csv` updated with canonical Kaggle metadata.
-- [x] `config/data_sources.yaml` updated with canonical Kaggle competition slug.
-- [x] n8n Custom Workflow Architecture Decision Record (`ADR-001`) documented.
+- [x] Canonical Source A (`SRC_PRDECT_ID_V1`, Mendeley DOI: `10.17632/574v66hf2v.1`) acquired & hash verified (`1dfdde6bb169ad57aab4211ecf45a75a4111b774ab43932f6d39c349bfd92bde`).
+- [x] Canonical Source B (`SRC_TOKOPEDIA_REVIEWS_2019`, HuggingFace `farhamu/tokopedia-product-reviews-2019`) acquired & hash verified (`dbffc29078db1894e60884c526fe4d0ccbc592f33fe95d2e5ac2d8f96336b7ed`).
+- [x] Raw directories strictly isolated under `data/raw/prdect_id/` and `data/raw/tokopedia_product_reviews_2019/`.
+- [x] Empirical schema profiling completed (Source A: 5,400 rows, 11 cols; Source B: 40,607 rows, 8 cols).
+- [x] Provided annotated labels (`Sentiment`, `Emotion`) confirmed present in Source A.
+- [x] Type forensics completed for Source B (`product_id`, `shop_id`, `sold`).
+- [x] Zero cross-source product or shop linkage enforced (`CROSS_SOURCE_LINKAGE = NOT_SUPPORTED`).
+- [x] System lineage model updated to `DATA_SOURCE` → `SOURCE_FILE` → `IMPORT_BATCH` → `STAGING`.
+- [x] `reports/validation/phase_02_dataset_forensic_audit_report.md` authored.
 - [x] Permanent Git Remote policy locked (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Zero `git push` commands executed.
-- [x] `python scripts/environment/validate_environment.py` passes cleanly (`PASS`).
-- [x] `python -m unittest discover tests` passes 100%.
-- [x] Zero analytical dataset profiling, zero EDA, zero warehouse schema DDL, zero ML training executed.
+- [x] Zero database table creation, zero DDL execution, zero synthetic data generation occurred.
 
 ---
 
-## 4. FORMAL PHASE 1 GATE EVALUATION
+## 4. FORMAL PHASE 2 GATE EVALUATION
 
 ```
 ====================================================================
-                  PHASE 1 GATE EVALUATION RESULT                    
+                  PHASE 2 GATE EVALUATION RESULT                    
 ====================================================================
 
-  REMEDIATION_PLAN_STATUS   = APPROVED
-  PHASE_1_EXECUTION_STATUS  = COMPLETED
-  PHASE_1_GATE_STATUS       = PASS
+  PHASE_2_EXECUTION_STATUS  = COMPLETED
+  PHASE_2_GATE_STATUS       = PASS
 
 ====================================================================
 ```
 
 ### Gate Evaluation Rationale
-All Phase 1 remediation actions, canonical dataset specifications, governance policy updates, environment health checks, unit test suites, and remote Git write protections have been completely implemented and verified. 
+All Phase 2 Definition of Done criteria, mandatory plan corrections, canonical acquisition steps, forensic schema checks, type analyses, and data quality registers have been satisfied and verified with empirical evidence.
 
-Zero prohibited remote Git operations or premature data analyses occurred. The project is officially authorized to proceed to **Phase 2: Dataset Forensic Audit**.
+The project is officially authorized to proceed to **Phase 3: Business & System Requirements**.

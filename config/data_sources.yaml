@@ -1,27 +1,56 @@
 data_sources:
-  track_a:
-    canonical_challenge_name: "[Open] Shopee Code League - Sentiment Analysis"
-    competition_slug: "shopee-sentiment-analysis"
-    platform: "Kaggle"
-    organizer: "Shopee"
-    source_reference: "https://www.kaggle.com/c/shopee-sentiment-analysis"
-    source_id: "SRC-SHOPEE-2020-SENTIMENT"
-    source_type: "competition_dataset"
-    license_status: "UNVERIFIED"
-    eligibility_audit: "LOCAL_PORTFOLIO_RESEARCH_PERMITTED"
-    redistribution_status: "RESTRICTED_LOCAL_ONLY"
-    official_file_inventory:
-      - filename: "train.csv"
-        role: "labeled_training_data"
-      - filename: "test.csv"
-        role: "unlabeled_competition_test_data"
-      - filename: "sample_submission.csv"
-        role: "sample_output_schema"
-  track_b:
-    source_id: "SRC-SYNTHETIC-OPERATIONAL-EXTENSION"
-    source_name: "Deterministic Synthetic Operational Extension"
-    publisher: "MarketVoice SEA Generator"
-    source_type: "synthetic_data"
-    status: "CONDITIONAL"
-    is_synthetic_flag: true
-    generator_parameters: "TO_BE_DEFINED_IN_PHASE_3"
+  source_a:
+    source_id: "SRC_PRDECT_ID_V1"
+    dataset_name: "Product Reviews Dataset for Emotions Classification Tasks - Indonesian (PRDECT-ID)"
+    role: "PRIMARY_RESEARCH_ANNOTATED_DATASET"
+    publisher: "Mendeley Data"
+    doi: "10.17632/574v66hf2v.1"
+    version: "1"
+    declared_license: "CC BY 4.0"
+    license_evidence_type: "CANONICAL_MENDELEY_RECORD"
+    project_raw_distribution_policy: "LOCAL_ONLY"
+    local_path: "data/raw/prdect_id/PRDECT-ID Dataset.csv"
+    expected_file: "PRDECT-ID Dataset.csv"
+    official_columns:
+      - Category
+      - Product Name
+      - Location
+      - Price
+      - Overall Rating
+      - Number Sold
+      - Total Review
+      - Customer Rating
+      - Customer Review
+      - Sentiment
+      - Emotion
+    provided_annotated_labels:
+      sentiment: "Provided 2-class sentiment label (Positive/Negative)"
+      emotion: "Provided 5-class emotion label (Happy, Sadness, Fear, Love, Anger)"
+
+  source_b:
+    source_id: "SRC_TOKOPEDIA_REVIEWS_2019"
+    dataset_name: "Tokopedia Product Reviews 2019"
+    role: "SECONDARY_BI_SCALE_DATASET"
+    publisher: "Hugging Face (farhamu)"
+    canonical_reference: "https://huggingface.co/datasets/farhamu/tokopedia-product-reviews-2019"
+    declared_license: "Apache-2.0"
+    license_evidence_type: "HUGGINGFACE_DATASET_CARD"
+    license_confidence: "DECLARED_BY_REPOSITORY_MAINTAINER"
+    project_raw_distribution_policy: "LOCAL_ONLY"
+    local_path: "data/raw/tokopedia_product_reviews_2019/tokopedia-product-reviews-2019.csv"
+    expected_file: "tokopedia-product-reviews-2019.csv"
+    official_columns:
+      - text
+      - rating
+      - category
+      - product_name
+      - product_id
+      - sold
+      - shop_id
+      - product_url
+    product_url_public_analytics: "DISABLED"
+
+  cross_source_rules:
+    cross_source_product_linkage: false
+    cross_source_shop_linkage: false
+    cross_source_row_linkage: false

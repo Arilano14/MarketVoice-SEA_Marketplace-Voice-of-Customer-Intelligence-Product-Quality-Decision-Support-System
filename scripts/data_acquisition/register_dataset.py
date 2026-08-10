@@ -1,6 +1,6 @@
 """
 Dataset registration and SHA256 checksum calculation utility.
-Audits files in data/raw/ and records size, checksum, and registration date in data/metadata/source_manifest.csv.
+Audits raw datasets in data/raw/ and records size, checksum, and registration status.
 """
 
 import hashlib
@@ -17,32 +17,33 @@ def calculate_sha256(file_path: Path) -> str:
 
 
 def audit_raw_data():
-    """Inspect data/raw/ and report file checksums."""
+    """Inspect data/raw subdirectories and report file checksums."""
     root = Path(__file__).resolve().parents[2]
     raw_dir = root / "data/raw"
 
-    print("=" * 60)
-    print("MARKETVOICE SEA — DATASET REGISTRATION & CHECKSUM AUDIT")
-    print("=" * 60)
+    print("=" * 70)
+    print("MARKETVOICE SEA — DUAL-SOURCE DATASET REGISTRATION AUDIT")
+    print("=" * 70)
 
     if not raw_dir.exists():
         print("ERROR: data/raw directory does not exist.")
         return
 
-    raw_files = [f for f in raw_dir.glob("*") if f.is_file() and f.name != "README.md"]
+    raw_files = [f for f in raw_dir.glob("**/*") if f.is_file() and f.name != "README.md"]
 
     if not raw_files:
-        print("STATUS: data/raw/ landing area is currently empty.")
-        print("INSTRUCTION: Place raw competition CSV files in data/raw/ to register checksums.")
+        print("STATUS: data/raw/ landing areas are currently empty.")
+        print("INSTRUCTION: Place raw CSV files in data/raw/prdect_id/ and data/raw/tokopedia_product_reviews_2019/.")
         return
 
-    for file in raw_files:
+    for file in sorted(raw_files):
+        rel_path = file.relative_to(root)
         size = file.stat().st_size
         checksum = calculate_sha256(file)
-        print(f"File: {file.name}")
+        print(f"File: {rel_path}")
         print(f"  Size: {size:,} bytes")
         print(f"  SHA256: {checksum}")
-        print("-" * 60)
+        print("-" * 70)
 
 
 if __name__ == "__main__":
