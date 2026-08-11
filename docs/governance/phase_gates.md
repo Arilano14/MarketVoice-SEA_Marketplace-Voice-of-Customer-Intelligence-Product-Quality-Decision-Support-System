@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
-**Document Version**: 2.1 (Phase 2 Hardened & Frozen v1.0)  
-**Phase**: Phase 2 (Dataset Forensic Audit & Data Readiness)  
+**Document Version**: 3.0 (Phase 3 Requirements & Target Alignment Gate PASS)  
+**Phase**: Phase 3 (Business & System Requirements Specification & Governance Baseline)  
 **Data Foundation Version**: `DATA_FOUNDATION_VERSION = 1.0` (Frozen)  
 **Classification**: Phase Transition & Gate Control Document  
 
@@ -53,44 +53,35 @@ Phase 14 Portfolio & Research Release
 
 ---
 
-## 3. PHASE 2 FINAL HARDENING CHECKLIST
+## 3. PHASE 3 REQUIREMENTS & TARGET ALIGNMENT CHECKLIST
 
-- [x] Pre/Post SHA256 hashes 100% matched (`RAW_DATA_LOCKED = TRUE`).
-- [x] Derived standardized datasets generated in `data/interim/validated/`.
-- [x] System lineage key `source_record_key` 100% unique, 0 nulls.
-- [x] Cross-source text overlap (exact, normalized, near-duplicate) quantified.
-- [x] Label dependency crosstabs generated (STRONGLY_RATING_DEPENDENT).
-- [x] Source B entity cardinality mapped (`product_id` listing key verified).
-- [x] PRDECT product context stability evaluated.
-- [x] Advanced text forensics profiled (emojis, URLs, HTML entities, length statistics).
-- [x] Transformation contracts executed losslessly.
-- [x] Category harmonization mapped without fake categories.
-- [x] Human aspect annotation protocol defined (`docs/research/issue_annotation_protocol.md`).
-- [x] Track B synthetic data simulation policy locked (`is_synthetic = TRUE`).
-- [x] Reproducibility test 100% PASS.
+- [x] `DEL-04`: Business Requirements Document (BRD) authored (`docs/requirements/business_requirements_document.md`).
+- [x] `DEL-05`: System Requirements Specification (SRS) authored (`docs/requirements/system_requirements_specification.md`).
+- [x] Requirements Traceability Matrix (RTM) authored (`docs/requirements/requirements_traceability_matrix.md`).
+- [x] Requirements index baseline updated (`docs/requirements/business_and_system_requirements.md`).
+- [x] Automated Requirements Alignment Checking System implemented (`scripts/requirements/validate_requirements_alignment.py`).
+- [x] Target performance metrics standardized across all requirement specifications (Macro F1 $\ge 0.70$, QWK $\ge 0.75$, Separation Ratio $\ge 2.5$, Micro F1 $\ge 0.70$).
+- [x] `scripts/requirements/validate_requirements_alignment.py` executed with `OVERALL ALIGNMENT CHECK RESULT = PASS`.
+- [x] Dual-source governance boundaries and isolation rules preserved.
 - [x] Permanent Git Remote policy locked (`REMOTE_REPOSITORY_CONTROL = USER_ONLY`). Zero `git push` executed.
 - [x] Zero database table creation, zero DDL execution occurred.
 
 ---
 
-## 4. FORMAL PHASE 2 GATE & DATA FOUNDATION FREEZE RESULT
+## 4. FORMAL PHASE 3 GATE RESULT
 
 ```
 ====================================================================
-                  PHASE 2 FINAL GATE & FREEZE RESULT                
+                  PHASE 3 GATE EVALUATION RESULT                    
 ====================================================================
 
-  PHASE_2_EXECUTION_STATUS      = COMPLETED
-  PHASE_2_GATE_STATUS           = PASS
-  DATA_FOUNDATION_VERSION       = 1.0
-  RAW_DATA_LOCKED               = TRUE
-  STANDARDIZED_DATA_READY       = TRUE
-  DATABASE_IMPLEMENTATION_READY = TRUE
+  PHASE_3_EXECUTION_STATUS  = COMPLETED
+  PHASE_3_GATE_STATUS       = PASS
 
 ====================================================================
 ```
 
 ### Gate Evaluation Rationale
-All Phase 2 Hardening workstreams, non-destructive interim layer generations, system lineage keys, cross-source overlap analyses, label dependency crosstabs, entity cardinalities, and text forensics have been completely executed and verified deterministically.
+All Phase 3 requirements, BRD/SRS deliverables, RTM traceability links, and target alignment checking systems have been successfully created, standardized, and validated.
 
-The project is officially authorized to proceed to **Phase 3: Business & System Requirements**.
+The project is officially authorized to proceed to **Phase 4: Research & Analytical Design**.

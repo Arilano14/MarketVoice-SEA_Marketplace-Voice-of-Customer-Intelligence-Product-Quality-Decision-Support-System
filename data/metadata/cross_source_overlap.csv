@@ -1,4 +1,4 @@
 metric,count,pct_source_a,pct_source_b
 exact_raw_text_overlap,25,0.463,0.0616
 normalized_text_overlap,95,1.7593,0.2339
-near_duplicate_candidates_screened,882,16.3333,2.172
+near_duplicate_candidates_85pct,21,0.3889,0.0517
