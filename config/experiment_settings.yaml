@@ -1,0 +1,64 @@
+# Phase 4 methodology configuration. This file contains no executable training parameters or credentials.
+experiment_governance:
+  phase: 4
+  execution_mode: methodology_only
+  synthetic_data: forbidden
+  new_dataset: requires_separate_user_approval
+  cross_source_row_linkage: not_supported
+  temporal_split: not_justified
+
+datasets:
+  source_a:
+    source_id: SRC_PRDECT_ID_V1
+    roles:
+      - sentiment_benchmark
+      - emotion_benchmark
+      - rating_classification_candidate
+  source_b:
+    source_id: SRC_TOKOPEDIA_REVIEWS_2019
+    roles:
+      - rating_classification_candidate
+      - product_review_intelligence
+      - shop_review_indicators
+
+supervised_tasks:
+  rating_classification:
+    target: supplied_rating_1_to_5
+    experiment_scope: source_specific
+  sentiment_classification:
+    target: provided_sentiment_label
+    eligible_source: SRC_PRDECT_ID_V1
+  emotion_classification:
+    target: provided_emotion_label
+    eligible_source: SRC_PRDECT_ID_V1
+
+split_strategy:
+  type: stratified_non_temporal
+  train_proportion: 0.70
+  validation_proportion: 0.15
+  holdout_proportion: 0.15
+  random_state_policy: fixed_documented_per_experiment_family
+  duplicate_policy: keep_identical_normalized_text_in_one_split_or_exclude_with_log
+
+evaluation:
+  metrics:
+    - accuracy
+    - macro_f1
+    - weighted_f1
+    - precision
+    - recall
+    - per_class_recall
+    - confusion_matrix
+    - coverage
+  performance_targets: not_predeclared
+
+baselines:
+  - majority_class_reference
+  - tfidf_logistic_regression
+  - tfidf_linear_svm
+challenger:
+  selection: evidence_driven_from_data_characteristics
+  maximum_count: 1
+
+experiment_naming:
+  pattern: phase08_<source_id>_<task>_<candidate>_<split_id>
