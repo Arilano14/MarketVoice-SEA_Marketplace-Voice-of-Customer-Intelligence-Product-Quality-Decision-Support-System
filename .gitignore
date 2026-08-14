@@ -20,6 +20,7 @@ logs/*
 .venv/
 env/
 venv/
+.pipdeps/
 
 # Python
 __pycache__/

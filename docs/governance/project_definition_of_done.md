@@ -19,9 +19,9 @@ The MarketVoice SEA project defines 29 planned deliverables across the 15-phase 
 | **DEL-05** | System Requirements Specification (SRS) | Required | Phase 3 | DEL-03 | SRS specifying all FRs, NFRs, and APIs |
 | **DEL-06** | Research & Experimental Design Specification | Required | Phase 4 | DEL-04, DEL-05 | Formal experimental methodology & RQ metrics |
 | **DEL-07** | System Architecture & Data Model Spec | Required | Phase 5 | DEL-06 | Kimball Star Schema & system architecture diagram |
-| **DEL-08** | PostgreSQL Data Warehouse & Staging Schema | Required | Phase 6 | DEL-07 | DDL scripts creating staging, DW, and marts |
-| **DEL-09** | Reproducible SQL/Python ETL Pipeline | Required | Phase 6 | DEL-08 | Automated ETL loading raw/synthetic data to DW |
-| **DEL-10** | Automated Data Quality Test Suite | Required | Phase 6 | DEL-09 | Automated test suite passing with 0 critical fails |
+| **DEL-08** | PostgreSQL Data Warehouse & Staging Schema | Required | Phase 6 | DEL-07 | DDL scripts creating technical staging, physical DW schema, tables, constraints, and indexes. CLARIFICATION Phase 6 v1.1: business analytical marts / BI-ready summary views are Phase 7 DEL-11 scope and explicitly excluded from Phase 6 DEL-08. |
+| **DEL-09** | Reproducible SQL/Python ETL Pipeline | Required | Phase 6 | DEL-08 | Automated ETL loading authentic Track A raw data to DW. CLARIFICATION Phase 6 v1.1: Track B synthetic data requires separate explicit authorization and is excluded from Phase 6. |
+| **DEL-10** | Automated Data Quality Test Suite | Required | Phase 6 | DEL-09 | Automated test suite passing with 0 CRITICAL failures and 0 unresolved MAJOR INTEGRITY blockers. |
 | **DEL-11** | Baseline Business Intelligence Queries | Required | Phase 7 | DEL-09 | SQL scripts producing core CX summary marts |
 | **DEL-12** | Rating/Sentiment ML Models & Evaluation | Required | Phase 8 | DEL-09 | Baseline & candidate models evaluated on test split |
 | **DEL-13** | Aspect & Issue Intelligence Classifier | Required | Phase 9 | DEL-03, DEL-12 | Candidate taxonomy validated & classifier evaluated |
@@ -55,9 +55,9 @@ The MarketVoice SEA project will be considered 100% complete when all of the fol
    * Zero false commercial performance or unverified revenue claims exist in documentation or reporting.
 
 2. **Data Engineering & Data Warehouse**:
-   * Staging, Kimball Star Schema DW, and Data Mart DDL scripts execute cleanly in PostgreSQL.
-   * ETL pipelines process raw and synthetic data reproducibly using single-command Python scripts.
-   * Automated Data Quality test suite passes cleanly with 0 critical assertion failures.
+   * Staging, Kimball Star Schema DW, and technical DDL scripts execute cleanly in PostgreSQL (Phase 6 DEL-08). CLARIFICATION: business analytical Data Mart SQL scripts / summary views are Phase 7 DEL-11 deliverables.
+   * ETL pipelines process authentic Track A data reproducibly using single-command Python scripts (Phase 6 DEL-09); Track B synthetic data requires a separate explicit authorization and is NOT part of Phase 6.
+   * Automated Data Quality test suite passes cleanly with 0 CRITICAL failures and 0 unresolved MAJOR INTEGRITY blockers (Phase 6 DEL-10).
 
 3. **Machine Learning & Decision Analytics**:
    * Baseline and candidate sentiment/rating models are trained, evaluated, and documented.
