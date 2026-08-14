@@ -1,7 +1,7 @@
 # MarketVoice SEA — Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System
 
-[![Phase](https://img.shields.io/badge/Phase-01--Environment%20%26%20Data%20Acquisition-blue)](docs/governance/phase_gates.md)
-[![Status](https://img.shields.io/badge/Status-In%20Development-orange)](#project-status)
+[![Phase](https://img.shields.io/badge/Phase-05--Solution%20Architecture%20%26%20Data%20Model-green)](docs/governance/phase_gates.md)
+[![Status](https://img.shields.io/badge/Status-Ready%20for%20Phase%206%20Entry-brightgreen)](#project-status)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 
@@ -37,11 +37,11 @@ MarketVoice SEA strictly follows a 15-phase canonical engineering roadmap:
 | Phase | Phase Name | Status |
 |---|---|---|
 | **Phase 0** | Governance & Scope | `COMPLETED` (Gate: PASS) |
-| **Phase 1** | Environment & Data Acquisition | `IN_PROGRESS` |
-| **Phase 2** | Dataset Forensic Audit | `PLANNED` |
-| **Phase 3** | Business & System Requirements | `PLANNED` |
-| **Phase 4** | Research & Analytical Design | `PLANNED` |
-| **Phase 5** | Architecture & Data Model | `PLANNED` |
+| **Phase 1** | Environment & Data Acquisition | `COMPLETED` (Gate: PASS) |
+| **Phase 2** | Dataset Forensic Audit | `COMPLETED` (Gate: PASS) |
+| **Phase 3** | Business & System Requirements | `COMPLETED` (Gate: PASS) |
+| **Phase 4** | Research & Analytical Design | `COMPLETED` (Gate: PASS) |
+| **Phase 5** | Architecture & Data Model | `COMPLETED` (Gate: PASS) |
 | **Phase 6** | ETL & Data Warehouse | `PLANNED` |
 | **Phase 7** | Baseline Business Intelligence | `PLANNED` |
 | **Phase 8** | Rating/Sentiment ML | `PLANNED` |
@@ -71,23 +71,35 @@ cd MarketVoice-SEA_Marketplace-Voice-of-Customer-Intelligence-Product-Quality-De
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# Install Phase 1 dependencies in editable mode
+# Install core dependencies in editable mode
 pip install -e .
+
+# Install ALL development dependencies (required before running pytest, linters, or optional heavy validators)
+pip install -e ".[dev]"
 
 # Copy environment configuration
 copy .env.example .env
 
-# Run environment validation script
+# Run environment validation script (stdlib-only; runs immediately after core install)
 python scripts/environment/validate_environment.py
+
+# Run smoke tests (both stdlib unittest and pytest work after installing [dev] extras)
+python -m unittest discover tests -v
+python -m pytest -q
 ```
 
 ---
 
 ## 🔒 DATA GOVERNANCE & PRIVACY
 
-* **Track A (Original Challenge Data)**: Read-only competition baseline. Raw files in `data/raw/` are gitignored to comply with redistribution restrictions.
-* **Track B (Conditional Synthetic Data)**: Generated deterministically only if Phase 2 audit identifies missing operational metadata. All synthetic records carry explicit `is_synthetic = TRUE` database flags and UI watermarks.
-* **PII Protection**: Automated regex redaction of user contact details during staging.
+* **Canonical Dual-Source Foundation** (per [config/data_sources.yaml](config/data_sources.yaml) and [docs/governance/data_governance_policy.md](docs/governance/data_governance_policy.md)):
+  - Source A (`SRC_PRDECT_ID_V1`) — PRDECT-ID Indonesian product reviews 5,400 rows (sentiment + emotion gold)
+  - Source B (`SRC_TOKOPEDIA_REVIEWS_2019`) — Tokopedia product reviews 2019 40,607 rows (product_id + shop_id)
+* **Distribution**: Data tiers `data/raw/*`, `data/interim/*`, `data/processed/*`, `logs/*` are all `LOCAL_ONLY`. They are excluded from public Git via `.gitignore` (only `*.gitkeep` and tier READMEs are versioned as placeholders). Rebuild locally with acquisition + hardening scripts after clone.
+* **Cross-source linkage**: `CROSS_SOURCE_PRODUCT_LINKAGE = NOT_SUPPORTED`; `CROSS_SOURCE_SHOP_LINKAGE = NOT_SUPPORTED`; `CROSS_SOURCE_ROW_LINKAGE = NOT_SUPPORTED`. No fuzzy entity merge.
+* **Temporal facts**: Authentic review timestamps are `NOT_AVAILABLE` in both raw sources; no `dim_date` for review facts.
+* **Track B (Conditional Synthetic Data)**: Generated deterministically only if governance-approved and missing operational metadata is justified. All synthetic records carry explicit `is_synthetic = TRUE` flags and never leak into Track A gold.
+* **PII Protection**: Automated regex redaction of user contact details during staging (case/intervention fact fields only; Phase 9+).
 
 ---
 

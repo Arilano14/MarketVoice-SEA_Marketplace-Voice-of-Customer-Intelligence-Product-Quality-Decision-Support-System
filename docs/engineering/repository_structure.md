@@ -1,7 +1,7 @@
 # MARKETVOICE SEA — REPOSITORY ARCHITECTURE & STRUCTURE
 
-**Document Version**: 1.1 (Remediated)  
-**Phase**: Phase 1 (Environment, Repository Foundation & Data Acquisition)  
+**Document Version**: 1.2 (Phases 0–5 directory state reconciled)  
+**Phase**: Phase 5 (Architecture & Data Model; Phase 5/6 boundary = logical design only; Phase 6 not started)  
 **Classification**: Software Engineering Documentation  
 
 ---

@@ -2,9 +2,29 @@
 
 **Document Version**: 1.0 (Remediation Execution)  
 **Execution Date**: 2026-08-09  
-**Canonical Source**: `[Open] Shopee Code League - Sentiment Analysis` (Kaggle: `shopee-sentiment-analysis`)  
-**Phase 1 Execution Status**: `PHASE_1_EXECUTION_STATUS = COMPLETED`  
-**Phase 1 Gate Status**: `PHASE_1_GATE_STATUS = PASS`  
+**Classification**: HISTORICAL / SUPERSEDED
+
+> ⚠ **SUPERSEDED HISTORICAL REFERENCE — DO NOT USE AS CURRENT EVIDENCE**
+>
+> This report records remediation actions executed against an earlier superseded single-source plan
+> that referenced the Kaggle Shopee Code League challenge (`train.csv`/`test.csv`/`sample_submission.csv`)
+> as the canonical project dataset identity.
+>
+> **CURRENT CANON SOURCE FOUNDATION** = Dual-Source PRDECT-ID + Tokopedia Product Reviews 2019,
+> per:
+> * [config/data_sources.yaml](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/config/data_sources.yaml)
+> * [docs/governance/data_governance_policy.md](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/docs/governance/data_governance_policy.md)
+>
+> **CURRENT ACTIVE PHASE 1 GATE EVIDENCE** =
+> [reports/validation/phase_01_validation_report.md](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/phase_01_validation_report.md)
+>
+> This file is preserved for project history auditing only. No claim, source identity,
+> file inventory, or remediation action recorded below applies to the current dual-source
+> architecture. Do not cite this file in downstream validation reports.
+
+**Canonical Source**: `[Open] Shopee Code League - Sentiment Analysis` (Kaggle: `shopee-sentiment-analysis`) — *SUPERSEDED by dual-source foundation above*  
+**Phase 1 Execution Status**: `PHASE_1_EXECUTION_STATUS = COMPLETED` — *historical only, see active validation report for current status*  
+**Phase 1 Gate Status**: `PHASE_1_GATE_STATUS = PASS` — *historical only, see active validation report for current status*
 
 ---
 

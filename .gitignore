@@ -1,8 +1,18 @@
-# Data files (Governance Policy - raw competition data excluded from public Git repos)
+# Data files (Governance Policy - raw/interim/processed corpora LOCAL_ONLY per data_governance_policy.md v2.0)
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/README.md
+data/interim/*
+!data/interim/.gitkeep
+!data/interim/README.md
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/README.md
+
+# Logs (LOCAL_ONLY runtime artefacts)
+logs/*
+!logs/.gitkeep
+!logs/README.txt
 
 # Environment & Credentials
 .env

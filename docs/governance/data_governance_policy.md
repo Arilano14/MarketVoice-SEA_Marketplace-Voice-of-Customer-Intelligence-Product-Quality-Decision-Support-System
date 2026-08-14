@@ -44,7 +44,12 @@ MarketVoice SEA operates a strictly governed **Dual-Source Indonesian Marketplac
    - `CROSS_SOURCE_SHOP_LINKAGE = NOT_SUPPORTED`
    - `CROSS_SOURCE_ROW_LINKAGE = NOT_SUPPORTED`
    Product names or shop entities from Source A must never be assumed identical to Source B.
-3. **Public Distribution Policy**: `project_raw_distribution_policy = LOCAL_ONLY`. Both raw datasets remain excluded from public Git tracking (`data/raw/*` in `.gitignore`).
+3. **Public Distribution Policy**: `project_distribution_policy = LOCAL_ONLY` (raw + interim + processed corpora). All derived data tiers are excluded from public Git tracking:
+   - `data/raw/*` → LOCAL_ONLY (source downloads only; never redistributed via git)
+   - `data/interim/*` → LOCAL_ONLY (standardized, cleaned, split corpora; regenerate with hardening scripts)
+   - `data/processed/*` → LOCAL_ONLY (model-ready features; regenerate with feature/build pipelines)
+   - `logs/*` → LOCAL_ONLY (runtime artefacts only)
+   Exception: Only scaffolding placeholders (`*.gitkeep`, tier `README.md` files) are versioned to preserve directory structure. Do not commit standardized review CSVs, split indices, or feature matrices. After clone: run data acquisition scripts (`scripts/data_acquisition/`) followed by hardening scripts (`scripts/data_audit/execute_phase2_hardening.py` or equivalent) to reconstruct LOCAL_ONLY tiers deterministically.
 
 ---
 

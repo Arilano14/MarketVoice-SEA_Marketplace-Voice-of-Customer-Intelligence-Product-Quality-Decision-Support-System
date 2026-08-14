@@ -5,6 +5,8 @@ import yaml
 import sys
 
 files = [
+    'config/project_settings.yaml',
+    'config/data_sources.yaml',
     'config/experiment_settings.yaml',
 ]
 
@@ -13,9 +15,9 @@ for fpath in files:
     try:
         with open(fpath, 'r') as f:
             yaml.safe_load(f)
-        print(f"✓ {fpath}: Valid YAML")
+        print(f"[PASS] {fpath}: Valid YAML")
     except Exception as e:
-        print(f"✗ {fpath}: {e}")
+        print(f"[FAIL] {fpath}: {e}")
         errors = True
 
 sys.exit(1 if errors else 0)

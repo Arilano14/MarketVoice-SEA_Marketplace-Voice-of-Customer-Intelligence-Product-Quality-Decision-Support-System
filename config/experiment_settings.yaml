@@ -38,7 +38,15 @@ split_strategy:
   validation_proportion: 0.15
   holdout_proportion: 0.15
   random_state_policy: fixed_documented_per_experiment_family
-  duplicate_policy: keep_identical_normalized_text_in_one_split_or_exclude_with_log
+  duplicate_policy: group_by_normalized_review_text_then_assign_entire_group_to_one_split_only_never_exclude_without_governance_exception
+  duplicate_policy_note: |
+    Deterministic rule to guarantee identical normalized review texts never appear in multiple splits (train/val/holdout) simultaneously.
+    Step 1: compute normalized_review_text (lowercase, strip, collapse whitespace, strip punctuation boundaries).
+    Step 2: compute duplicate_group_id per unique normalized_review_text.
+    Step 3: assign entire duplicate_group_id atomically to ONE split (stratify by the majority label of the group).
+    If a group spans multiple labels, the split assignment uses the group's most-frequent label to preserve stratification balance.
+    Under no circumstance may duplicate rows of the same normalized review text be split across train/validation/holdout.
+    Exclusion of duplicates is FORBIDDEN without an explicit governance exception and a change-log entry.
 
 evaluation:
   metrics:

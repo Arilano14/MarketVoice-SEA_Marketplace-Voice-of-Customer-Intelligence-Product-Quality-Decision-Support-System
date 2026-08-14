@@ -20,7 +20,7 @@ Each supervised experiment uses one source-specific dataset and one verified tar
 
 | Risk | Required control |
 |---|---|
-| Exact duplicate review text | Detect normalized-text duplicates before split; assign identical normalized text to one split or exclude duplicates from supervised evaluation with an exclusion log. |
+| Exact duplicate review text | Determine duplicates by normalized review text (lowercase, strip, collapse whitespace, strip punctuation boundaries). Compute duplicate_group_id per unique normalized_review_text. Assign the ENTIRE duplicate_group_id atomically to ONE split only (stratify by the group's most-frequent label). Under no circumstance may duplicate rows of the same normalized review text appear in multiple splits. Duplicate exclusion from supervised evaluation is FORBIDDEN without an explicit governance exception. |
 | Near duplicate / templated text | Produce diagnostics before challenger selection; if material, apply an evidence-documented grouping strategy. |
 | Label-derived features | Do not use supplied sentiment/emotion labels, rating-derived fields, or any direct label proxy as input features for the corresponding task. |
 | Preprocessing leakage | Fit vocabulary, vectorizer, encoders, resampling, and any learned transform on training data only; apply unchanged transforms to validation/holdout. |

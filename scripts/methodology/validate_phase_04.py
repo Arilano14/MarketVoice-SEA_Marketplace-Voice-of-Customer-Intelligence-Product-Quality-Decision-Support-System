@@ -53,13 +53,18 @@ checks["P4-E03"] = {
 }
 print(f"P4-E03: {checks['P4-E03']['actual']}")
 
-# P4-E04-E07: Phase gates
-phase_gates = {}
+# P4-E04-E07: Phase gates (canonical evidence paths with actual filenames)
+phase_canonical_evidence = {
+    0: Path("docs/governance/project_charter.md"),
+    1: Path("reports/validation/phase_01_validation_report.md"),
+    2: Path("reports/validation/phase_02_dataset_forensic_audit_report.md"),
+    3: Path("reports/validation/phase_03_validation.md"),
+}
 for phase in range(0, 4):
-    gate_file = Path(f"reports/validation/phase_{phase:02d}_validation.md") if phase > 0 else Path("docs/governance/project_charter.md")
+    gate_file = phase_canonical_evidence[phase]
     checks[f"P4-E{4+phase}"] = {
         "title": f"Phase {phase} gate evidence",
-        "actual": "present" if gate_file.exists() or phase == 0 else "missing",
+        "actual": "present" if gate_file.exists() else "missing",
         "evidence": str(gate_file),
     }
     print(f"P4-E{4+phase}: {checks[f'P4-E{4+phase}']['actual']}")
