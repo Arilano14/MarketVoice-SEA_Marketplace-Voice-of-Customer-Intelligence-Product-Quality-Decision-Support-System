@@ -14,8 +14,10 @@
 | Per-class recall | Detection reliability for each rating, sentiment, or emotion class. |
 | Confusion matrix | Systematic misclassification patterns. |
 | Coverage | Evaluated records divided by eligible records, with exclusions reported. |
+| Quadratic Weighted Kappa (QWK) | Ordinal rating tasks only; accounts for rating order (1 < 2 < 3 < 4 < 5). |
+| Mean Absolute Error (MAE) on rating | Ordinal rating tasks only; average magnitude of rating prediction error. |
 
-No numeric success target is predeclared. Metric interpretation identifies target, source, split, class distribution, exclusions, and limitations.
+No numeric success target is predeclared. Metric interpretation identifies target, source, split, class distribution, exclusions, and limitations. For rating prediction tasks on Sources A and B, ordinal-sensitive metrics (QWK, MAE) provide complementary information to classification metrics (Accuracy, F1, Precision, Recall).
 
 ## 2. Champion-selection principle
 

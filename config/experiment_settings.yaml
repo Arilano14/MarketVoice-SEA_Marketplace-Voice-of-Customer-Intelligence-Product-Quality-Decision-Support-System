@@ -50,6 +50,8 @@ evaluation:
     - per_class_recall
     - confusion_matrix
     - coverage
+    - quadratic_weighted_kappa  # for ordinal rating tasks only
+    - mean_absolute_error_on_rating  # for ordinal rating tasks only
   performance_targets: not_predeclared
 
 baselines:

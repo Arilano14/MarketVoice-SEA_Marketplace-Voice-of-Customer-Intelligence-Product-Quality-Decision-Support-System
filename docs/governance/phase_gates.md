@@ -1,10 +1,11 @@
 # MARKETVOICE SEA — CANONICAL ROADMAP & PHASE GATE SPECIFICATION
 
-**Document Version**: 4.1 (Phase 3 Reconciled; Phase 4–5 Controlled Execution)
-**Phase**: Phase 5 (Architecture & Data Model)
+**Document Version**: 4.2 (Phase 3 Reconciliation Corrected; Actual Gate Status Updated)
+**Phase**: Phase 4 (Research & Analytical Design) — In Audit  
 **Data Foundation Version**: `DATA_FOUNDATION_VERSION = 1.0` (Frozen)  
-**Current Status**: `PHASE_3_GATE_STATUS = PASS`, `PHASE_4_GATE_STATUS = PASS`, `PHASE_5_GATE_STATUS = PASS`
+**Current Status**: `PHASE_3_GATE_STATUS = AWAITING_HUMAN_APPROVAL`, `PHASE_4_GATE_STATUS = AWAITING_PHASE_3_APPROVAL`, `PHASE_5_GATE_STATUS = READ_ONLY_REFERENCE`
 **Classification**: Phase Transition & Gate Control Document  
+**Last Updated**: Phase 4 forensic audit and remediation (2026-08-14)  
 
 ---
 
@@ -70,43 +71,55 @@ Phase 14 Portfolio & Research Release
 
 ---
 
-## 4. PHASE 3 GATE STATUS RECORD
+## 4. PHASE 3 GATE STATUS RECORD — UPDATED
 
 ```
 ====================================================================
                   PHASE 3 GATE STATUS RECORD                        
 ====================================================================
 
-  PHASE_3_EXECUTION_STATUS  = COMPLETED
-  PHASE_3_REVIEW_STATUS     = RECONCILED_UNDER_CONTROLLED_EXECUTION
-  PHASE_3_VALIDATION_STATUS = PASS
-  PHASE_3_GATE_STATUS       = PASS
+  PHASE_3_BUILD_STATUS        = COMPLETE
+  PHASE_3_TECHNICAL_VALIDATION = PASS
+  PHASE_3_HUMAN_REVIEW_STATUS = PENDING (awaiting project owner approval)
+  PHASE_3_GATE_STATUS         = AWAITING_HUMAN_APPROVAL
+
+  Evidence: reports/validation/phase_03_validation.md
+  Status note: "No Phase 3 gate outcome is recommended or recorded by this report.
+               After human review, the permitted outcomes are PASS, PASS_WITH_ACTIONS, or FAIL."
 
 ====================================================================
 ```
 
-**Canonical reference correction:**
+**Reconciliation note (Version 4.2 update):**
+Previous version 4.1 recorded `PHASE_3_GATE_STATUS = PASS`. However, empirical verification of phase_03_validation.md shows the actual status is:
+- **PHASE_3_GATE**: NOT_EVALUATED
+- **PHASE_3_REVIEW_STATE**: READY_FOR_HUMAN_REVIEW
+- **PHASE_3_GATE_DECISION**: Awaiting project owner/human reviewer approval
 
-| Field | Record |
-|---|---|
-| `OLD_REFERENCE` | `business_requirements_document.md`, `system_requirements_specification.md`, `information_requirements_and_kpi_dictionary.md`, `requirements_traceability_matrix.md`, `business_and_system_requirements.md`, `phase_03_requirements_recap_report.md` |
-| `NEW_REFERENCE` | `business_and_information_requirements.md`, `system_requirements.md`, `use_cases_and_mvp.md`, `requirements_traceability.md`, `phase_03_validation.md` |
-| `REASON` | Phase 3 v2 consolidated requirements and removed implementation detail inconsistent with the logical-requirements boundary. |
-| `IMPACT` | Current gate references point to v2. Phase 0–2 evidence remains unchanged; the legacy v1 structural validator is not gate evidence. |
+The Phase 3 technical deliverables are complete and validated. However, the gate cannot advance to PASS without explicit human approval.
 
-## 5. PHASE 4 GATE STATUS RECORD
+## 5. PHASE 4 GATE STATUS RECORD — UPDATED
 
 ```
 PHASE_4_BUILD_STATUS = COMPLETE
-PHASE_4_VALIDATION_STATUS = PASS
-PHASE_4_GATE_STATUS = PASS
+PHASE_4_TECHNICAL_VALIDATION = PASS (ordinal metrics remediated)
+PHASE_4_HUMAN_REVIEW_STATUS = PENDING
+PHASE_4_GATE_STATUS = AWAITING_PHASE_3_APPROVAL
+
+Evidence: reports/validation/phase_04_research_design_validation.md (v1.1)
+Status note: Phase 4 technical validation is PASS. Phase 4 gate cannot advance
+             until Phase 3 human gate approval is obtained.
 ```
+
+**Reconciliation note (Version 4.2 update):**
+Phase 4 entry criteria require Phase 3 gate to be PASS. As Phase 3 gate is currently AWAITING_HUMAN_APPROVAL (not yet PASS), Phase 4 gate is also blocked awaiting Phase 3 approval.
 
 ## 6. PHASE 5 GATE STATUS RECORD
 
 ```
-PHASE_5_BUILD_STATUS = COMPLETE
-PHASE_5_VALIDATION_STATUS = PASS
-PHASE_5_GATE_STATUS = PASS
+PHASE_5_STATUS = READ_ONLY_REFERENCE (Phase 5 design artifacts exist but are not active)
+PHASE_5_GATE_STATUS = NOT_EVALUATED (pending Phase 4 gate approval)
 PHASE_6_EXECUTION_STATUS = NOT_STARTED
 ```
+
+**Note:** Phase 5 architecture design artifacts exist for reference consistency and downstream planning. No Phase 5 implementation is authorized until Phase 4 gate passes.
