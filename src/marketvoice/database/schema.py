@@ -39,13 +39,20 @@ def ddl_file_order() -> list[str]:
     ]
 
 
-def apply_ddl(conn: Connection, sql_files: Sequence[str] | None = None) -> None:
+def apply_ddl(conn: Connection, sql_files: Sequence[str] | None = None,
+              *, reset_schema: bool = False) -> None:
     """Apply the 4 DDL files sequentially in order.
 
     Runs in autocommit per file (each file is a logical checkpoint).
+
+    If reset_schema=True, drops and recreates the schema first for
+    idempotent re-application (safe for test/dev environments).
     """
     sql_files = list(sql_files or ddl_file_order())
     with conn.cursor() as cur:
+        if reset_schema:
+            cur.execute(f"DROP SCHEMA IF EXISTS {SCHEMA} CASCADE")
+            cur.execute(f"CREATE SCHEMA {SCHEMA}")
         for fp in sql_files:
             if not os.path.isfile(fp):
                 raise FileNotFoundError(f"DDL file missing: {fp}")
