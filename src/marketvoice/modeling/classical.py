@@ -83,8 +83,7 @@ def train_logistic_regression(
         max_iter=max_iter,
         random_state=seed,
         solver="lbfgs",
-        multi_class="multinomial",
-        n_jobs=-1,
+        n_jobs=1,
     )
     model.fit(X_train, y_train)
     return model

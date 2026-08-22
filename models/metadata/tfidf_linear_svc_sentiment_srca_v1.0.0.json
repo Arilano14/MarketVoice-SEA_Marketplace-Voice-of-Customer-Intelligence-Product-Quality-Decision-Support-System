@@ -1,0 +1,89 @@
+{
+  "model_card_version": "1.0",
+  "model_name": "tfidf_linear_svc_sentiment_srca",
+  "model_version": "1.0.0",
+  "phase": "Phase 8",
+  "task": "binary_sentiment_classification",
+  "target_variable": "source_gold_sentiment_label",
+  "source_scope": "SRC_PRDECT_ID_V1",
+  "dataset_reference": "marketvoice_warehouse.fact_review WHERE source_id='SRC_PRDECT_ID_V1'",
+  "preprocessing_version": "1.0",
+  "seed": 42,
+  "training_date": "2026-08-22T10:59:20.896814+00:00",
+  "training_config": {
+    "classifier": "linear_svc",
+    "class_weight": "balanced"
+  },
+  "validation_metrics": {
+    "accuracy": 0.9616,
+    "macro_f1": 0.9615,
+    "weighted_f1": 0.9616,
+    "per_class": {
+      "Negative": {
+        "precision": 0.9562,
+        "recall": 0.9719,
+        "f1": 0.964,
+        "support": 427
+      },
+      "Positive": {
+        "precision": 0.9679,
+        "recall": 0.9501,
+        "f1": 0.9589,
+        "support": 381
+      }
+    },
+    "confusion_matrix": [
+      [
+        415,
+        12
+      ],
+      [
+        19,
+        362
+      ]
+    ],
+    "labels": [
+      "Negative",
+      "Positive"
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.97,
+    "macro_f1": 0.9699,
+    "weighted_f1": 0.97,
+    "per_class": {
+      "Negative": {
+        "precision": 0.9691,
+        "recall": 0.9737,
+        "f1": 0.9714,
+        "support": 419
+      },
+      "Positive": {
+        "precision": 0.9709,
+        "recall": 0.9658,
+        "f1": 0.9683,
+        "support": 380
+      }
+    },
+    "confusion_matrix": [
+      [
+        408,
+        11
+      ],
+      [
+        13,
+        367
+      ]
+    ],
+    "labels": [
+      "Negative",
+      "Positive"
+    ]
+  },
+  "selected_status": "champion",
+  "selection_rationale": "Higher validation Macro F1 among LR and SVC.",
+  "limitations": [
+    "Source A gold labels only.",
+    "Binary classification (Negative/Positive)."
+  ]
+}

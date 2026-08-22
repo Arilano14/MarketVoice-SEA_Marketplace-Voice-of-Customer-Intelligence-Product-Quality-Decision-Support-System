@@ -1,0 +1,186 @@
+{
+  "model_card_version": "1.0",
+  "model_name": "tfidf_logistic_regression_emotion_srca",
+  "model_version": "1.0.0",
+  "phase": "Phase 8",
+  "task": "emotion_classification",
+  "target_variable": "source_gold_emotion_label",
+  "source_scope": "SRC_PRDECT_ID_V1",
+  "dataset_reference": "marketvoice_warehouse.fact_review WHERE source_id='SRC_PRDECT_ID_V1'",
+  "preprocessing_version": "1.0",
+  "seed": 42,
+  "training_date": "2026-08-22T10:59:23.590682+00:00",
+  "training_config": {
+    "classifier": "logistic_regression",
+    "class_weight": "balanced"
+  },
+  "validation_metrics": {
+    "accuracy": 0.6364,
+    "macro_f1": 0.6057,
+    "weighted_f1": 0.641,
+    "per_class": {
+      "Anger": {
+        "precision": 0.4904,
+        "recall": 0.4679,
+        "f1": 0.4789,
+        "support": 109
+      },
+      "Fear": {
+        "precision": 0.4512,
+        "recall": 0.5441,
+        "f1": 0.4933,
+        "support": 136
+      },
+      "Happy": {
+        "precision": 0.8319,
+        "recall": 0.7444,
+        "f1": 0.7857,
+        "support": 266
+      },
+      "Love": {
+        "precision": 0.608,
+        "recall": 0.6333,
+        "f1": 0.6204,
+        "support": 120
+      },
+      "Sadness": {
+        "precision": 0.6503,
+        "recall": 0.6503,
+        "f1": 0.6503,
+        "support": 183
+      }
+    },
+    "confusion_matrix": [
+      [
+        51,
+        31,
+        3,
+        3,
+        21
+      ],
+      [
+        23,
+        74,
+        3,
+        2,
+        34
+      ],
+      [
+        5,
+        11,
+        198,
+        44,
+        8
+      ],
+      [
+        8,
+        4,
+        31,
+        76,
+        1
+      ],
+      [
+        17,
+        44,
+        3,
+        0,
+        119
+      ]
+    ],
+    "labels": [
+      "Anger",
+      "Fear",
+      "Happy",
+      "Love",
+      "Sadness"
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.6231,
+    "macro_f1": 0.5962,
+    "weighted_f1": 0.6284,
+    "per_class": {
+      "Anger": {
+        "precision": 0.4808,
+        "recall": 0.4717,
+        "f1": 0.4762,
+        "support": 106
+      },
+      "Fear": {
+        "precision": 0.4382,
+        "recall": 0.5693,
+        "f1": 0.4952,
+        "support": 137
+      },
+      "Happy": {
+        "precision": 0.8025,
+        "recall": 0.729,
+        "f1": 0.764,
+        "support": 262
+      },
+      "Love": {
+        "precision": 0.6134,
+        "recall": 0.6134,
+        "f1": 0.6134,
+        "support": 119
+      },
+      "Sadness": {
+        "precision": 0.6606,
+        "recall": 0.6056,
+        "f1": 0.6319,
+        "support": 180
+      }
+    },
+    "confusion_matrix": [
+      [
+        50,
+        37,
+        2,
+        0,
+        17
+      ],
+      [
+        27,
+        78,
+        5,
+        1,
+        26
+      ],
+      [
+        4,
+        11,
+        191,
+        45,
+        11
+      ],
+      [
+        4,
+        2,
+        38,
+        73,
+        2
+      ],
+      [
+        19,
+        50,
+        2,
+        0,
+        109
+      ]
+    ],
+    "labels": [
+      "Anger",
+      "Fear",
+      "Happy",
+      "Love",
+      "Sadness"
+    ]
+  },
+  "selected_status": "champion",
+  "selection_rationale": "Higher validation Macro F1 among LR and SVC.",
+  "limitations": [
+    "Source A gold labels only.",
+    "5-class: Anger, Fear, Happy, Love, Sadness.",
+    "Class imbalance present (Happy=1770, Anger=699)."
+  ]
+}

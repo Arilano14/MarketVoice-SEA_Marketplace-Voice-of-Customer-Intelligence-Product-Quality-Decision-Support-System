@@ -1,0 +1,192 @@
+{
+  "model_card_version": "1.0",
+  "model_name": "tfidf_tfidf_logistic_regression_rating_sourceb",
+  "model_version": "1.0.0",
+  "phase": "Phase 8",
+  "task": "rating_classification",
+  "target_variable": "rating_value",
+  "source_scope": "SRC_TOKOPEDIA_REVIEWS_2019",
+  "dataset_reference": "marketvoice_warehouse.fact_review WHERE source_id='SRC_TOKOPEDIA_REVIEWS_2019'",
+  "preprocessing_version": "1.0",
+  "seed": 42,
+  "training_date": "2026-08-22T10:59:18.559595+00:00",
+  "training_config": {
+    "vectorizer": "TfidfVectorizer(word, 1-2 ngram, max_features=50000, sublinear_tf=True)",
+    "classifier": "tfidf_logistic_regression",
+    "class_weight": "balanced"
+  },
+  "validation_metrics": {
+    "accuracy": 0.6111,
+    "macro_f1": 0.3497,
+    "weighted_f1": 0.6469,
+    "per_class": {
+      "1": {
+        "precision": 0.2847,
+        "recall": 0.5062,
+        "f1": 0.3644,
+        "support": 81
+      },
+      "2": {
+        "precision": 0.0619,
+        "recall": 0.1053,
+        "f1": 0.0779,
+        "support": 57
+      },
+      "3": {
+        "precision": 0.1586,
+        "recall": 0.3395,
+        "f1": 0.2162,
+        "support": 271
+      },
+      "4": {
+        "precision": 0.2772,
+        "recall": 0.3949,
+        "f1": 0.3258,
+        "support": 1089
+      },
+      "5": {
+        "precision": 0.8577,
+        "recall": 0.6891,
+        "f1": 0.7642,
+        "support": 4445
+      }
+    },
+    "confusion_matrix": [
+      [
+        41,
+        19,
+        14,
+        3,
+        4
+      ],
+      [
+        14,
+        6,
+        22,
+        7,
+        8
+      ],
+      [
+        24,
+        19,
+        92,
+        85,
+        51
+      ],
+      [
+        20,
+        24,
+        170,
+        430,
+        445
+      ],
+      [
+        45,
+        29,
+        282,
+        1026,
+        3063
+      ]
+    ],
+    "labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "qwk": 0.4413,
+    "mae": 0.5014
+  },
+  "test_metrics": {
+    "accuracy": 0.6141,
+    "macro_f1": 0.3529,
+    "weighted_f1": 0.6473,
+    "per_class": {
+      "1": {
+        "precision": 0.3191,
+        "recall": 0.5625,
+        "f1": 0.4072,
+        "support": 80
+      },
+      "2": {
+        "precision": 0.0421,
+        "recall": 0.0678,
+        "f1": 0.0519,
+        "support": 59
+      },
+      "3": {
+        "precision": 0.1687,
+        "recall": 0.3636,
+        "f1": 0.2305,
+        "support": 264
+      },
+      "4": {
+        "precision": 0.2655,
+        "recall": 0.3609,
+        "f1": 0.3059,
+        "support": 1114
+      },
+      "5": {
+        "precision": 0.8528,
+        "recall": 0.7,
+        "f1": 0.7689,
+        "support": 4477
+      }
+    },
+    "confusion_matrix": [
+      [
+        45,
+        15,
+        11,
+        3,
+        6
+      ],
+      [
+        23,
+        4,
+        24,
+        5,
+        3
+      ],
+      [
+        20,
+        23,
+        96,
+        76,
+        49
+      ],
+      [
+        18,
+        27,
+        184,
+        402,
+        483
+      ],
+      [
+        35,
+        26,
+        254,
+        1028,
+        3134
+      ]
+    ],
+    "labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "qwk": 0.472,
+    "mae": 0.4842
+  },
+  "selected_status": "champion",
+  "selection_rationale": "Highest validation Macro F1 (0.3497) and QWK (0.4413) among Level 0 and Level 1 candidates.",
+  "limitations": [
+    "Ordinal rating treated as categorical classification (no ordinal regression).",
+    "No temporal features (review timestamps unavailable).",
+    "Trained on SourceB only; not applicable to other sources.",
+    "Class imbalance handled via balanced class weights, not resampling."
+  ]
+}

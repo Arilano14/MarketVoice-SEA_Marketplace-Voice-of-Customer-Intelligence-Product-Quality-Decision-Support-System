@@ -1,0 +1,2170 @@
+{
+  "rating_source_a": {
+    "source": "SRC_PRDECT_ID_V1",
+    "total_reviews": 5400,
+    "unique_text_groups": 5266,
+    "duplicate_rows": 134,
+    "split_diagnostics": {
+      "total_rows": 5400,
+      "train_rows": 3797,
+      "val_rows": 800,
+      "test_rows": 803,
+      "train_pct": 70.31,
+      "val_pct": 14.81,
+      "test_pct": 14.87,
+      "train_class_dist": {
+        "5": 1508,
+        "1": 1295,
+        "2": 391,
+        "3": 325,
+        "4": 278
+      },
+      "val_class_dist": {
+        "5": 317,
+        "1": 271,
+        "2": 85,
+        "3": 69,
+        "4": 58
+      },
+      "test_class_dist": {
+        "5": 325,
+        "1": 266,
+        "2": 85,
+        "3": 68,
+        "4": 59
+      },
+      "train_test_text_overlap": 0
+    },
+    "models": {
+      "majority_baseline": {
+        "val_metrics": {
+          "accuracy": 0.3962,
+          "macro_f1": 0.1135,
+          "weighted_f1": 0.2249,
+          "per_class": {
+            "1": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 271
+            },
+            "2": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 85
+            },
+            "3": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 69
+            },
+            "4": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 58
+            },
+            "5": {
+              "precision": 0.3962,
+              "recall": 1.0,
+              "f1": 0.5676,
+              "support": 317
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              271
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              85
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              69
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              58
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              317
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.0,
+          "mae": 1.9187
+        }
+      },
+      "stratified_baseline": {
+        "val_metrics": {
+          "accuracy": 0.3075,
+          "macro_f1": 0.1998,
+          "weighted_f1": 0.3053,
+          "per_class": {
+            "1": {
+              "precision": 0.3607,
+              "recall": 0.3727,
+              "f1": 0.3666,
+              "support": 271
+            },
+            "2": {
+              "precision": 0.1026,
+              "recall": 0.0941,
+              "f1": 0.0982,
+              "support": 85
+            },
+            "3": {
+              "precision": 0.0635,
+              "recall": 0.058,
+              "f1": 0.0606,
+              "support": 69
+            },
+            "4": {
+              "precision": 0.0678,
+              "recall": 0.069,
+              "f1": 0.0684,
+              "support": 58
+            },
+            "5": {
+              "precision": 0.4031,
+              "recall": 0.4069,
+              "f1": 0.405,
+              "support": 317
+            }
+          },
+          "confusion_matrix": [
+            [
+              101,
+              30,
+              17,
+              18,
+              105
+            ],
+            [
+              30,
+              8,
+              8,
+              3,
+              36
+            ],
+            [
+              26,
+              4,
+              4,
+              6,
+              29
+            ],
+            [
+              22,
+              7,
+              4,
+              4,
+              21
+            ],
+            [
+              101,
+              29,
+              30,
+              28,
+              129
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.0402,
+          "mae": 1.8675
+        }
+      },
+      "tfidf_logistic_regression": {
+        "val_metrics": {
+          "accuracy": 0.67,
+          "macro_f1": 0.5417,
+          "weighted_f1": 0.6767,
+          "per_class": {
+            "1": {
+              "precision": 0.721,
+              "recall": 0.7343,
+              "f1": 0.7276,
+              "support": 271
+            },
+            "2": {
+              "precision": 0.2584,
+              "recall": 0.2706,
+              "f1": 0.2644,
+              "support": 85
+            },
+            "3": {
+              "precision": 0.4167,
+              "recall": 0.4348,
+              "f1": 0.4255,
+              "support": 69
+            },
+            "4": {
+              "precision": 0.4,
+              "recall": 0.5172,
+              "f1": 0.4511,
+              "support": 58
+            },
+            "5": {
+              "precision": 0.8819,
+              "recall": 0.8013,
+              "f1": 0.8397,
+              "support": 317
+            }
+          },
+          "confusion_matrix": [
+            [
+              199,
+              45,
+              18,
+              2,
+              7
+            ],
+            [
+              41,
+              23,
+              14,
+              1,
+              6
+            ],
+            [
+              14,
+              19,
+              30,
+              4,
+              2
+            ],
+            [
+              2,
+              1,
+              6,
+              30,
+              19
+            ],
+            [
+              20,
+              1,
+              4,
+              38,
+              254
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.8215,
+          "mae": 0.5088
+        },
+        "train_time_s": 0.91
+      },
+      "tfidf_linear_svc": {
+        "val_metrics": {
+          "accuracy": 0.71,
+          "macro_f1": 0.4218,
+          "weighted_f1": 0.6486,
+          "per_class": {
+            "1": {
+              "precision": 0.6768,
+              "recall": 0.9041,
+              "f1": 0.7741,
+              "support": 271
+            },
+            "2": {
+              "precision": 0.2414,
+              "recall": 0.0824,
+              "f1": 0.1228,
+              "support": 85
+            },
+            "3": {
+              "precision": 0.4444,
+              "recall": 0.1739,
+              "f1": 0.25,
+              "support": 69
+            },
+            "4": {
+              "precision": 0.375,
+              "recall": 0.0517,
+              "f1": 0.0909,
+              "support": 58
+            },
+            "5": {
+              "precision": 0.8048,
+              "recall": 0.9495,
+              "f1": 0.8712,
+              "support": 317
+            }
+          },
+          "confusion_matrix": [
+            [
+              245,
+              11,
+              4,
+              0,
+              11
+            ],
+            [
+              63,
+              7,
+              6,
+              0,
+              9
+            ],
+            [
+              39,
+              9,
+              12,
+              2,
+              7
+            ],
+            [
+              4,
+              1,
+              4,
+              3,
+              46
+            ],
+            [
+              11,
+              1,
+              1,
+              3,
+              301
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.8484,
+          "mae": 0.4725
+        },
+        "train_time_s": 0.26
+      }
+    },
+    "champion": "tfidf_logistic_regression",
+    "champion_val_metrics": {
+      "accuracy": 0.67,
+      "macro_f1": 0.5417,
+      "weighted_f1": 0.6767,
+      "per_class": {
+        "1": {
+          "precision": 0.721,
+          "recall": 0.7343,
+          "f1": 0.7276,
+          "support": 271
+        },
+        "2": {
+          "precision": 0.2584,
+          "recall": 0.2706,
+          "f1": 0.2644,
+          "support": 85
+        },
+        "3": {
+          "precision": 0.4167,
+          "recall": 0.4348,
+          "f1": 0.4255,
+          "support": 69
+        },
+        "4": {
+          "precision": 0.4,
+          "recall": 0.5172,
+          "f1": 0.4511,
+          "support": 58
+        },
+        "5": {
+          "precision": 0.8819,
+          "recall": 0.8013,
+          "f1": 0.8397,
+          "support": 317
+        }
+      },
+      "confusion_matrix": [
+        [
+          199,
+          45,
+          18,
+          2,
+          7
+        ],
+        [
+          41,
+          23,
+          14,
+          1,
+          6
+        ],
+        [
+          14,
+          19,
+          30,
+          4,
+          2
+        ],
+        [
+          2,
+          1,
+          6,
+          30,
+          19
+        ],
+        [
+          20,
+          1,
+          4,
+          38,
+          254
+        ]
+      ],
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "qwk": 0.8215,
+      "mae": 0.5088
+    },
+    "holdout_metrics": {
+      "accuracy": 0.6413,
+      "macro_f1": 0.4942,
+      "weighted_f1": 0.6553,
+      "per_class": {
+        "1": {
+          "precision": 0.7266,
+          "recall": 0.6992,
+          "f1": 0.7126,
+          "support": 266
+        },
+        "2": {
+          "precision": 0.31,
+          "recall": 0.3647,
+          "f1": 0.3351,
+          "support": 85
+        },
+        "3": {
+          "precision": 0.2738,
+          "recall": 0.3382,
+          "f1": 0.3026,
+          "support": 68
+        },
+        "4": {
+          "precision": 0.2603,
+          "recall": 0.322,
+          "f1": 0.2879,
+          "support": 59
+        },
+        "5": {
+          "precision": 0.8828,
+          "recall": 0.7877,
+          "f1": 0.8325,
+          "support": 325
+        }
+      },
+      "confusion_matrix": [
+        [
+          186,
+          46,
+          27,
+          3,
+          4
+        ],
+        [
+          35,
+          31,
+          16,
+          1,
+          2
+        ],
+        [
+          18,
+          17,
+          23,
+          8,
+          2
+        ],
+        [
+          5,
+          1,
+          8,
+          19,
+          26
+        ],
+        [
+          12,
+          5,
+          10,
+          42,
+          256
+        ]
+      ],
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "qwk": 0.8301,
+      "mae": 0.5293
+    },
+    "error_analysis": {
+      "overall": {
+        "total": 803,
+        "correct": 515,
+        "errors": 288,
+        "error_rate": 0.3587
+      },
+      "length_short_lt30": {
+        "total": 106,
+        "errors": 47,
+        "error_rate": 0.4434
+      },
+      "length_medium_30_100": {
+        "total": 412,
+        "errors": 144,
+        "error_rate": 0.3495
+      },
+      "length_long_gt100": {
+        "total": 285,
+        "errors": 97,
+        "error_rate": 0.3404
+      },
+      "per_class_errors": {
+        "1": {
+          "total": 266,
+          "errors": 80,
+          "error_rate": 0.3008
+        },
+        "2": {
+          "total": 85,
+          "errors": 54,
+          "error_rate": 0.6353
+        },
+        "3": {
+          "total": 68,
+          "errors": 45,
+          "error_rate": 0.6618
+        },
+        "4": {
+          "total": 59,
+          "errors": 40,
+          "error_rate": 0.678
+        },
+        "5": {
+          "total": 325,
+          "errors": 69,
+          "error_rate": 0.2123
+        }
+      },
+      "top_confused_pairs": [
+        {
+          "true": "1",
+          "pred": "2",
+          "count": 46
+        },
+        {
+          "true": "5",
+          "pred": "4",
+          "count": 42
+        },
+        {
+          "true": "2",
+          "pred": "1",
+          "count": 35
+        },
+        {
+          "true": "1",
+          "pred": "3",
+          "count": 27
+        },
+        {
+          "true": "4",
+          "pred": "5",
+          "count": 26
+        },
+        {
+          "true": "3",
+          "pred": "1",
+          "count": 18
+        },
+        {
+          "true": "3",
+          "pred": "2",
+          "count": 17
+        },
+        {
+          "true": "2",
+          "pred": "3",
+          "count": 16
+        },
+        {
+          "true": "5",
+          "pred": "1",
+          "count": 12
+        },
+        {
+          "true": "5",
+          "pred": "3",
+          "count": 10
+        }
+      ]
+    },
+    "confidence_analysis": {
+      "mean_confidence_correct": 0.5417,
+      "mean_confidence_incorrect": 0.4219,
+      "median_confidence_correct": 0.5207,
+      "median_confidence_incorrect": 0.3958,
+      "total_correct": 515,
+      "total_incorrect": 288,
+      "confidence_buckets": [
+        {
+          "range": "0.0-0.5",
+          "count": 457,
+          "accuracy": 0.5186
+        },
+        {
+          "range": "0.5-0.7",
+          "count": 238,
+          "accuracy": 0.7479
+        },
+        {
+          "range": "0.7-0.9",
+          "count": 102,
+          "accuracy": 0.9216
+        },
+        {
+          "range": "0.9-1.0",
+          "count": 6,
+          "accuracy": 1.0
+        }
+      ]
+    },
+    "model_card_path": "C:\\Users\\Arilano\\Downloads\\Project ARICE\\Project SEA\\models\\metadata\\tfidf_tfidf_logistic_regression_rating_sourcea_v1.0.0.json"
+  },
+  "rating_source_b": {
+    "source": "SRC_TOKOPEDIA_REVIEWS_2019",
+    "total_reviews": 40607,
+    "unique_text_groups": 34825,
+    "duplicate_rows": 5782,
+    "split_diagnostics": {
+      "total_rows": 40607,
+      "train_rows": 28670,
+      "val_rows": 5943,
+      "test_rows": 5994,
+      "train_pct": 70.6,
+      "val_pct": 14.64,
+      "test_pct": 14.76,
+      "train_class_dist": {
+        "5": 21389,
+        "4": 5343,
+        "3": 1290,
+        "1": 382,
+        "2": 266
+      },
+      "val_class_dist": {
+        "5": 4445,
+        "4": 1089,
+        "3": 271,
+        "1": 81,
+        "2": 57
+      },
+      "test_class_dist": {
+        "5": 4477,
+        "4": 1114,
+        "3": 264,
+        "1": 80,
+        "2": 59
+      },
+      "train_test_text_overlap": 0
+    },
+    "models": {
+      "majority_baseline": {
+        "val_metrics": {
+          "accuracy": 0.7479,
+          "macro_f1": 0.1712,
+          "weighted_f1": 0.6401,
+          "per_class": {
+            "1": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 81
+            },
+            "2": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 57
+            },
+            "3": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 271
+            },
+            "4": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 1089
+            },
+            "5": {
+              "precision": 0.7479,
+              "recall": 1.0,
+              "f1": 0.8558,
+              "support": 4445
+            }
+          },
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              81
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              57
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              271
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1089
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              4445
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.0,
+          "mae": 0.3577
+        }
+      },
+      "stratified_baseline": {
+        "val_metrics": {
+          "accuracy": 0.5921,
+          "macro_f1": 0.1999,
+          "weighted_f1": 0.5941,
+          "per_class": {
+            "1": {
+              "precision": 0.0263,
+              "recall": 0.0247,
+              "f1": 0.0255,
+              "support": 81
+            },
+            "2": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 57
+            },
+            "3": {
+              "precision": 0.0423,
+              "recall": 0.0443,
+              "f1": 0.0432,
+              "support": 271
+            },
+            "4": {
+              "precision": 0.1821,
+              "recall": 0.1882,
+              "f1": 0.1851,
+              "support": 1089
+            },
+            "5": {
+              "precision": 0.7493,
+              "recall": 0.7424,
+              "f1": 0.7458,
+              "support": 4445
+            }
+          },
+          "confusion_matrix": [
+            [
+              2,
+              1,
+              11,
+              19,
+              48
+            ],
+            [
+              1,
+              0,
+              1,
+              8,
+              47
+            ],
+            [
+              2,
+              1,
+              12,
+              66,
+              190
+            ],
+            [
+              12,
+              7,
+              46,
+              205,
+              819
+            ],
+            [
+              59,
+              44,
+              214,
+              828,
+              3300
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.0145,
+          "mae": 0.5756
+        }
+      },
+      "tfidf_logistic_regression": {
+        "val_metrics": {
+          "accuracy": 0.6111,
+          "macro_f1": 0.3497,
+          "weighted_f1": 0.6469,
+          "per_class": {
+            "1": {
+              "precision": 0.2847,
+              "recall": 0.5062,
+              "f1": 0.3644,
+              "support": 81
+            },
+            "2": {
+              "precision": 0.0619,
+              "recall": 0.1053,
+              "f1": 0.0779,
+              "support": 57
+            },
+            "3": {
+              "precision": 0.1586,
+              "recall": 0.3395,
+              "f1": 0.2162,
+              "support": 271
+            },
+            "4": {
+              "precision": 0.2772,
+              "recall": 0.3949,
+              "f1": 0.3258,
+              "support": 1089
+            },
+            "5": {
+              "precision": 0.8577,
+              "recall": 0.6891,
+              "f1": 0.7642,
+              "support": 4445
+            }
+          },
+          "confusion_matrix": [
+            [
+              41,
+              19,
+              14,
+              3,
+              4
+            ],
+            [
+              14,
+              6,
+              22,
+              7,
+              8
+            ],
+            [
+              24,
+              19,
+              92,
+              85,
+              51
+            ],
+            [
+              20,
+              24,
+              170,
+              430,
+              445
+            ],
+            [
+              45,
+              29,
+              282,
+              1026,
+              3063
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.4413,
+          "mae": 0.5014
+        },
+        "train_time_s": 5.31
+      },
+      "tfidf_linear_svc": {
+        "val_metrics": {
+          "accuracy": 0.7505,
+          "macro_f1": 0.2283,
+          "weighted_f1": 0.6483,
+          "per_class": {
+            "1": {
+              "precision": 0.5,
+              "recall": 0.1852,
+              "f1": 0.2703,
+              "support": 81
+            },
+            "2": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 57
+            },
+            "3": {
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0,
+              "support": 271
+            },
+            "4": {
+              "precision": 0.3182,
+              "recall": 0.0064,
+              "f1": 0.0126,
+              "support": 1089
+            },
+            "5": {
+              "precision": 0.7535,
+              "recall": 0.9984,
+              "f1": 0.8588,
+              "support": 4445
+            }
+          },
+          "confusion_matrix": [
+            [
+              15,
+              1,
+              0,
+              3,
+              62
+            ],
+            [
+              7,
+              0,
+              0,
+              0,
+              50
+            ],
+            [
+              3,
+              0,
+              0,
+              6,
+              262
+            ],
+            [
+              4,
+              0,
+              0,
+              7,
+              1078
+            ],
+            [
+              1,
+              0,
+              0,
+              6,
+              4438
+            ]
+          ],
+          "labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "qwk": 0.1618,
+          "mae": 0.3451
+        },
+        "train_time_s": 5.11
+      }
+    },
+    "champion": "tfidf_logistic_regression",
+    "champion_val_metrics": {
+      "accuracy": 0.6111,
+      "macro_f1": 0.3497,
+      "weighted_f1": 0.6469,
+      "per_class": {
+        "1": {
+          "precision": 0.2847,
+          "recall": 0.5062,
+          "f1": 0.3644,
+          "support": 81
+        },
+        "2": {
+          "precision": 0.0619,
+          "recall": 0.1053,
+          "f1": 0.0779,
+          "support": 57
+        },
+        "3": {
+          "precision": 0.1586,
+          "recall": 0.3395,
+          "f1": 0.2162,
+          "support": 271
+        },
+        "4": {
+          "precision": 0.2772,
+          "recall": 0.3949,
+          "f1": 0.3258,
+          "support": 1089
+        },
+        "5": {
+          "precision": 0.8577,
+          "recall": 0.6891,
+          "f1": 0.7642,
+          "support": 4445
+        }
+      },
+      "confusion_matrix": [
+        [
+          41,
+          19,
+          14,
+          3,
+          4
+        ],
+        [
+          14,
+          6,
+          22,
+          7,
+          8
+        ],
+        [
+          24,
+          19,
+          92,
+          85,
+          51
+        ],
+        [
+          20,
+          24,
+          170,
+          430,
+          445
+        ],
+        [
+          45,
+          29,
+          282,
+          1026,
+          3063
+        ]
+      ],
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "qwk": 0.4413,
+      "mae": 0.5014
+    },
+    "holdout_metrics": {
+      "accuracy": 0.6141,
+      "macro_f1": 0.3529,
+      "weighted_f1": 0.6473,
+      "per_class": {
+        "1": {
+          "precision": 0.3191,
+          "recall": 0.5625,
+          "f1": 0.4072,
+          "support": 80
+        },
+        "2": {
+          "precision": 0.0421,
+          "recall": 0.0678,
+          "f1": 0.0519,
+          "support": 59
+        },
+        "3": {
+          "precision": 0.1687,
+          "recall": 0.3636,
+          "f1": 0.2305,
+          "support": 264
+        },
+        "4": {
+          "precision": 0.2655,
+          "recall": 0.3609,
+          "f1": 0.3059,
+          "support": 1114
+        },
+        "5": {
+          "precision": 0.8528,
+          "recall": 0.7,
+          "f1": 0.7689,
+          "support": 4477
+        }
+      },
+      "confusion_matrix": [
+        [
+          45,
+          15,
+          11,
+          3,
+          6
+        ],
+        [
+          23,
+          4,
+          24,
+          5,
+          3
+        ],
+        [
+          20,
+          23,
+          96,
+          76,
+          49
+        ],
+        [
+          18,
+          27,
+          184,
+          402,
+          483
+        ],
+        [
+          35,
+          26,
+          254,
+          1028,
+          3134
+        ]
+      ],
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "qwk": 0.472,
+      "mae": 0.4842
+    },
+    "error_analysis": {
+      "overall": {
+        "total": 5994,
+        "correct": 3681,
+        "errors": 2313,
+        "error_rate": 0.3859
+      },
+      "length_short_lt30": {
+        "total": 1063,
+        "errors": 413,
+        "error_rate": 0.3885
+      },
+      "length_medium_30_100": {
+        "total": 4366,
+        "errors": 1641,
+        "error_rate": 0.3759
+      },
+      "length_long_gt100": {
+        "total": 565,
+        "errors": 259,
+        "error_rate": 0.4584
+      },
+      "per_class_errors": {
+        "1": {
+          "total": 80,
+          "errors": 35,
+          "error_rate": 0.4375
+        },
+        "2": {
+          "total": 59,
+          "errors": 55,
+          "error_rate": 0.9322
+        },
+        "3": {
+          "total": 264,
+          "errors": 168,
+          "error_rate": 0.6364
+        },
+        "4": {
+          "total": 1114,
+          "errors": 712,
+          "error_rate": 0.6391
+        },
+        "5": {
+          "total": 4477,
+          "errors": 1343,
+          "error_rate": 0.3
+        }
+      },
+      "top_confused_pairs": [
+        {
+          "true": "5",
+          "pred": "4",
+          "count": 1028
+        },
+        {
+          "true": "4",
+          "pred": "5",
+          "count": 483
+        },
+        {
+          "true": "5",
+          "pred": "3",
+          "count": 254
+        },
+        {
+          "true": "4",
+          "pred": "3",
+          "count": 184
+        },
+        {
+          "true": "3",
+          "pred": "4",
+          "count": 76
+        },
+        {
+          "true": "3",
+          "pred": "5",
+          "count": 49
+        },
+        {
+          "true": "5",
+          "pred": "1",
+          "count": 35
+        },
+        {
+          "true": "4",
+          "pred": "2",
+          "count": 27
+        },
+        {
+          "true": "5",
+          "pred": "2",
+          "count": 26
+        },
+        {
+          "true": "2",
+          "pred": "3",
+          "count": 24
+        }
+      ]
+    },
+    "confidence_analysis": {
+      "mean_confidence_correct": 0.5754,
+      "mean_confidence_incorrect": 0.4903,
+      "median_confidence_correct": 0.5685,
+      "median_confidence_incorrect": 0.4773,
+      "total_correct": 3681,
+      "total_incorrect": 2313,
+      "confidence_buckets": [
+        {
+          "range": "0.0-0.5",
+          "count": 2520,
+          "accuracy": 0.4643
+        },
+        {
+          "range": "0.5-0.7",
+          "count": 2603,
+          "accuracy": 0.675
+        },
+        {
+          "range": "0.7-0.9",
+          "count": 852,
+          "accuracy": 0.8674
+        },
+        {
+          "range": "0.9-1.0",
+          "count": 19,
+          "accuracy": 0.7895
+        }
+      ]
+    },
+    "model_card_path": "C:\\Users\\Arilano\\Downloads\\Project ARICE\\Project SEA\\models\\metadata\\tfidf_tfidf_logistic_regression_rating_sourceb_v1.0.0.json"
+  },
+  "sentiment_benchmark": {
+    "lr_val": {
+      "accuracy": 0.953,
+      "macro_f1": 0.9527,
+      "weighted_f1": 0.9529,
+      "per_class": {
+        "Negative": {
+          "precision": 0.9351,
+          "recall": 0.9789,
+          "f1": 0.9565,
+          "support": 427
+        },
+        "Positive": {
+          "precision": 0.9751,
+          "recall": 0.9239,
+          "f1": 0.9488,
+          "support": 381
+        }
+      },
+      "confusion_matrix": [
+        [
+          418,
+          9
+        ],
+        [
+          29,
+          352
+        ]
+      ],
+      "labels": [
+        "Negative",
+        "Positive"
+      ]
+    },
+    "svc_val": {
+      "accuracy": 0.9616,
+      "macro_f1": 0.9615,
+      "weighted_f1": 0.9616,
+      "per_class": {
+        "Negative": {
+          "precision": 0.9562,
+          "recall": 0.9719,
+          "f1": 0.964,
+          "support": 427
+        },
+        "Positive": {
+          "precision": 0.9679,
+          "recall": 0.9501,
+          "f1": 0.9589,
+          "support": 381
+        }
+      },
+      "confusion_matrix": [
+        [
+          415,
+          12
+        ],
+        [
+          19,
+          362
+        ]
+      ],
+      "labels": [
+        "Negative",
+        "Positive"
+      ]
+    },
+    "champion": "linear_svc",
+    "holdout_metrics": {
+      "accuracy": 0.97,
+      "macro_f1": 0.9699,
+      "weighted_f1": 0.97,
+      "per_class": {
+        "Negative": {
+          "precision": 0.9691,
+          "recall": 0.9737,
+          "f1": 0.9714,
+          "support": 419
+        },
+        "Positive": {
+          "precision": 0.9709,
+          "recall": 0.9658,
+          "f1": 0.9683,
+          "support": 380
+        }
+      },
+      "confusion_matrix": [
+        [
+          408,
+          11
+        ],
+        [
+          13,
+          367
+        ]
+      ],
+      "labels": [
+        "Negative",
+        "Positive"
+      ]
+    }
+  },
+  "emotion_benchmark": {
+    "lr_val": {
+      "accuracy": 0.6364,
+      "macro_f1": 0.6057,
+      "weighted_f1": 0.641,
+      "per_class": {
+        "Anger": {
+          "precision": 0.4904,
+          "recall": 0.4679,
+          "f1": 0.4789,
+          "support": 109
+        },
+        "Fear": {
+          "precision": 0.4512,
+          "recall": 0.5441,
+          "f1": 0.4933,
+          "support": 136
+        },
+        "Happy": {
+          "precision": 0.8319,
+          "recall": 0.7444,
+          "f1": 0.7857,
+          "support": 266
+        },
+        "Love": {
+          "precision": 0.608,
+          "recall": 0.6333,
+          "f1": 0.6204,
+          "support": 120
+        },
+        "Sadness": {
+          "precision": 0.6503,
+          "recall": 0.6503,
+          "f1": 0.6503,
+          "support": 183
+        }
+      },
+      "confusion_matrix": [
+        [
+          51,
+          31,
+          3,
+          3,
+          21
+        ],
+        [
+          23,
+          74,
+          3,
+          2,
+          34
+        ],
+        [
+          5,
+          11,
+          198,
+          44,
+          8
+        ],
+        [
+          8,
+          4,
+          31,
+          76,
+          1
+        ],
+        [
+          17,
+          44,
+          3,
+          0,
+          119
+        ]
+      ],
+      "labels": [
+        "Anger",
+        "Fear",
+        "Happy",
+        "Love",
+        "Sadness"
+      ]
+    },
+    "svc_val": {
+      "accuracy": 0.6462,
+      "macro_f1": 0.5967,
+      "weighted_f1": 0.6374,
+      "per_class": {
+        "Anger": {
+          "precision": 0.589,
+          "recall": 0.3945,
+          "f1": 0.4725,
+          "support": 109
+        },
+        "Fear": {
+          "precision": 0.4786,
+          "recall": 0.4926,
+          "f1": 0.4855,
+          "support": 136
+        },
+        "Happy": {
+          "precision": 0.7557,
+          "recall": 0.8722,
+          "f1": 0.8098,
+          "support": 266
+        },
+        "Love": {
+          "precision": 0.7108,
+          "recall": 0.4917,
+          "f1": 0.5813,
+          "support": 120
+        },
+        "Sadness": {
+          "precision": 0.5924,
+          "recall": 0.6831,
+          "f1": 0.6345,
+          "support": 183
+        }
+      },
+      "confusion_matrix": [
+        [
+          43,
+          28,
+          5,
+          2,
+          31
+        ],
+        [
+          17,
+          67,
+          6,
+          0,
+          46
+        ],
+        [
+          0,
+          7,
+          232,
+          22,
+          5
+        ],
+        [
+          1,
+          2,
+          54,
+          59,
+          4
+        ],
+        [
+          12,
+          36,
+          10,
+          0,
+          125
+        ]
+      ],
+      "labels": [
+        "Anger",
+        "Fear",
+        "Happy",
+        "Love",
+        "Sadness"
+      ]
+    },
+    "champion": "logistic_regression",
+    "holdout_metrics": {
+      "accuracy": 0.6231,
+      "macro_f1": 0.5962,
+      "weighted_f1": 0.6284,
+      "per_class": {
+        "Anger": {
+          "precision": 0.4808,
+          "recall": 0.4717,
+          "f1": 0.4762,
+          "support": 106
+        },
+        "Fear": {
+          "precision": 0.4382,
+          "recall": 0.5693,
+          "f1": 0.4952,
+          "support": 137
+        },
+        "Happy": {
+          "precision": 0.8025,
+          "recall": 0.729,
+          "f1": 0.764,
+          "support": 262
+        },
+        "Love": {
+          "precision": 0.6134,
+          "recall": 0.6134,
+          "f1": 0.6134,
+          "support": 119
+        },
+        "Sadness": {
+          "precision": 0.6606,
+          "recall": 0.6056,
+          "f1": 0.6319,
+          "support": 180
+        }
+      },
+      "confusion_matrix": [
+        [
+          50,
+          37,
+          2,
+          0,
+          17
+        ],
+        [
+          27,
+          78,
+          5,
+          1,
+          26
+        ],
+        [
+          4,
+          11,
+          191,
+          45,
+          11
+        ],
+        [
+          4,
+          2,
+          38,
+          73,
+          2
+        ],
+        [
+          19,
+          50,
+          2,
+          0,
+          109
+        ]
+      ],
+      "labels": [
+        "Anger",
+        "Fear",
+        "Happy",
+        "Love",
+        "Sadness"
+      ]
+    }
+  },
+  "aspect_discovery_a": {
+    "status": "CANDIDATE_TAXONOMY_GENERATED",
+    "negative_review_count": 2393,
+    "top_ngrams": [
+      {
+        "ngram": "tidak",
+        "frequency": 913,
+        "rank": 1
+      },
+      {
+        "ngram": "barang",
+        "frequency": 710,
+        "rank": 2
+      },
+      {
+        "ngram": "dan",
+        "frequency": 622,
+        "rank": 3
+      },
+      {
+        "ngram": "saya",
+        "frequency": 595,
+        "rank": 4
+      },
+      {
+        "ngram": "ada",
+        "frequency": 502,
+        "rank": 5
+      },
+      {
+        "ngram": "nya",
+        "frequency": 467,
+        "rank": 6
+      },
+      {
+        "ngram": "beli",
+        "frequency": 410,
+        "rank": 7
+      },
+      {
+        "ngram": "yang",
+        "frequency": 369,
+        "rank": 8
+      },
+      {
+        "ngram": "gak",
+        "frequency": 353,
+        "rank": 9
+      },
+      {
+        "ngram": "ini",
+        "frequency": 337,
+        "rank": 10
+      },
+      {
+        "ngram": "bisa",
+        "frequency": 324,
+        "rank": 11
+      },
+      {
+        "ngram": "sudah",
+        "frequency": 296,
+        "rank": 12
+      },
+      {
+        "ngram": "sesuai",
+        "frequency": 291,
+        "rank": 13
+      },
+      {
+        "ngram": "tapi",
+        "frequency": 277,
+        "rank": 14
+      },
+      {
+        "ngram": "kecewa",
+        "frequency": 272,
+        "rank": 15
+      },
+      {
+        "ngram": "dikirim",
+        "frequency": 269,
+        "rank": 16
+      },
+      {
+        "ngram": "sangat",
+        "frequency": 245,
+        "rank": 17
+      },
+      {
+        "ngram": "sama",
+        "frequency": 235,
+        "rank": 18
+      },
+      {
+        "ngram": "baru",
+        "frequency": 209,
+        "rank": 19
+      },
+      {
+        "ngram": "mau",
+        "frequency": 202,
+        "rank": 20
+      }
+    ],
+    "candidate_taxonomy": [
+      {
+        "category": "Product Defect / Quality",
+        "definition": "Review indicates the received product has a physical defect, does not function as expected, or quality is below description.",
+        "evidence_keywords": [
+          "rusak",
+          "cacat",
+          "pecah",
+          "patah",
+          "jelek",
+          "murahan",
+          "tidak berfungsi",
+          "mati",
+          "error",
+          "gagal",
+          "palsu"
+        ],
+        "ambiguity_notes": "May overlap with 'Order Inaccuracy' when wrong product is described as defective.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "rusak",
+            "ngram_match": "rusak",
+            "frequency": 144
+          }
+        ],
+        "evidence_coverage": 1
+      },
+      {
+        "category": "Packaging / Shipping Damage",
+        "definition": "Review indicates the packaging was damaged, insufficient, or the product was damaged during shipping.",
+        "evidence_keywords": [
+          "packing",
+          "kemasan",
+          "buble",
+          "bubble",
+          "kardus",
+          "lecek",
+          "penyok",
+          "remuk",
+          "hancur",
+          "bocor"
+        ],
+        "ambiguity_notes": "Distinguish packaging quality from product defect.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [],
+        "evidence_coverage": 0
+      },
+      {
+        "category": "Order Inaccuracy / Missing Items",
+        "definition": "Review indicates the wrong product, wrong variant, wrong colour/size, or missing items were received.",
+        "evidence_keywords": [
+          "salah",
+          "beda",
+          "tidak sesuai",
+          "kurang",
+          "hilang",
+          "ga sesuai",
+          "gak sesuai",
+          "warna beda",
+          "ukuran salah"
+        ],
+        "ambiguity_notes": "Distinguish from 'Product Defect' — wrong item vs defective correct item.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "tidak sesuai",
+            "ngram_match": "tidak sesuai",
+            "frequency": 140
+          },
+          {
+            "keyword": "kurang",
+            "ngram_match": "kurang",
+            "frequency": 149
+          }
+        ],
+        "evidence_coverage": 2
+      },
+      {
+        "category": "Delivery / Shipping Delay",
+        "definition": "Review indicates the delivery took significantly longer than expected or the order was delayed.",
+        "evidence_keywords": [
+          "lama",
+          "lambat",
+          "telat",
+          "terlambat",
+          "pengiriman lama",
+          "belum sampai",
+          "ga sampai"
+        ],
+        "ambiguity_notes": "Delivery delay vs seller processing delay may require context.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "lama",
+            "ngram_match": "lama",
+            "frequency": 126
+          }
+        ],
+        "evidence_coverage": 1
+      },
+      {
+        "category": "Customer Service / Seller Responsiveness",
+        "definition": "Review indicates poor seller communication, unresponsive customer service, or complaint handling failure.",
+        "evidence_keywords": [
+          "respon",
+          "slow respon",
+          "slow response",
+          "tidak merespon",
+          "ga bales",
+          "chat",
+          "komplain",
+          "retur"
+        ],
+        "ambiguity_notes": "Distinguish seller responsiveness from marketplace platform issues.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [],
+        "evidence_coverage": 0
+      }
+    ]
+  },
+  "aspect_discovery_b": {
+    "status": "CANDIDATE_TAXONOMY_GENERATED",
+    "negative_review_count": 925,
+    "top_ngrams": [
+      {
+        "ngram": "barang",
+        "frequency": 337,
+        "rank": 1
+      },
+      {
+        "ngram": "tidak",
+        "frequency": 315,
+        "rank": 2
+      },
+      {
+        "ngram": "saya",
+        "frequency": 215,
+        "rank": 3
+      },
+      {
+        "ngram": "dan",
+        "frequency": 169,
+        "rank": 4
+      },
+      {
+        "ngram": "sesuai",
+        "frequency": 155,
+        "rank": 5
+      },
+      {
+        "ngram": "bisa",
+        "frequency": 154,
+        "rank": 6
+      },
+      {
+        "ngram": "nya",
+        "frequency": 139,
+        "rank": 7
+      },
+      {
+        "ngram": "ada",
+        "frequency": 125,
+        "rank": 8
+      },
+      {
+        "ngram": "yang",
+        "frequency": 121,
+        "rank": 9
+      },
+      {
+        "ngram": "gak",
+        "frequency": 108,
+        "rank": 10
+      },
+      {
+        "ngram": "tapi",
+        "frequency": 99,
+        "rank": 11
+      },
+      {
+        "ngram": "dikirim",
+        "frequency": 96,
+        "rank": 12
+      },
+      {
+        "ngram": "ini",
+        "frequency": 95,
+        "rank": 13
+      },
+      {
+        "ngram": "sudah",
+        "frequency": 95,
+        "rank": 14
+      },
+      {
+        "ngram": "dengan",
+        "frequency": 82,
+        "rank": 15
+      },
+      {
+        "ngram": "kurang",
+        "frequency": 69,
+        "rank": 16
+      },
+      {
+        "ngram": "sangat",
+        "frequency": 69,
+        "rank": 17
+      },
+      {
+        "ngram": "sama",
+        "frequency": 66,
+        "rank": 18
+      },
+      {
+        "ngram": "produk",
+        "frequency": 63,
+        "rank": 19
+      },
+      {
+        "ngram": "warna",
+        "frequency": 63,
+        "rank": 20
+      }
+    ],
+    "candidate_taxonomy": [
+      {
+        "category": "Product Defect / Quality",
+        "definition": "Review indicates the received product has a physical defect, does not function as expected, or quality is below description.",
+        "evidence_keywords": [
+          "rusak",
+          "cacat",
+          "pecah",
+          "patah",
+          "jelek",
+          "murahan",
+          "tidak berfungsi",
+          "mati",
+          "error",
+          "gagal",
+          "palsu"
+        ],
+        "ambiguity_notes": "May overlap with 'Order Inaccuracy' when wrong product is described as defective.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "rusak",
+            "ngram_match": "rusak",
+            "frequency": 38
+          }
+        ],
+        "evidence_coverage": 1
+      },
+      {
+        "category": "Packaging / Shipping Damage",
+        "definition": "Review indicates the packaging was damaged, insufficient, or the product was damaged during shipping.",
+        "evidence_keywords": [
+          "packing",
+          "kemasan",
+          "buble",
+          "bubble",
+          "kardus",
+          "lecek",
+          "penyok",
+          "remuk",
+          "hancur",
+          "bocor"
+        ],
+        "ambiguity_notes": "Distinguish packaging quality from product defect.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [],
+        "evidence_coverage": 0
+      },
+      {
+        "category": "Order Inaccuracy / Missing Items",
+        "definition": "Review indicates the wrong product, wrong variant, wrong colour/size, or missing items were received.",
+        "evidence_keywords": [
+          "salah",
+          "beda",
+          "tidak sesuai",
+          "kurang",
+          "hilang",
+          "ga sesuai",
+          "gak sesuai",
+          "warna beda",
+          "ukuran salah"
+        ],
+        "ambiguity_notes": "Distinguish from 'Product Defect' — wrong item vs defective correct item.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "tidak sesuai",
+            "ngram_match": "tidak sesuai",
+            "frequency": 62
+          },
+          {
+            "keyword": "kurang",
+            "ngram_match": "kurang",
+            "frequency": 69
+          }
+        ],
+        "evidence_coverage": 2
+      },
+      {
+        "category": "Delivery / Shipping Delay",
+        "definition": "Review indicates the delivery took significantly longer than expected or the order was delayed.",
+        "evidence_keywords": [
+          "lama",
+          "lambat",
+          "telat",
+          "terlambat",
+          "pengiriman lama",
+          "belum sampai",
+          "ga sampai"
+        ],
+        "ambiguity_notes": "Delivery delay vs seller processing delay may require context.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "lama",
+            "ngram_match": "lama",
+            "frequency": 44
+          }
+        ],
+        "evidence_coverage": 1
+      },
+      {
+        "category": "Customer Service / Seller Responsiveness",
+        "definition": "Review indicates poor seller communication, unresponsive customer service, or complaint handling failure.",
+        "evidence_keywords": [
+          "respon",
+          "slow respon",
+          "slow response",
+          "tidak merespon",
+          "ga bales",
+          "chat",
+          "komplain",
+          "retur"
+        ],
+        "ambiguity_notes": "Distinguish seller responsiveness from marketplace platform issues.",
+        "status": "CANDIDATE_FOR_PHASE_9",
+        "matched_evidence": [
+          {
+            "keyword": "respon",
+            "ngram_match": "respon",
+            "frequency": 33
+          }
+        ],
+        "evidence_coverage": 1
+      }
+    ]
+  }
+}
