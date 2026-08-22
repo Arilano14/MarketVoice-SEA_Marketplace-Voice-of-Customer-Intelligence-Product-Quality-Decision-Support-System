@@ -168,3 +168,36 @@ Verified:
   - Explicit boundaries enforced (no ML, no API, no Power BI visuals in Phase 7)
 ```
 
+---
+
+## 9. PHASE 8 GATE STATUS RECORD — AWAITING HUMAN APPROVAL
+
+```
+PHASE_8_BUILD_STATUS        = COMPLETE
+PHASE_8_VALIDATION_STATUS   = PASS
+PHASE_8_HUMAN_REVIEW_STATUS = PENDING
+PHASE_8_GATE_RECOMMENDATION = PASS
+PHASE_8_GATE_STATUS         = AWAITING_HUMAN_APPROVAL
+
+Evidence: reports/validation/phase_08_nlp_validation.md
+Verified:
+  - DEL-12: Complete NLP / Sentiment / Aspect Intelligence modeling pipeline implemented
+  - Reusable modeling modules in src/marketvoice/modeling/ (data_loader, preprocessor, splitter, evaluator, baselines, classical, error_analysis, aspect_discovery, model_card)
+  - Zero warehouse mutation: read-only against fact_review and dims
+  - Source isolation maintained: Source A (5,400) and Source B (40,607) trained/evaluated independently
+  - Atomic duplicate grouping via SHA-256: 0 train/test duplicate text leakage
+  - Fixed canonical seed (42) from config/project_settings.yaml used throughout
+  - Level 0 (Majority, Stratified) + Level 1 (TF-IDF + LR, LinearSVC) evaluated
+  - Champions selected by validation Macro F1 + QWK:
+      * Source A Rating: TF-IDF + Logistic Regression (Holdout Acc: 64.13%, Macro F1: 0.4942, QWK: 0.8301)
+      * Source B Rating: TF-IDF + Logistic Regression (Holdout Acc: 61.41%, Macro F1: 0.3529, QWK: 0.4720)
+      * Source A Sentiment: TF-IDF + LinearSVC (Holdout Acc: 97.00%, Macro F1: 0.9699)
+      * Source A Emotion: TF-IDF + Logistic Regression (Holdout Acc: 62.31%, Macro F1: 0.5962)
+  - Unsupervised candidate aspect taxonomy (5 categories) discovered from negative reviews (Phase 8 scope; candidate only)
+  - 7 machine-readable JSON Model Cards in models/metadata/
+  - Additive prediction schema DDL in sql/marts/006_prediction_schema.sql
+  - 72 / 72 automated unit, integration, and regression tests PASS (100% pass rate)
+  - Phase 9-12 boundaries strictly enforced (no DSS, no n8n, no Power BI final visuals)
+```
+
+
