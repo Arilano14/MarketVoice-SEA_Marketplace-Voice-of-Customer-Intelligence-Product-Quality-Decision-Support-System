@@ -133,7 +133,7 @@ def classify_reviews(
         text = str(row.get(text_col, "")).lower()
         rating = int(row.get(rating_col, 3))
         rsk = row[review_sk_col]
-        ssk = row[source_sk_col]
+        ssk = row.get(source_sk_col, 1 if row.get("source_id") == "SRC_PRDECT_ID_V1" else 2)
 
         for cat in active_cats:
             matched = _match_keywords(text, cat["evidence_keywords"])

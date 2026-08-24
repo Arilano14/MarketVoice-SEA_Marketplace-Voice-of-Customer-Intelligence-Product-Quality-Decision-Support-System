@@ -136,7 +136,7 @@ CREATE OR REPLACE VIEW mv_issue_by_category AS
 SELECT
     ds.source_id,
     dc.category_sk,
-    dc.category_name,
+    dc.source_native_category AS category_name,
     di.issue_id,
     di.issue_name,
     COUNT(DISTINCT fri.review_sk) AS issue_volume,
@@ -152,8 +152,8 @@ JOIN fact_review fr ON fr.review_sk = fri.review_sk
 JOIN dim_source ds ON ds.source_sk = fri.source_sk
 JOIN dim_category dc ON dc.category_sk = fr.category_sk
 JOIN dim_issue di ON di.issue_id = fri.issue_id
-GROUP BY ds.source_id, dc.category_sk, dc.category_name, di.issue_id, di.issue_name, fri.source_sk
-ORDER BY ds.source_id, dc.category_name, issue_volume DESC;
+GROUP BY ds.source_id, dc.category_sk, dc.source_native_category, di.issue_id, di.issue_name, fri.source_sk
+ORDER BY ds.source_id, dc.source_native_category, issue_volume DESC;
 
 COMMENT ON VIEW mv_issue_by_category IS
     'Phase 9: Issue distribution per category. Category-level issue rate = '
@@ -164,7 +164,7 @@ COMMENT ON VIEW mv_issue_by_category IS
 CREATE OR REPLACE VIEW mv_issue_by_product AS
 SELECT
     dp.product_sk,
-    dp.product_name,
+    dp.source_native_product_name AS product_name,
     di.issue_id,
     di.issue_name,
     COUNT(DISTINCT fri.review_sk) AS issue_volume,
@@ -179,7 +179,7 @@ JOIN fact_review fr ON fr.review_sk = fri.review_sk
 JOIN dim_product dp ON dp.product_sk = fr.product_sk
 JOIN dim_issue di ON di.issue_id = fri.issue_id
 WHERE fr.product_sk IS NOT NULL AND fr.product_sk != 0
-GROUP BY dp.product_sk, dp.product_name, di.issue_id, di.issue_name
+GROUP BY dp.product_sk, dp.source_native_product_name, di.issue_id, di.issue_name
 ORDER BY issue_volume DESC;
 
 COMMENT ON VIEW mv_issue_by_product IS

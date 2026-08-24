@@ -1,0 +1,1175 @@
+{
+  "ngrams_a_top20": [
+    {
+      "ngram": "tidak",
+      "frequency": 913,
+      "rank": 1
+    },
+    {
+      "ngram": "nya",
+      "frequency": 467,
+      "rank": 2
+    },
+    {
+      "ngram": "sesuai",
+      "frequency": 291,
+      "rank": 3
+    },
+    {
+      "ngram": "kecewa",
+      "frequency": 272,
+      "rank": 4
+    },
+    {
+      "ngram": "dikirim",
+      "frequency": 269,
+      "rank": 5
+    },
+    {
+      "ngram": "warna",
+      "frequency": 163,
+      "rank": 6
+    },
+    {
+      "ngram": "pengiriman",
+      "frequency": 161,
+      "rank": 7
+    },
+    {
+      "ngram": "rusak",
+      "frequency": 144,
+      "rank": 8
+    },
+    {
+      "ngram": "penjual",
+      "frequency": 143,
+      "rank": 9
+    },
+    {
+      "ngram": "tidak sesuai",
+      "frequency": 140,
+      "rank": 10
+    },
+    {
+      "ngram": "kualitas",
+      "frequency": 106,
+      "rank": 11
+    },
+    {
+      "ngram": "pake",
+      "frequency": 105,
+      "rank": 12
+    },
+    {
+      "ngram": "banget",
+      "frequency": 100,
+      "rank": 13
+    },
+    {
+      "ngram": "pas",
+      "frequency": 98,
+      "rank": 14
+    },
+    {
+      "ngram": "tidak ada",
+      "frequency": 98,
+      "rank": 15
+    },
+    {
+      "ngram": "minta",
+      "frequency": 98,
+      "rank": 16
+    },
+    {
+      "ngram": "respon",
+      "frequency": 96,
+      "rank": 17
+    },
+    {
+      "ngram": "kali",
+      "frequency": 94,
+      "rank": 18
+    },
+    {
+      "ngram": "harga",
+      "frequency": 90,
+      "rank": 19
+    },
+    {
+      "ngram": "belanja",
+      "frequency": 89,
+      "rank": 20
+    }
+  ],
+  "ngrams_b_top20": [
+    {
+      "ngram": "tidak",
+      "frequency": 315,
+      "rank": 1
+    },
+    {
+      "ngram": "sesuai",
+      "frequency": 155,
+      "rank": 2
+    },
+    {
+      "ngram": "nya",
+      "frequency": 139,
+      "rank": 3
+    },
+    {
+      "ngram": "dikirim",
+      "frequency": 96,
+      "rank": 4
+    },
+    {
+      "ngram": "warna",
+      "frequency": 63,
+      "rank": 5
+    },
+    {
+      "ngram": "tidak sesuai",
+      "frequency": 62,
+      "rank": 6
+    },
+    {
+      "ngram": "kecewa",
+      "frequency": 62,
+      "rank": 7
+    },
+    {
+      "ngram": "pengiriman",
+      "frequency": 59,
+      "rank": 8
+    },
+    {
+      "ngram": "tidak bisa",
+      "frequency": 54,
+      "rank": 9
+    },
+    {
+      "ngram": "kualitas",
+      "frequency": 50,
+      "rank": 10
+    },
+    {
+      "ngram": "barang tidak",
+      "frequency": 47,
+      "rank": 11
+    },
+    {
+      "ngram": "penjual",
+      "frequency": 42,
+      "rank": 12
+    },
+    {
+      "ngram": "minta",
+      "frequency": 39,
+      "rank": 13
+    },
+    {
+      "ngram": "barangnya",
+      "frequency": 38,
+      "rank": 14
+    },
+    {
+      "ngram": "rusak",
+      "frequency": 38,
+      "rank": 15
+    },
+    {
+      "ngram": "pakai",
+      "frequency": 37,
+      "rank": 16
+    },
+    {
+      "ngram": "harga",
+      "frequency": 35,
+      "rank": 17
+    },
+    {
+      "ngram": "respon",
+      "frequency": 33,
+      "rank": 18
+    },
+    {
+      "ngram": "pake",
+      "frequency": 31,
+      "rank": 19
+    },
+    {
+      "ngram": "ukuran",
+      "frequency": 30,
+      "rank": 20
+    }
+  ],
+  "taxonomy_validation_a": [
+    {
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "support_count": 734,
+      "support_pct": 30.67,
+      "distinct_keywords_observed": 23,
+      "keyword_hits": {
+        "rusak": 206,
+        "cacat": 41,
+        "pecah": 59,
+        "patah": 49,
+        "jelek": 117,
+        "murahan": 11,
+        "tidak berfungsi": 32,
+        "mati": 57,
+        "error": 9,
+        "gagal": 10,
+        "palsu": 11,
+        "kualitas jelek": 7,
+        "tidak bagus": 18,
+        "ancur": 39,
+        "hancur": 27,
+        "retak": 11,
+        "bocor": 26,
+        "lepas": 23,
+        "copot": 11,
+        "longgar": 7,
+        "tipis": 97,
+        "murah": 51,
+        "kw": 25
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "support_count": 323,
+      "support_pct": 13.5,
+      "distinct_keywords_observed": 13,
+      "keyword_hits": {
+        "packing": 119,
+        "kemasan": 34,
+        "bubble": 52,
+        "buble": 11,
+        "kardus": 49,
+        "penyok": 48,
+        "lecek": 6,
+        "hancur": 27,
+        "sobek": 41,
+        "tidak aman": 11,
+        "wrap": 38,
+        "bubble wrap": 28,
+        "bungkus": 45
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "support_count": 567,
+      "support_pct": 23.69,
+      "distinct_keywords_observed": 10,
+      "keyword_hits": {
+        "salah": 121,
+        "beda": 65,
+        "tidak sesuai": 154,
+        "ga sesuai": 41,
+        "gak sesuai": 36,
+        "kurang": 161,
+        "hilang": 15,
+        "salah kirim": 11,
+        "tidak lengkap": 16,
+        "tidak sesuai gambar": 12
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "support_count": 439,
+      "support_pct": 18.35,
+      "distinct_keywords_observed": 12,
+      "keyword_hits": {
+        "lama": 224,
+        "lambat": 40,
+        "telat": 5,
+        "pengiriman lama": 39,
+        "belum sampai": 5,
+        "ga sampai": 6,
+        "lama banget": 23,
+        "hari": 119,
+        "minggu": 48,
+        "ekspedisi": 17,
+        "kurir": 42,
+        "pos": 18
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "support_count": 399,
+      "support_pct": 16.67,
+      "distinct_keywords_observed": 12,
+      "keyword_hits": {
+        "respon": 154,
+        "slow respon": 13,
+        "chat": 107,
+        "komplain": 98,
+        "retur": 41,
+        "refund": 25,
+        "penipu": 17,
+        "tipu": 17,
+        "nipu": 27,
+        "bohong": 18,
+        "pelayanan buruk": 8,
+        "tidak ramah": 8
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    }
+  ],
+  "taxonomy_validation_b": [
+    {
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "support_count": 231,
+      "support_pct": 24.97,
+      "distinct_keywords_observed": 15,
+      "keyword_hits": {
+        "rusak": 63,
+        "cacat": 14,
+        "pecah": 12,
+        "patah": 9,
+        "jelek": 27,
+        "tidak berfungsi": 27,
+        "mati": 35,
+        "palsu": 5,
+        "ancur": 9,
+        "retak": 8,
+        "lepas": 10,
+        "copot": 5,
+        "tipis": 5,
+        "murah": 12,
+        "kw": 16
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "support_count": 57,
+      "support_pct": 6.16,
+      "distinct_keywords_observed": 6,
+      "keyword_hits": {
+        "packing": 27,
+        "kemasan": 7,
+        "bubble": 6,
+        "penyok": 7,
+        "sobek": 6,
+        "bungkus": 6
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "support_count": 227,
+      "support_pct": 24.54,
+      "distinct_keywords_observed": 8,
+      "keyword_hits": {
+        "salah": 46,
+        "beda": 32,
+        "tidak sesuai": 67,
+        "ga sesuai": 15,
+        "gak sesuai": 10,
+        "kurang": 71,
+        "salah kirim": 5,
+        "tidak sesuai gambar": 7
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "support_count": 141,
+      "support_pct": 15.24,
+      "distinct_keywords_observed": 10,
+      "keyword_hits": {
+        "lama": 73,
+        "lambat": 17,
+        "pengiriman lama": 8,
+        "lama banget": 5,
+        "hari": 38,
+        "minggu": 18,
+        "kurir": 11,
+        "jne": 11,
+        "jnt": 5,
+        "pos": 6
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "support_count": 113,
+      "support_pct": 12.22,
+      "distinct_keywords_observed": 6,
+      "keyword_hits": {
+        "respon": 54,
+        "chat": 17,
+        "komplain": 12,
+        "retur": 25,
+        "refund": 11,
+        "nipu": 5
+      },
+      "passes_min_support": true,
+      "passes_min_keywords": true,
+      "status": "ACTIVE"
+    }
+  ],
+  "frozen_taxonomy": [
+    {
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "definition": "The received product has a physical defect, does not function as expected, or quality is materially below the product description.",
+      "evidence_keywords": [
+        "rusak",
+        "cacat",
+        "pecah",
+        "patah",
+        "jelek",
+        "murahan",
+        "tidak berfungsi",
+        "mati",
+        "error",
+        "gagal",
+        "palsu",
+        "kualitas buruk",
+        "kualitas jelek",
+        "tidak bagus",
+        "ancur",
+        "hancur",
+        "retak",
+        "bocor",
+        "lepas",
+        "copot",
+        "longgar",
+        "tipis",
+        "murah",
+        "kw",
+        "fake",
+        "abal"
+      ],
+      "in_scope": "Physical defects, malfunction, quality mismatch, counterfeit",
+      "non_examples": "Wrong item (Order Inaccuracy), damaged packaging only (Packaging)",
+      "ambiguity_rule": "If review mentions BOTH wrong item AND defect, classify under Product Defect if the defect is the primary complaint.",
+      "taxonomy_version": "1.0",
+      "created_phase": "Phase 9",
+      "support_count": 965,
+      "support_pct": 29.08,
+      "distinct_keywords_observed": 24,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "definition": "The packaging was damaged, insufficient, or the product was damaged during shipping due to inadequate protection.",
+      "evidence_keywords": [
+        "packing",
+        "kemasan",
+        "bubble",
+        "buble",
+        "kardus",
+        "penyok",
+        "remuk",
+        "lecek",
+        "hancur",
+        "sobek",
+        "rusak pengiriman",
+        "pecah kirim",
+        "tidak aman",
+        "packing jelek",
+        "packing kurang",
+        "packing buruk",
+        "wrap",
+        "bubble wrap",
+        "bungkus"
+      ],
+      "in_scope": "Damaged box, insufficient bubble wrap, crushed item in transit",
+      "non_examples": "Product itself defective (Product Defect)",
+      "ambiguity_rule": "If damage is clearly from transit (mentions courier, shipping, packaging), classify here. If product was defective from factory, classify under Product Defect.",
+      "taxonomy_version": "1.0",
+      "created_phase": "Phase 9",
+      "support_count": 380,
+      "support_pct": 11.45,
+      "distinct_keywords_observed": 13,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "definition": "The wrong product, wrong variant, wrong colour/size, or missing items were received.",
+      "evidence_keywords": [
+        "salah",
+        "beda",
+        "tidak sesuai",
+        "ga sesuai",
+        "gak sesuai",
+        "kurang",
+        "hilang",
+        "warna beda",
+        "ukuran salah",
+        "ukuran beda",
+        "salah kirim",
+        "beda warna",
+        "beda ukuran",
+        "tidak lengkap",
+        "kurang lengkap",
+        "ga lengkap",
+        "ga sesuai pesanan",
+        "tidak sesuai gambar",
+        "beda sama gambar",
+        "tidak sesuai foto",
+        "beda foto"
+      ],
+      "in_scope": "Wrong item, wrong variant, missing accessories, incomplete order",
+      "non_examples": "Product defective but correct item (Product Defect)",
+      "ambiguity_rule": "If review says 'different from picture' but product functions, classify here. If 'different from picture' AND defective, classify under BOTH categories.",
+      "taxonomy_version": "1.0",
+      "created_phase": "Phase 9",
+      "support_count": 794,
+      "support_pct": 23.93,
+      "distinct_keywords_observed": 10,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "definition": "The delivery took significantly longer than expected, order was delayed, or courier/logistics caused problems.",
+      "evidence_keywords": [
+        "lama",
+        "lambat",
+        "telat",
+        "terlambat",
+        "pengiriman lama",
+        "belum sampai",
+        "ga sampai",
+        "lama sampai",
+        "lama banget",
+        "hari",
+        "minggu",
+        "ekspedisi",
+        "kurir",
+        "jne",
+        "jnt",
+        "sicepat",
+        "tiki",
+        "pos",
+        "gosend",
+        "grab"
+      ],
+      "in_scope": "Shipping delay, courier issues, delayed dispatch",
+      "non_examples": "Item damaged in transit (Packaging Damage)",
+      "ambiguity_rule": "If review mentions delay AND damage, classify under BOTH. 'lama' alone in non-delivery context (e.g., 'lama pakai') is NOT a delivery issue.",
+      "taxonomy_version": "1.0",
+      "created_phase": "Phase 9",
+      "support_count": 580,
+      "support_pct": 17.48,
+      "distinct_keywords_observed": 14,
+      "status": "ACTIVE"
+    },
+    {
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "definition": "Poor seller communication, unresponsive customer service, refused return/refund, or complaint handling failure.",
+      "evidence_keywords": [
+        "respon",
+        "slow respon",
+        "slow response",
+        "tidak merespon",
+        "ga bales",
+        "chat",
+        "komplain",
+        "retur",
+        "refund",
+        "ga direspon",
+        "ga dijawab",
+        "tidak dijawab",
+        "penipu",
+        "tipu",
+        "nipu",
+        "bohong",
+        "pelayanan buruk",
+        "pelayanan jelek",
+        "tidak ramah"
+      ],
+      "in_scope": "Seller communication, refund/return handling, fraud claims",
+      "non_examples": "Marketplace platform issues (out of scope)",
+      "ambiguity_rule": "If review mentions 'penipu/tipu', classify here ONLY if it refers to seller behavior. Generic dissatisfaction is not fraud.",
+      "taxonomy_version": "1.0",
+      "created_phase": "Phase 9",
+      "support_count": 512,
+      "support_pct": 15.43,
+      "distinct_keywords_observed": 12,
+      "status": "ACTIVE"
+    }
+  ],
+  "classification_summary_a": {
+    "total_issue_assignments": 4291,
+    "distinct_reviews_with_issues": 3046,
+    "issue_coverage_pct": 56.41,
+    "negative_coverage_pct": 69.7,
+    "per_issue": {
+      "1": {
+        "issue_name": "Product Defect / Quality",
+        "total_assigned": 1129,
+        "issue_rate": 20.91,
+        "negative_assigned": 734,
+        "negative_issue_rate": 30.67,
+        "severity_distribution": {
+          "1": 564,
+          "2": 170,
+          "3": 138,
+          "4": 257
+        },
+        "mean_confidence": 0.4086
+      },
+      "2": {
+        "issue_name": "Packaging / Shipping Damage",
+        "total_assigned": 783,
+        "issue_rate": 14.5,
+        "negative_assigned": 323,
+        "negative_issue_rate": 13.5,
+        "severity_distribution": {
+          "1": 247,
+          "2": 76,
+          "3": 77,
+          "4": 383
+        },
+        "mean_confidence": 0.4729
+      },
+      "3": {
+        "issue_name": "Order Inaccuracy / Missing Items",
+        "total_assigned": 812,
+        "issue_rate": 15.04,
+        "negative_assigned": 567,
+        "negative_issue_rate": 23.69,
+        "severity_distribution": {
+          "1": 396,
+          "2": 171,
+          "3": 149,
+          "4": 96
+        },
+        "mean_confidence": 0.3768
+      },
+      "4": {
+        "issue_name": "Delivery / Logistics Issue",
+        "total_assigned": 749,
+        "issue_rate": 13.87,
+        "negative_assigned": 439,
+        "negative_issue_rate": 18.35,
+        "severity_distribution": {
+          "1": 343,
+          "2": 96,
+          "3": 73,
+          "4": 237
+        },
+        "mean_confidence": 0.4272
+      },
+      "5": {
+        "issue_name": "Seller Service / Responsiveness",
+        "total_assigned": 818,
+        "issue_rate": 15.15,
+        "negative_assigned": 399,
+        "negative_issue_rate": 16.67,
+        "severity_distribution": {
+          "1": 353,
+          "2": 46,
+          "3": 41,
+          "4": 378
+        },
+        "mean_confidence": 0.3989
+      }
+    }
+  },
+  "classification_summary_b": {
+    "total_issue_assignments": 14572,
+    "distinct_reviews_with_issues": 12224,
+    "issue_coverage_pct": 30.1,
+    "negative_coverage_pct": 59.03,
+    "per_issue": {
+      "1": {
+        "issue_name": "Product Defect / Quality",
+        "total_assigned": 1870,
+        "issue_rate": 4.61,
+        "negative_assigned": 231,
+        "negative_issue_rate": 24.97,
+        "severity_distribution": {
+          "1": 157,
+          "2": 74,
+          "3": 182,
+          "4": 1457
+        },
+        "mean_confidence": 0.3663
+      },
+      "2": {
+        "issue_name": "Packaging / Shipping Damage",
+        "total_assigned": 3125,
+        "issue_rate": 7.7,
+        "negative_assigned": 57,
+        "negative_issue_rate": 6.16,
+        "severity_distribution": {
+          "1": 27,
+          "2": 30,
+          "3": 117,
+          "4": 2951
+        },
+        "mean_confidence": 0.3725
+      },
+      "3": {
+        "issue_name": "Order Inaccuracy / Missing Items",
+        "total_assigned": 1460,
+        "issue_rate": 3.6,
+        "negative_assigned": 227,
+        "negative_issue_rate": 24.54,
+        "severity_distribution": {
+          "1": 130,
+          "2": 97,
+          "3": 261,
+          "4": 972
+        },
+        "mean_confidence": 0.3646
+      },
+      "4": {
+        "issue_name": "Delivery / Logistics Issue",
+        "total_assigned": 2577,
+        "issue_rate": 6.35,
+        "negative_assigned": 141,
+        "negative_issue_rate": 15.24,
+        "severity_distribution": {
+          "1": 90,
+          "2": 51,
+          "3": 208,
+          "4": 2228
+        },
+        "mean_confidence": 0.4013
+      },
+      "5": {
+        "issue_name": "Seller Service / Responsiveness",
+        "total_assigned": 5540,
+        "issue_rate": 13.64,
+        "negative_assigned": 113,
+        "negative_issue_rate": 12.22,
+        "severity_distribution": {
+          "1": 81,
+          "2": 32,
+          "3": 176,
+          "4": 5251
+        },
+        "mean_confidence": 0.341
+      }
+    }
+  },
+  "total_loaded": 18863,
+  "issue_metrics_a": [
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "issue_volume": 1129,
+      "issue_rate_pct": 20.9074,
+      "negative_volume": 734,
+      "negative_issue_rate_pct": 13.5926,
+      "critical_volume": 564,
+      "critical_rate_pct": 10.4444,
+      "high_volume": 170,
+      "moderate_volume": 138,
+      "low_volume": 257,
+      "mean_confidence": 0.4086,
+      "total_reviews_denominator": 5400,
+      "total_negative_denominator": 2393
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "issue_volume": 818,
+      "issue_rate_pct": 15.1481,
+      "negative_volume": 399,
+      "negative_issue_rate_pct": 7.3889,
+      "critical_volume": 353,
+      "critical_rate_pct": 6.537,
+      "high_volume": 46,
+      "moderate_volume": 41,
+      "low_volume": 378,
+      "mean_confidence": 0.3989,
+      "total_reviews_denominator": 5400,
+      "total_negative_denominator": 2393
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "issue_volume": 812,
+      "issue_rate_pct": 15.037,
+      "negative_volume": 567,
+      "negative_issue_rate_pct": 10.5,
+      "critical_volume": 396,
+      "critical_rate_pct": 7.3333,
+      "high_volume": 171,
+      "moderate_volume": 149,
+      "low_volume": 96,
+      "mean_confidence": 0.3768,
+      "total_reviews_denominator": 5400,
+      "total_negative_denominator": 2393
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "issue_volume": 783,
+      "issue_rate_pct": 14.5,
+      "negative_volume": 323,
+      "negative_issue_rate_pct": 5.9815,
+      "critical_volume": 247,
+      "critical_rate_pct": 4.5741,
+      "high_volume": 76,
+      "moderate_volume": 77,
+      "low_volume": 383,
+      "mean_confidence": 0.4729,
+      "total_reviews_denominator": 5400,
+      "total_negative_denominator": 2393
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "issue_volume": 749,
+      "issue_rate_pct": 13.8704,
+      "negative_volume": 439,
+      "negative_issue_rate_pct": 8.1296,
+      "critical_volume": 343,
+      "critical_rate_pct": 6.3519,
+      "high_volume": 96,
+      "moderate_volume": 73,
+      "low_volume": 237,
+      "mean_confidence": 0.4272,
+      "total_reviews_denominator": 5400,
+      "total_negative_denominator": 2393
+    }
+  ],
+  "issue_metrics_b": [
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "issue_volume": 5540,
+      "issue_rate_pct": 13.643,
+      "negative_volume": 113,
+      "negative_issue_rate_pct": 0.2783,
+      "critical_volume": 81,
+      "critical_rate_pct": 0.1995,
+      "high_volume": 32,
+      "moderate_volume": 176,
+      "low_volume": 5251,
+      "mean_confidence": 0.341,
+      "total_reviews_denominator": 40607,
+      "total_negative_denominator": 925
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "issue_volume": 3125,
+      "issue_rate_pct": 7.6957,
+      "negative_volume": 57,
+      "negative_issue_rate_pct": 0.1404,
+      "critical_volume": 27,
+      "critical_rate_pct": 0.0665,
+      "high_volume": 30,
+      "moderate_volume": 117,
+      "low_volume": 2951,
+      "mean_confidence": 0.3725,
+      "total_reviews_denominator": 40607,
+      "total_negative_denominator": 925
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "issue_volume": 2577,
+      "issue_rate_pct": 6.3462,
+      "negative_volume": 141,
+      "negative_issue_rate_pct": 0.3472,
+      "critical_volume": 90,
+      "critical_rate_pct": 0.2216,
+      "high_volume": 51,
+      "moderate_volume": 208,
+      "low_volume": 2228,
+      "mean_confidence": 0.4013,
+      "total_reviews_denominator": 40607,
+      "total_negative_denominator": 925
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "issue_volume": 1870,
+      "issue_rate_pct": 4.6051,
+      "negative_volume": 231,
+      "negative_issue_rate_pct": 0.5689,
+      "critical_volume": 157,
+      "critical_rate_pct": 0.3866,
+      "high_volume": 74,
+      "moderate_volume": 182,
+      "low_volume": 1457,
+      "mean_confidence": 0.3663,
+      "total_reviews_denominator": 40607,
+      "total_negative_denominator": 925
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "issue_volume": 1460,
+      "issue_rate_pct": 3.5954,
+      "negative_volume": 227,
+      "negative_issue_rate_pct": 0.559,
+      "critical_volume": 130,
+      "critical_rate_pct": 0.3201,
+      "high_volume": 97,
+      "moderate_volume": 261,
+      "low_volume": 972,
+      "mean_confidence": 0.3646,
+      "total_reviews_denominator": 40607,
+      "total_negative_denominator": 925
+    }
+  ],
+  "category_issues_a_count": 142,
+  "category_issues_b_count": 25,
+  "product_issues_b_count": 4913,
+  "emerging_a": [
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "segment": "rating_le_2",
+      "segment_issue_count": 734,
+      "segment_total": 2393,
+      "segment_rate": 0.306728,
+      "baseline_issue_count": 1129,
+      "baseline_total": 5400,
+      "baseline_rate": 0.209074,
+      "rate_ratio": 1.4671,
+      "z_score": 9.3234,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "segment": "rating_le_2",
+      "segment_issue_count": 567,
+      "segment_total": 2393,
+      "segment_rate": 0.236941,
+      "baseline_issue_count": 812,
+      "baseline_total": 5400,
+      "baseline_rate": 0.15037,
+      "rate_ratio": 1.5757,
+      "z_score": 9.2373,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "segment": "rating_le_2",
+      "segment_issue_count": 439,
+      "segment_total": 2393,
+      "segment_rate": 0.183452,
+      "baseline_issue_count": 749,
+      "baseline_total": 5400,
+      "baseline_rate": 0.138704,
+      "rate_ratio": 1.3226,
+      "z_score": 5.0693,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "segment": "rating_le_2",
+      "segment_issue_count": 399,
+      "segment_total": 2393,
+      "segment_rate": 0.166736,
+      "baseline_issue_count": 818,
+      "baseline_total": 5400,
+      "baseline_rate": 0.151481,
+      "rate_ratio": 1.1007,
+      "z_score": 1.7112,
+      "min_support_met": true,
+      "z_threshold_met": false,
+      "emerging_signal": false,
+      "status": "BASELINE",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_PRDECT_ID_V1",
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "segment": "rating_le_2",
+      "segment_issue_count": 323,
+      "segment_total": 2393,
+      "segment_rate": 0.134977,
+      "baseline_issue_count": 783,
+      "baseline_total": 5400,
+      "baseline_rate": 0.145,
+      "rate_ratio": 0.9309,
+      "z_score": -1.1696,
+      "min_support_met": true,
+      "z_threshold_met": false,
+      "emerging_signal": false,
+      "status": "BASELINE",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    }
+  ],
+  "emerging_b": [
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "segment": "rating_le_2",
+      "segment_issue_count": 227,
+      "segment_total": 925,
+      "segment_rate": 0.245405,
+      "baseline_issue_count": 1460,
+      "baseline_total": 40607,
+      "baseline_rate": 0.035954,
+      "rate_ratio": 6.8255,
+      "z_score": 31.9081,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "segment": "rating_le_2",
+      "segment_issue_count": 231,
+      "segment_total": 925,
+      "segment_rate": 0.24973,
+      "baseline_issue_count": 1870,
+      "baseline_total": 40607,
+      "baseline_rate": 0.046051,
+      "rate_ratio": 5.4229,
+      "z_score": 27.9496,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "segment": "rating_le_2",
+      "segment_issue_count": 141,
+      "segment_total": 925,
+      "segment_rate": 0.152432,
+      "baseline_issue_count": 2577,
+      "baseline_total": 40607,
+      "baseline_rate": 0.063462,
+      "rate_ratio": 2.4019,
+      "z_score": 10.8191,
+      "min_support_met": true,
+      "z_threshold_met": true,
+      "emerging_signal": true,
+      "status": "EMERGING_SIGNAL",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "segment": "rating_le_2",
+      "segment_issue_count": 113,
+      "segment_total": 925,
+      "segment_rate": 0.122162,
+      "baseline_issue_count": 5540,
+      "baseline_total": 40607,
+      "baseline_rate": 0.13643,
+      "rate_ratio": 0.8954,
+      "z_score": -1.2513,
+      "min_support_met": true,
+      "z_threshold_met": false,
+      "emerging_signal": false,
+      "status": "BASELINE",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    },
+    {
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "segment": "rating_le_2",
+      "segment_issue_count": 57,
+      "segment_total": 925,
+      "segment_rate": 0.061622,
+      "baseline_issue_count": 3125,
+      "baseline_total": 40607,
+      "baseline_rate": 0.076957,
+      "rate_ratio": 0.8007,
+      "z_score": -1.7339,
+      "min_support_met": true,
+      "z_threshold_met": false,
+      "emerging_signal": false,
+      "status": "BASELINE",
+      "data_limitation": "NO_TEMPORAL_DATA \u2014 segment-based proxy only"
+    }
+  ],
+  "recurrence_a_count": 139,
+  "recurrence_b_count": 25,
+  "recurrence_prod_b_count": 1084,
+  "reconciliation": {
+    "fact_review_count": 46007,
+    "fact_review_unchanged": true,
+    "orphan_review_sk": 0,
+    "fk_integrity": true,
+    "active_issues": 5,
+    "severity_levels": 4,
+    "severity_correct": true,
+    "mv_issue_summary_rows": 10,
+    "cross_source_violations": 0,
+    "source_isolation": true
+  }
+}

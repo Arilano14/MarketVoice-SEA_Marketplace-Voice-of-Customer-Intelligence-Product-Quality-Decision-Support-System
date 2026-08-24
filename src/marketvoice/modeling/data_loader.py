@@ -29,7 +29,7 @@ SOURCE_A = "SRC_PRDECT_ID_V1"
 SOURCE_B = "SRC_TOKOPEDIA_REVIEWS_2019"
 
 _COLUMNS = [
-    "review_sk", "source_id", "review_text", "rating_value",
+    "review_sk", "source_sk", "source_id", "review_text", "rating_value",
     "source_gold_sentiment_label", "source_gold_emotion_label",
     "review_text_len_chars", "category_sk", "product_sk", "shop_sk",
 ]
@@ -51,7 +51,7 @@ def load_reviews(
     Returns
     -------
     pd.DataFrame
-        Columns: review_sk, source_id, review_text, rating_value,
+        Columns: review_sk, source_sk, source_id, review_text, rating_value,
                  source_gold_sentiment_label, source_gold_emotion_label,
                  review_text_len_chars, category_sk, product_sk, shop_sk.
     """
@@ -65,6 +65,7 @@ def load_reviews(
             cur.execute(f"""
                 SELECT
                     fr.review_sk,
+                    fr.source_sk,
                     ds.source_id,
                     fr.review_text,
                     fr.rating_value,
