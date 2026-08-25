@@ -59,11 +59,6 @@ def run_monte_carlo_sensitivity(
     n_cases = len(decision_queue_df)
     k_cutoff = max(1, int(n_cases * top_k_pct))
 
-    # Baseline ranks and top-K set
-    baseline_scores = decision_queue_df["priority_score"].values
-    baseline_ranks = np.argsort(-baseline_scores)
-    baseline_top_k = set(baseline_ranks[:k_cutoff])
-
     # Extract sub-scores (0-1) for fast matrix computation
     phi_sev = decision_queue_df["severity_impact_score"].values / 100.0
     phi_dis = decision_queue_df["dissatisfaction_score"].values / 100.0
@@ -79,6 +74,11 @@ def run_monte_carlo_sensitivity(
         DEFAULT_WEIGHTS["volume"],
         DEFAULT_WEIGHTS["confidence"],
     ])
+
+    # Baseline scores computed from base weights
+    baseline_scores = np.dot(phi_matrix, base_w_arr) * 100.0
+    baseline_ranks = np.argsort(-baseline_scores)
+    baseline_top_k = set(baseline_ranks[:k_cutoff])
 
     kendall_taus = []
     spearman_rhos = []
