@@ -285,3 +285,8 @@ class TestDatabaseIntegration:
         with db_conn.cursor() as cur:
             cur.execute("SELECT COUNT(*) AS cnt FROM marketvoice_warehouse.mv_issue_emerging")
             assert cur.fetchone()["cnt"] == 10  # 2 sources * 5 issues
+
+    def test_mv_issue_low_rating_overrepresentation_view(self, db_conn):
+        with db_conn.cursor() as cur:
+            cur.execute("SELECT COUNT(*) AS cnt FROM marketvoice_warehouse.mv_issue_low_rating_overrepresentation")
+            assert cur.fetchone()["cnt"] == 10  # 2 sources * 5 issues
