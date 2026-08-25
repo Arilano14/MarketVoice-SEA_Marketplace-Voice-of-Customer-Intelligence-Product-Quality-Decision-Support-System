@@ -187,9 +187,11 @@ COMMENT ON VIEW mv_issue_by_product IS
     'Source A has no product_sk and is excluded. '
     'Limitation: Product identity is Source B native ID only.';
 
--- mv_issue_emerging: Emerging signal analysis per (source, issue)
--- NOTE: This view computes segment-based emerging signals, NOT temporal trends.
-CREATE OR REPLACE VIEW mv_issue_emerging AS
+-- mv_issue_low_rating_overrepresentation: Statistical overrepresentation analysis
+-- NOTE: This view computes segment-based overrepresentation in low-rating reviews (<= 2 stars).
+-- FORMAL NOMENCLATURE: Customer Dissatisfaction Driver Analysis (NOT a temporal trend).
+-- TEMPORAL_EMERGING_ISSUE_ANALYSIS = DEFERRED_TO_FUTURE_DATASET_VERSION (NO_TEMPORAL_DATA).
+CREATE OR REPLACE VIEW mv_issue_low_rating_overrepresentation AS
 WITH issue_stats AS (
     SELECT
         fri.source_sk,
@@ -212,23 +214,31 @@ SELECT
     issue_id,
     issue_name,
     'rating_le_2' AS segment,
-    neg_issue_count AS segment_issue_count,
-    total_neg_reviews AS segment_total,
-    ROUND(neg_issue_count::numeric / NULLIF(total_neg_reviews, 0), 6) AS segment_rate,
+    neg_issue_count AS low_rating_issue_count,
+    total_neg_reviews AS low_rating_total_reviews,
+    ROUND(neg_issue_count::numeric / NULLIF(total_neg_reviews, 0), 6) AS low_rating_issue_rate,
     total_issue_count AS baseline_issue_count,
-    total_reviews AS baseline_total,
-    ROUND(total_issue_count::numeric / NULLIF(total_reviews, 0), 6) AS baseline_rate,
+    total_reviews AS baseline_total_reviews,
+    ROUND(total_issue_count::numeric / NULLIF(total_reviews, 0), 6) AS baseline_issue_rate,
     CASE WHEN total_issue_count > 0
          THEN ROUND((neg_issue_count::numeric / NULLIF(total_neg_reviews, 0)) /
                      (total_issue_count::numeric / NULLIF(total_reviews, 0)), 4)
-         ELSE 0 END AS rate_ratio,
+         ELSE 0 END AS dissatisfaction_rate_ratio,
     neg_issue_count >= 30 AS min_support_met,
-    'NO_TEMPORAL_DATA — segment-based proxy only' AS data_limitation
+    'LOW_RATING_OVERREPRESENTATION' AS analysis_type,
+    'TEMPORAL_EMERGING_ISSUE_ANALYSIS = DEFERRED (NO_TEMPORAL_DATA)' AS data_limitation
 FROM issue_stats
 ORDER BY source_id, neg_issue_count DESC;
 
+COMMENT ON VIEW mv_issue_low_rating_overrepresentation IS
+    'Phase 9 Remediation: Low-rating issue overrepresentation analysis (Dissatisfaction Driver). '
+    'CRITICAL METHODOLOGICAL DISTINCTION: No temporal data exists. This view measures '
+    'statistical concentration in low-rating reviews (<= 2 stars) relative to baseline corpus. '
+    'TEMPORAL_EMERGING_ISSUE_ANALYSIS is formally DEFERRED.';
+
+-- Backwards compatibility alias view for legacy references
+CREATE OR REPLACE VIEW mv_issue_emerging AS
+SELECT * FROM mv_issue_low_rating_overrepresentation;
+
 COMMENT ON VIEW mv_issue_emerging IS
-    'Phase 9: Emerging issue indicators using rating-segment analysis. '
-    'CRITICAL LIMITATION: No temporal data exists. "Emerging" means '
-    'statistically over-represented in low-rating reviews vs overall corpus. '
-    'This is NOT a time-based trend.';
+    'DEPRECATED ALIAS: Use mv_issue_low_rating_overrepresentation directly.';
