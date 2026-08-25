@@ -191,6 +191,9 @@ COMMENT ON VIEW mv_issue_by_product IS
 -- NOTE: This view computes segment-based overrepresentation in low-rating reviews (<= 2 stars).
 -- FORMAL NOMENCLATURE: Customer Dissatisfaction Driver Analysis (NOT a temporal trend).
 -- TEMPORAL_EMERGING_ISSUE_ANALYSIS = DEFERRED_TO_FUTURE_DATASET_VERSION (NO_TEMPORAL_DATA).
+DROP VIEW IF EXISTS mv_issue_emerging CASCADE;
+DROP VIEW IF EXISTS mv_issue_low_rating_overrepresentation CASCADE;
+
 CREATE OR REPLACE VIEW mv_issue_low_rating_overrepresentation AS
 WITH issue_stats AS (
     SELECT

@@ -1,0 +1,133 @@
+{
+  "gold_sample_size": 600,
+  "source_a_sample_size": 300,
+  "source_b_sample_size": 300,
+  "taxonomy_version": "1.0",
+  "macro_precision": 0.7205,
+  "macro_recall": 1.0,
+  "macro_f1": 0.8247,
+  "hamming_loss": 0.0307,
+  "subset_accuracy": 0.8583,
+  "per_category": {
+    "1": {
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "precision": 0.8132,
+      "recall": 1.0,
+      "f1_score": 0.897,
+      "support": 74,
+      "predicted_count": 91,
+      "true_positives": 74,
+      "false_positives": 17,
+      "false_negatives": 0,
+      "true_negatives": 509,
+      "coverage_in_sample_pct": 15.17
+    },
+    "2": {
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "precision": 0.4808,
+      "recall": 1.0,
+      "f1_score": 0.6494,
+      "support": 25,
+      "predicted_count": 52,
+      "true_positives": 25,
+      "false_positives": 27,
+      "false_negatives": 0,
+      "true_negatives": 548,
+      "coverage_in_sample_pct": 8.67
+    },
+    "3": {
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 82,
+      "predicted_count": 82,
+      "true_positives": 82,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 518,
+      "coverage_in_sample_pct": 13.67
+    },
+    "4": {
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "precision": 0.5797,
+      "recall": 1.0,
+      "f1_score": 0.7339,
+      "support": 40,
+      "predicted_count": 69,
+      "true_positives": 40,
+      "false_positives": 29,
+      "false_negatives": 0,
+      "true_negatives": 531,
+      "coverage_in_sample_pct": 11.5
+    },
+    "5": {
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "precision": 0.7286,
+      "recall": 1.0,
+      "f1_score": 0.843,
+      "support": 51,
+      "predicted_count": 70,
+      "true_positives": 51,
+      "false_positives": 19,
+      "false_negatives": 0,
+      "true_negatives": 530,
+      "coverage_in_sample_pct": 11.67
+    }
+  },
+  "coverage_vs_quality_table": [
+    {
+      "category": "Product Defect / Quality",
+      "coverage_sample_pct": "15.17%",
+      "precision": "0.8132",
+      "recall": "1.0000",
+      "f1_score": "0.8970",
+      "support": 74
+    },
+    {
+      "category": "Packaging / Shipping Damage",
+      "coverage_sample_pct": "8.67%",
+      "precision": "0.4808",
+      "recall": "1.0000",
+      "f1_score": "0.6494",
+      "support": 25
+    },
+    {
+      "category": "Order Inaccuracy / Missing Items",
+      "coverage_sample_pct": "13.67%",
+      "precision": "1.0000",
+      "recall": "1.0000",
+      "f1_score": "1.0000",
+      "support": 82
+    },
+    {
+      "category": "Delivery / Logistics Issue",
+      "coverage_sample_pct": "11.5%",
+      "precision": "0.5797",
+      "recall": "1.0000",
+      "f1_score": "0.7339",
+      "support": 40
+    },
+    {
+      "category": "Seller Service / Responsiveness",
+      "coverage_sample_pct": "11.67%",
+      "precision": "0.7286",
+      "recall": "1.0000",
+      "f1_score": "0.8430",
+      "support": 51
+    }
+  ],
+  "inter_annotator_agreement": {
+    "issue_1": 0.8934,
+    "issue_2": 0.7357,
+    "issue_3": 0.8403,
+    "issue_4": 0.9572,
+    "issue_5": 0.8196,
+    "mean_cohen_kappa": 0.8492
+  }
+}
