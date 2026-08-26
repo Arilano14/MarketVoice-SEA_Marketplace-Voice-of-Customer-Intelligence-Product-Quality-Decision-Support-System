@@ -1,0 +1,112 @@
+================================================================================
+MARKETVOICE SEA — CONSOLIDATED PROJECT DEVELOPMENT HISTORY & TECHNICAL CHRONICLE
+================================================================================
+Project: Marketplace Voice-of-Customer Intelligence & Decision Support System
+Scope: Historical Record of Architecture Decisions, Methodological Corrections,
+       and Technical Milestones (Phase 01 through Phase 11)
+Format: Structured Technical Audit Chronicle (Conversational Chatter Omitted)
+================================================================================
+
+1. PHASE 01 — ENVIRONMENT & RAW CORPUS ACQUISITION (DEL-02)
+--------------------------------------------------------------------------------
+- Objective: Initialize Python 3.10+ analytical toolchain and acquire dual e-commerce corpora.
+- Decisions:
+  * Established isolated development environment with PostgreSQL 15+ backend.
+  * Acquired Source A (Shopee e-commerce reviews: 38,007 rows) and Source B (Tokopedia electronics reviews: 8,000 rows).
+  * Enforced strict SHA-256 integrity verification on raw CSV assets.
+- Key Finding: Dual-source strategy required rigorous source provenance tracking to avoid false cross-source attribution.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_01_validation_report.md.
+
+2. PHASE 02 — FORENSIC DATA AUDIT & HARDENING (DEL-03)
+--------------------------------------------------------------------------------
+- Objective: Audit raw dataset quality, schema anomalies, and text forensics.
+- Decisions:
+  * Conducted full null, duplicate, and encoding analysis across 46,007 total review records.
+  * Generated 10 metadata matrices in data/metadata/ (cardinality, quality crosstabs, schema profiles).
+  * Built deterministic deduplication logic preserving primary review keys.
+- Key Finding: Character encoding inconsistencies and duplicate review texts required strict UTF-8 extraction safeguards.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_02_dataset_forensic_audit_report.md.
+
+3. PHASE 03 — REQUIREMENTS & SYSTEM TRACEABILITY (DEL-04, DEL-05)
+--------------------------------------------------------------------------------
+- Objective: Define formal Business Requirements Document (BRD), Software Requirements Specification (SRS), and Traceability Matrix.
+- Decisions:
+  * Structured requirements across 29 discrete deliverables (DEL-01 through DEL-29).
+  * Formulated operational use cases for Quality Assurance, Product Operations, and Vendor Management.
+- Outcome: Gate PASS. Evidence recorded in docs/requirements/ and reports/validation/phase_03_validation.md.
+
+4. PHASE 04 — ANALYTICAL RESEARCH DESIGN & RQ SPECIFICATION (DEL-06)
+--------------------------------------------------------------------------------
+- Objective: Establish rigorous statistical methodology and research question (RQ) benchmarks.
+- Decisions:
+  * Formulated 4 core Research Questions: RQ1 (Rating-Sentiment Congruence), RQ2 (Multi-Aspect Dissatisfaction), RQ3 (Cross-Source Signal Divergence), RQ4 (Decision Priority Reliability).
+  * Designed Gold Benchmark sampling methodology (500 reviews stratified by source and rating).
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_04_research_design_validation.md.
+
+5. PHASE 05 — ARCHITECTURE & KIMBALL DIMENSIONAL MODEL (DEL-07)
+--------------------------------------------------------------------------------
+- Objective: Design solution architecture and enterprise dimensional warehouse model.
+- Decisions:
+  * Adopted Kimball star schema with 4 conformed dimensions (dim_source, dim_channel, dim_category, dim_product) and 1 central fact table (fact_review).
+  * Established non-mutating additive schema strategy for downstream machine learning and operational marts.
+- Outcome: Gate PASS. Evidence recorded in docs/architecture/ and reports/validation/phase_05_architecture_validation.md.
+
+6. PHASE 06 — ETL PIPELINE & DATA WAREHOUSE LOAD (DEL-08, DEL-09, DEL-10)
+--------------------------------------------------------------------------------
+- Objective: Implement automated Python ETL and execute full warehouse load.
+- Decisions:
+  * Authored SQL migrations: 001_schema.sql, 002_tables.sql, 003_constraints.sql, 004_indexes.sql.
+  * Loaded 46,007 rows into fact_review with 100% referential integrity and zero data loss.
+- Verification: Row counts matched raw corpus hashes exactly.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_06_warehouse_validation.md.
+
+7. PHASE 07 — BASELINE BUSINESS INTELLIGENCE MARTS (DEL-11)
+--------------------------------------------------------------------------------
+- Objective: Build analytical SQL summary marts for macro VoC intelligence.
+- Decisions:
+  * Implemented 6 analytical views in sql/marts/005_mart_views.sql (mv_source_summary, mv_category_benchmark, mv_product_quality_ranking, mv_rating_overrepresentation, mv_dissatisfaction_drivers, mv_aspect_cooccurrence).
+  * Designed Two-Proportion Z-Test metrics for low-rating dissatisfaction overrepresentation.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_07_bi_validation.md.
+
+8. PHASE 08 — NLP SENTIMENT & RATING CLASSIFIERS (DEL-12)
+--------------------------------------------------------------------------------
+- Objective: Train and benchmark classical machine learning models for sentiment and rating inference.
+- Decisions:
+  * Built TF-IDF Vectorizer (sublinear TF, n-grams 1-2) with LinearSVC and Logistic Regression.
+  * Generated 10 machine-readable Model Cards in models/metadata/.
+  * Additive SQL mart: 006_prediction_schema.sql and fact_review_prediction table.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_08_nlp_validation.md.
+
+9. PHASE 09 — ASPECT & ISSUE INTELLIGENCE SYSTEM (DEL-13)
+--------------------------------------------------------------------------------
+- Objective: Build multi-label product issue classification and Gold Benchmark validation.
+- Decisions:
+  * Defined 7 frozen issue categories: FUNCTIONAL_DEFECT, PACKAGING_DAMAGE, MISSING_ITEMS, LOGISTICS_DELAY, WRONG_ITEM_SENT, AUTHENTICITY_CONCERN, POOR_CUSTOMER_SERVICE.
+  * Remediated analytical terminology: replaced temporal "emerging issue" claims with "low-rating dissatisfaction overrepresentation" (since datasets are non-temporal).
+  * Built 500-sample Gold Validation dataset (data/interim/issue_gold_validation_sample.csv) and computed Cohen's Kappa / Krippendorff's Alpha inter-annotator agreement metrics.
+  * Additive SQL mart: 007_issue_intelligence.sql and fact_review_issue (18,863 rows loaded).
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_09_issue_intelligence_validation.md.
+
+10. PHASE 10 — DECISION SUPPORT SYSTEM & PRIORITY CASE SCORING (DEL-14, DEL-15)
+--------------------------------------------------------------------------------
+- Objective: Multi-criteria Priority Ranking Score (PRS) engine and action queue mart.
+- Decisions:
+  * Implemented deterministic PRS formula combining 5 weighted factors: Support (0.25), Dissatisfaction Overrepresentation (0.25), Recurrence (0.20), Severity Proxy (0.15), and Classification Confidence (0.15).
+  * Generated human-readable rule-based Reason Codes and 4 operational priority tiers (P1 Immediate Escalation to P4 Informational).
+  * Conducted Monte Carlo sensitivity analysis (1,000 simulations) proving ranking stability (Spearman rank rho > 0.95).
+  * Additive SQL mart: 008_decision_support.sql and fact_decision_queue (5,090 actionable rows).
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_10_decision_support_validation.md.
+
+11. PHASE 11 — OPERATIONAL AUTOMATION, FASTAPI & N8N WORKFLOW (DEL-16, DEL-17)
+--------------------------------------------------------------------------------
+- Objective: Production-grade REST API microservice, n8n webhook orchestration, and Human-in-the-Loop triage.
+- Decisions:
+  * Built FastAPI microservice in src/marketvoice/api/ separating /v1/review/analyze (text NLP) from /v1/decision/evaluate (contextual multi-criteria DSS scoring).
+  * Implemented SHA-256 idempotency key calculation and regex PII sanitization in src/marketvoice/integration/idempotency.py.
+  * Created additive operational ledger in sql/operations/009_operational_workflow.sql (operational_event_log, workflow_execution, human_review_case, human_review_outcome).
+  * Built versioned 12-node triage workflow in workflows/n8n/workflows/marketvoice_review_triage.json.
+- Outcome: Gate PASS. Evidence recorded in reports/validation/phase_11_operational_validation.md.
+
+================================================================================
+END OF TECHNICAL CHRONICLE
+================================================================================

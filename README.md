@@ -1,13 +1,4 @@
 # MarketVoice SEA — Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System
-
-[![Phase](https://img.shields.io/badge/Phase-05--Solution%20Architecture%20%26%20Data%20Model-green)](docs/governance/phase_gates.md)
-[![Status](https://img.shields.io/badge/Status-Ready%20for%20Phase%206%20Entry-brightgreen)](#project-status)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
-
-> **Independent Academic & Portfolio Prototype**  
-> MarketVoice SEA is an independent postgraduate/S2-level portfolio prototype inspired by and extending the analytical task of the **Shopee Code League Sentiment Analysis Challenge**.
-
 ---
 
 ## 📌 DISCLAIMER & PROJECT POSITIONING

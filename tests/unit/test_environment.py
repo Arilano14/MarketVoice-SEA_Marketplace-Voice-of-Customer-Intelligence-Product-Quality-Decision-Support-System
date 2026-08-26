@@ -1,5 +1,5 @@
 """
-Phase 1 Environment Smoke Tests.
+Environment Smoke Tests.
 Validates path resolution, config loading, and directory structure using Python unittest.
 """
 
@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 # Ensure src/ is in sys.path for direct module import without editable install
-SRC_DIR = Path(__file__).resolve().parents[1] / "src"
+SRC_DIR = Path(__file__).resolve().parents[2] / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 

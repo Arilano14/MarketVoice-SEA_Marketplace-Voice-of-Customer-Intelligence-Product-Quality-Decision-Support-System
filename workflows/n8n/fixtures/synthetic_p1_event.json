@@ -1,0 +1,14 @@
+{
+  "fixture_id": "SYNTHETIC_P1_EVENT",
+  "description": "High priority chronic product defect driving customer dissatisfaction (Target: P2 High Priority / Human Review Queue)",
+  "request_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+  "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+  "review_id": "SYNTH_REV_001_P1",
+  "product_id": "24670745",
+  "category_id": "Komputer & Aksesoris",
+  "review_text": "Barang rusak parah, tinta bocor dan tidak terdeteksi sama sekali di printer! Tolong refund dana saya segera ke user@example.com atau wa 081234567890. Kecewa banget!",
+  "rating": 1,
+  "expected_routing": "HUMAN_REVIEW_QUEUE",
+  "expected_tier": "P2_HIGH_PRIORITY",
+  "expected_pii_masked": true
+}

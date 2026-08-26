@@ -18,8 +18,11 @@ workflows/n8n/
 ├── docker-compose.yml                     # Dockerized n8n deployment with persistent volume
 ├── workflows/                             # Version-controlled workflow JSON definitions
 │   └── marketvoice_review_triage.json     # Main operational review triage & DSS orchestration
-├── credentials/                           # Credentials templates & database connectors
-│   └── credentials_template.json          # PostgreSQL warehouse connector template
+├── fixtures/                              # Standalone synthetic review event payloads (P1–P4)
+│   ├── synthetic_p1_event.json            # P1 Chronic defect event
+│   ├── synthetic_p2_event.json            # P2 Order inaccuracy event
+│   ├── synthetic_p3_event.json            # P3 Moderate packaging event
+│   └── synthetic_p4_event.json            # P4 Informational positive review with PII
 ├── scripts/                               # Automation & testing helper utilities
 │   ├── start_n8n.ps1                      # Windows PowerShell automated launcher
 │   ├── start_n8n.sh                       # Unix/Mac/WSL automated launcher
@@ -59,49 +62,23 @@ Once started, open your browser at:
 
 ## 3. Workflow Import & Activation
 
-1. Navigate to **Workflows** in the n8n UI.
-2. Click **Add Workflow** $\to$ **Import from File...**
-3. Select `workflows/n8n/workflows/marketvoice_review_triage.json`.
-4. In the PostgreSQL nodes, configure credentials using:
-   * **Host**: `localhost` (or `host.docker.internal` if in Docker)
-   * **Database**: `marketvoice_dev`
-   * **Schema**: `marketvoice_warehouse`
-   * **User**: `openpg`
-   * **Password**: `openpgpwd`
-5. Click **Publish / Activate Workflow** (toggle at top right).
+1. Open n8n UI at `http://localhost:5678`.
+2. Create local admin credentials (instance is local-only).
+3. Navigate to **Workflows** $\to$ **Import from File...**
+4. Select `workflows/n8n/workflows/marketvoice_review_triage.json`.
+5. On PostgreSQL nodes, connect to the local analytical warehouse (`marketvoice_warehouse` schema).
+6. Click **Activate Workflow**.
 
 ---
 
-## 4. Testing Webhook Ingestion
+## 4. Automated Testing & Validation
 
-To test the end-to-end pipeline with synthetic review events:
-```bash
-# Run webhook test suite
-python workflows/n8n/scripts/trigger_webhook_test.py
-```
-
-### Webhook URL Specification:
-* **Production Endpoint**: `POST http://localhost:5678/webhook/review-event`
-* **Test Endpoint**: `POST http://localhost:5678/webhook-test/review-event`
-
-### Sample Ingest Payload:
-```json
-{
-  "request_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-  "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
-  "review_id": "SYNTH_REV_001_P1",
-  "product_id": "24670745",
-  "category_id": "Komputer & Aksesoris",
-  "review_text": "Barang rusak parah, tinta bocor dan tidak terdeteksi di printer! Hubungi wa 081234567890",
-  "rating": 1
-}
-```
-
----
-
-## 5. Automated Validation & Quality Assurance
-
-To validate the syntax and connection graph of the n8n workflow definition without starting the server:
-```bash
+### Validate Workflow JSON Topology & Syntax:
+```powershell
 python workflows/n8n/scripts/validate_workflow_syntax.py
+```
+
+### Trigger Automated Webhook Test Suite:
+```powershell
+python workflows/n8n/scripts/trigger_webhook_test.py
 ```
