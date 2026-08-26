@@ -1,0 +1,10 @@
+================================================================================
+MARKETVOICE SEA — RISK MANAGEMENT & ASSUMPTIONS REGISTER
+================================================================================
+Scope: Technical risk assessment, impact scoring, mitigations, and architectural assumptions.
+================================================================================
+
+1. RISK ASSESSMENT MATRIX
+- Risk 1: Inconsistent multi-marketplace schemas -> Mitigation: Automated category harmonization.
+- Risk 2: High review noise & sarcasm -> Mitigation: Multi-aspect keyword extraction with confidence thresholds.
+- Risk 3: Downstream schema mutation -> Mitigation: Non-mutating additive fact marts strategy.

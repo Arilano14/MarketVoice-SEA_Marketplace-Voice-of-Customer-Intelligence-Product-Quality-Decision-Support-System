@@ -1,19 +1,19 @@
 # MarketVoice SEA — Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System
+
 ---
 
-## 📌 DISCLAIMER & PROJECT POSITIONING
 
 MarketVoice SEA is an independent academic and portfolio research system. 
 
 This project is **NOT**:
-* An official Shopee product, service, or operational software;
-* Developed in partnership with, endorsed by, or affiliated with Shopee;
+* An official Shopee or Tokopedia product, service, or operational software;
+* Developed in partnership with, endorsed by, or affiliated with Shopee or GoTo/Tokopedia;
 * A production deployment or live commercial service;
-* A live monitoring tool or web scraper targeting Shopee platforms.
+* A live monitoring tool or web scraper targeting commercial platforms.
 
 ---
 
-## 🎯 PROJECT OVERVIEW
+## 🎯 Project Overview
 
 MarketVoice SEA transforms unstructured marketplace customer review text into structured aspect intelligence, prioritized operational review queues, automated case routing, and interactive executive reporting.
 
@@ -21,36 +21,31 @@ While traditional sentiment analysis models focus solely on predicting numerical
 
 ---
 
-## 🗺️ CANONICAL 15-PHASE ROADMAP
+## 🗺️ Project Engineering Roadmap
 
-MarketVoice SEA strictly follows a 15-phase canonical engineering roadmap:
-
-| Phase | Phase Name | Status |
-|---|---|---|
-| **Phase 0** | Governance & Scope | `COMPLETED` (Gate: PASS) |
-| **Phase 1** | Environment & Data Acquisition | `COMPLETED` (Gate: PASS) |
-| **Phase 2** | Dataset Forensic Audit | `COMPLETED` (Gate: PASS) |
-| **Phase 3** | Business & System Requirements | `COMPLETED` (Gate: PASS) |
-| **Phase 4** | Research & Analytical Design | `COMPLETED` (Gate: PASS) |
-| **Phase 5** | Architecture & Data Model | `COMPLETED` (Gate: PASS) |
-| **Phase 6** | ETL & Data Warehouse | `PLANNED` |
-| **Phase 7** | Baseline Business Intelligence | `PLANNED` |
-| **Phase 8** | Rating/Sentiment ML | `PLANNED` |
-| **Phase 9** | Aspect & Issue Intelligence | `PLANNED` |
-| **Phase 10** | Decision Support | `PLANNED` |
-| **Phase 11** | FastAPI + n8n | `PLANNED` |
-| **Phase 12** | Power BI Decision Intelligence | `PLANNED` |
-| **Phase 13** | Integrated Validation & UAT | `PLANNED` |
-| **Phase 14** | Portfolio & Research Release | `PLANNED` |
+| Milestone | Scope & Domain | Status | Validation Evidence |
+|---|---|---|---|
+| **01. Environment & Data Acquisition** | Dual corpus ingestion & SHA-256 integrity | `COMPLETED` | [`data_acquisition_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/data_acquisition_audit.txt) |
+| **02. Forensic Data Audit** | Quality profiling & text forensics | `COMPLETED` | [`data_forensics_hardening_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/data_forensics_hardening_audit.txt) |
+| **03. Requirements & Traceability** | Business requirements & RTM matrix | `COMPLETED` | [`requirements_verification_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/requirements_verification_audit.txt) |
+| **04. Research Design & Methodology** | Statistical testing & Gold Benchmark | `COMPLETED` | [`research_design_methodology_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/research_design_methodology_audit.txt) |
+| **05. Architecture & Dimensional Model** | Kimball star schema specifications | `COMPLETED` | [`data_architecture_warehouse_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/data_architecture_warehouse_audit.txt) |
+| **06. ETL & Data Warehouse Load** | PostgreSQL DDL & 46,007 review facts | `COMPLETED` | [`data_architecture_warehouse_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/data_architecture_warehouse_audit.txt) |
+| **07. Baseline Business Intelligence** | Analytical summary mart views | `COMPLETED` | [`business_intelligence_marts_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/business_intelligence_marts_audit.txt) |
+| **08. Sentiment & Rating ML Models** | TF-IDF LinearSVC & Logistic Regression | `COMPLETED` | [`nlp_sentiment_rating_model_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/nlp_sentiment_rating_model_audit.txt) |
+| **09. Product Issue Intelligence** | 7-category taxonomy & multi-label NLP | `COMPLETED` | [`issue_intelligence_taxonomy_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/issue_intelligence_taxonomy_audit.txt) |
+| **10. Decision Support System (DSS)** | Priority Ranking Score & reason codes | `COMPLETED` | [`decision_support_priority_scoring_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/decision_support_priority_scoring_audit.txt) |
+| **11. Operational Automation & API** | FastAPI microservice & n8n webhook | `COMPLETED` | [`operational_workflow_integration_audit.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/reports/validation/operational_workflow_integration_audit.txt) |
+| **12. Power BI Decision Dashboards** | Executive Quality Intelligence reports | `IN_PROGRESS` | [`dashboards/power_bi/`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/dashboards/power_bi/) |
 
 ---
 
-## 🛠️ ENVIRONMENT SETUP & REPRODUCIBILITY
+## 🛠️ Environment Setup & Reproducibility
 
 ### Prerequisites
 * Python 3.10+
 * Git 2.50+
-* PostgreSQL 14+ (or Docker Engine)
+* PostgreSQL 14+
 
 ### Installation
 ```powershell
@@ -62,40 +57,34 @@ cd MarketVoice-SEA_Marketplace-Voice-of-Customer-Intelligence-Product-Quality-De
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# Install core dependencies in editable mode
-pip install -e .
-
-# Install ALL development dependencies (required before running pytest, linters, or optional heavy validators)
+# Install core & development dependencies
 pip install -e ".[dev]"
 
 # Copy environment configuration
 copy .env.example .env
 
-# Run environment validation script (stdlib-only; runs immediately after core install)
-python scripts/environment/validate_environment.py
-
-# Run smoke tests (both stdlib unittest and pytest work after installing [dev] extras)
-python -m unittest discover tests -v
-python -m pytest -q
+# Run full automated regression suite (146 tests)
+pytest tests/ -v
 ```
 
 ---
 
-## 🔒 DATA GOVERNANCE & PRIVACY
+## 📚 Technical Documentation Index
 
-* **Canonical Dual-Source Foundation** (per [config/data_sources.yaml](config/data_sources.yaml) and [docs/governance/data_governance_policy.md](docs/governance/data_governance_policy.md)):
-  - Source A (`SRC_PRDECT_ID_V1`) — PRDECT-ID Indonesian product reviews 5,400 rows (sentiment + emotion gold)
-  - Source B (`SRC_TOKOPEDIA_REVIEWS_2019`) — Tokopedia product reviews 2019 40,607 rows (product_id + shop_id)
-* **Distribution**: Data tiers `data/raw/*`, `data/interim/*`, `data/processed/*`, `logs/*` are all `LOCAL_ONLY`. They are excluded from public Git via `.gitignore` (only `*.gitkeep` and tier READMEs are versioned as placeholders). Rebuild locally with acquisition + hardening scripts after clone.
-* **Cross-source linkage**: `CROSS_SOURCE_PRODUCT_LINKAGE = NOT_SUPPORTED`; `CROSS_SOURCE_SHOP_LINKAGE = NOT_SUPPORTED`; `CROSS_SOURCE_ROW_LINKAGE = NOT_SUPPORTED`. No fuzzy entity merge.
-* **Temporal facts**: Authentic review timestamps are `NOT_AVAILABLE` in both raw sources; no `dim_date` for review facts.
-* **Track B (Conditional Synthetic Data)**: Generated deterministically only if governance-approved and missing operational metadata is justified. All synthetic records carry explicit `is_synthetic = TRUE` flags and never leak into Track A gold.
-* **PII Protection**: Automated regex redaction of user contact details during staging (case/intervention fact fields only; Phase 9+).
+Detailed architectural, engineering, governance, and research specifications are documented in:
+👉 [`docs/engineering/documentation_index.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/docs/engineering/documentation_index.txt)
 
 ---
 
-## 📄 LICENSE & CITATION
+## 🔒 Data Governance & Security
+
+* **Data Governance & Privacy**: See [`docs/governance/data_governance_and_privacy_policy.txt`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/docs/governance/data_governance_and_privacy_policy.txt).
+* **Security & Vulnerability Reporting**: See [`SECURITY.md`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/SECURITY.md).
+* **PII Protection**: Automated regex redaction of customer contact details (`[REDACTED_EMAIL]`, `[REDACTED_PHONE]`, `[REDACTED_USER]`).
+
+---
+
+## 📄 License & Citation
 
 * Source Code: Released under the [MIT License](LICENSE).
-* Dataset Rights: Governed separately by the original competition source terms.
-* Citation: See [CITATION.cff](CITATION.cff) for academic citation instructions.
+* Citation Metadata: Provided in [`CITATION.cff`](file:///C:/Users/Arilano/Downloads/Project%20ARICE/Project%20SEA/CITATION.cff).

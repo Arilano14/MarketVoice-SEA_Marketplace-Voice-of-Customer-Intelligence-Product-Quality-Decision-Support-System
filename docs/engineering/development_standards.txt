@@ -1,0 +1,16 @@
+================================================================================
+MARKETVOICE SEA — DEVELOPMENT ENVIRONMENT & REPOSITORY STANDARDS
+================================================================================
+Scope: Python toolchain, coding conventions, testing standards, and repository structure.
+================================================================================
+
+1. TOOLCHAIN SPECIFICATION
+- Python: >= 3.10
+- PostgreSQL: >= 15
+- Package Management: pyproject.toml
+- Testing Framework: pytest (Target: 100% Pass Rate)
+
+2. CODING STANDARDS
+- Python: PEP 8, strict type annotations where applicable, lower_snake_case.py.
+- SQL: Explicit schema references (marketvoice_warehouse.*), lower_snake_case.sql.
+- Tests: Test classes mapped to functional modules (tests/unit/, tests/regression/, etc.).

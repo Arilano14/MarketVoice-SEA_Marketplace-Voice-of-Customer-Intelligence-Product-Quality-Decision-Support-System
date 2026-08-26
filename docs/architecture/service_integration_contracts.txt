@@ -1,0 +1,15 @@
+================================================================================
+MARKETVOICE SEA — SERVICE INTEGRATION CONTRACTS
+================================================================================
+Scope: Boundary interfaces between FastAPI REST API, PostgreSQL warehouse, and n8n webhook engine.
+================================================================================
+
+1. FASTAPI MICROSERVICE BOUNDARY
+- /v1/review/analyze: Stateless text NLP aspect and sentiment evaluation.
+- /v1/decision/evaluate: Contextual DSS priority calculation querying PostgreSQL summary marts.
+- /v1/workflow/human-review: Triage action ledger persistence for P1/P2 operational review cases.
+
+2. N8N WEBHOOK ORCHESTRATION BOUNDARY
+- Webhook Intake: POST /webhook/review-event.
+- Sanitization: Inbound PII regex masking before external service invocation.
+- Idempotency Ledger: SHA-256 key lookup against operational_event_log.

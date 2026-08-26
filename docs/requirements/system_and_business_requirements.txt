@@ -1,0 +1,17 @@
+================================================================================
+MARKETVOICE SEA — SYSTEM & BUSINESS REQUIREMENTS SPECIFICATION
+================================================================================
+Scope: Functional and non-functional requirements, data information model, and operational use cases.
+================================================================================
+
+1. FUNCTIONAL REQUIREMENTS
+- FR-01: Automated batch ETL extraction from multi-source e-commerce corpora.
+- FR-02: PostgreSQL relational data warehouse supporting Kimball star schema.
+- FR-03: Multi-aspect product defect classification across 7 standardized issue types.
+- FR-04: Multi-criteria Decision Support System computing Priority Ranking Scores (0.0 to 1.0).
+- FR-05: Real-time REST API microservice and n8n webhook event triage orchestration.
+
+2. NON-FUNCTIONAL REQUIREMENTS
+- NFR-01 (Performance): API latency < 250ms per single review evaluation.
+- NFR-02 (Reliability): Zero data loss and idempotent event ingestion.
+- NFR-03 (Privacy): Automated regex PII masking on all customer review payloads.

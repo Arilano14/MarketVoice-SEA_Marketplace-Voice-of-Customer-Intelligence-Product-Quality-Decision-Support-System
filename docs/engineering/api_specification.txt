@@ -1,0 +1,17 @@
+================================================================================
+MARKETVOICE SEA — REST API CONTRACT SPECIFICATION
+================================================================================
+Scope: OpenAPI REST endpoints, Pydantic schemas, error codes, and payload contracts.
+================================================================================
+
+1. SERVICE ENDPOINTS
+- GET  /health: Liveness probe (Returns HTTP 200).
+- GET  /ready: Readiness probe (Verifies PostgreSQL connectivity and ML model availability).
+- GET  /model: Model metadata registry and version cards.
+- POST /v1/review/analyze: Single-review NLP classification.
+- POST /v1/decision/evaluate: Contextual Decision Support System scoring.
+- POST /v1/workflow/human-review: Human-in-the-loop triage case resolution.
+
+2. AUTHENTICATION & IDEMPOTENCY
+- Local Microservice Protocol: Port 8000.
+- Idempotency Key: SHA-256(source_id:review_id:version).

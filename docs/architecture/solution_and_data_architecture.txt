@@ -1,0 +1,18 @@
+================================================================================
+MARKETVOICE SEA — SYSTEM & DATA ARCHITECTURE SPECIFICATION
+================================================================================
+Scope: High-level microservice topology, data ingestion flow, partition design, and storage policies.
+================================================================================
+
+1. SYSTEM TOPOLOGY & COMPONENT OVERVIEW
+MarketVoice SEA is composed of four integrated architectural tiers:
+- Tier 1: Ingestion & Extraction Pipeline (Batch CSV intake, UTF-8 normalization, SHA-256 hashing).
+- Tier 2: Analytical Data Warehouse (PostgreSQL Kimball star schema, conformed dimensions, additive marts).
+- Tier 3: NLP & Decision Inference Engine (FastAPI microservice, TF-IDF classifiers, multi-criteria PRS).
+- Tier 4: Workflow Orchestration & BI (n8n webhook triage, Human-in-the-Loop ledger, Power BI dashboards).
+
+2. DATA STORAGE & PARTITION STRATEGY
+- data/raw/: Immutable source landing zone.
+- data/interim/: Gold benchmarks and synthetic evaluation fixtures.
+- data/processed/: Parquet partitions organized by marketplace source and extraction date.
+- data/metadata/: Persistent schema profiles and quality matrices.

@@ -1,0 +1,18 @@
+================================================================================
+MARKETVOICE SEA — PRODUCT ISSUE TAXONOMY & ANNOTATION PROTOCOL
+================================================================================
+Scope: 7-category product quality issue taxonomy, aspect keywords, and Gold Benchmark annotation guidelines.
+================================================================================
+
+1. 7-CATEGORY FROZEN ISSUE TAXONOMY
+1. FUNCTIONAL_DEFECT: Product does not power on, broken parts, software/hardware failure.
+2. PACKAGING_DAMAGE: Crushed box, dented packaging, liquid leakage during transit.
+3. MISSING_ITEMS: Incomplete parcel, missing cables, absent accessories.
+4. LOGISTICS_DELAY: Shipping delays, courier transit bottlenecks.
+5. WRONG_ITEM_SENT: Incorrect color, wrong size, mismatched product variant.
+6. AUTHENTICITY_CONCERN: Suspected counterfeit, fake branding, unverified serial number.
+7. POOR_CUSTOMER_SERVICE: Unresponsive seller, refused returns, hostile seller chat.
+
+2. GOLD BENCHMARK ANNOTATION PROTOCOL
+- 500 reviews sampled across Source A and Source B.
+- Double-blind annotation protocol with Cohen's Kappa inter-rater agreement computation.

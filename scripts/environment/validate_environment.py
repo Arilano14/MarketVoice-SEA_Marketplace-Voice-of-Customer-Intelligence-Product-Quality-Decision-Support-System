@@ -1,8 +1,7 @@
-"""
-Environment validation script for MarketVoice SEA (Phase 1).
-Verifies Python version, directory structure, pyproject.toml, and configuration files.
-"""
+"""Environment validation utility for MarketVoice SEA.
 
+Verifies Python runtime, project directories, configuration files, and package manifests.
+"""
 import sys
 from pathlib import Path
 
@@ -28,7 +27,7 @@ def check_directories() -> bool:
         "docs/requirements",
         "docs/engineering",
         "scripts/environment",
-        "scripts/data_acquisition",
+        "scripts/acquisition",
         "src/marketvoice",
         "tests",
         "reports/validation",
@@ -71,16 +70,16 @@ def check_files() -> bool:
 
 def main():
     print("=" * 60)
-    print("MARKETVOICE SEA — PHASE 1 ENVIRONMENT VALIDATION")
+    print("MARKETVOICE SEA — ENVIRONMENT VALIDATION")
     print("=" * 60)
 
-    v_ok = check_python_version()
-    d_ok = check_directories()
-    f_ok = check_files()
+    py_ok = check_python_version()
+    dirs_ok = check_directories()
+    files_ok = check_files()
 
     print("=" * 60)
-    if v_ok and d_ok and f_ok:
-        print("OVERALL HEALTH STATUS: PASS — Environment is properly configured.")
+    if py_ok and dirs_ok and files_ok:
+        print("OVERALL HEALTH STATUS: PASS — Environment is fully operational.")
         sys.exit(0)
     else:
         print("OVERALL HEALTH STATUS: FAIL — Environment setup incomplete.")

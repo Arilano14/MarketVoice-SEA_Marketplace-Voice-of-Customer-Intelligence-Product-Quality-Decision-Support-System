@@ -1,0 +1,15 @@
+================================================================================
+MARKETVOICE SEA — DATA TRANSFORMATION & HARMONIZATION SPECIFICATIONS
+================================================================================
+Scope: Column casting, null handling, encoding rules, and category mapping between Source A & B.
+================================================================================
+
+1. COLUMN CASTING & NORMALIZATION CONTRACTS
+- review_id: Text primary key.
+- rating: Integer (1 to 5).
+- review_text: Strict UTF-8 normalized text string.
+- product_id: Conformed text product identifier.
+- category_id: Harmonized Indonesian e-commerce category name.
+
+2. CATEGORY HARMONIZATION MAPPING
+Harmonizes Shopee Source A and Tokopedia Source B category taxonomies into 34 conformed categories.

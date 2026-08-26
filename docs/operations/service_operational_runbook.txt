@@ -1,0 +1,26 @@
+================================================================================
+MARKETVOICE SEA — SERVICE OPERATIONAL RUNBOOK
+================================================================================
+Scope: FastAPI microservice execution, readiness probes, n8n workflow deployment, and triage resolution.
+================================================================================
+
+1. STARTING THE FASTAPI MICROSERVICE
+# Launch via runner script:
+python scripts/runners/start_api.py
+
+# Or directly via uvicorn:
+python -m uvicorn marketvoice.api.application:app --host 127.0.0.1 --port 8000
+
+2. PROBE VALIDATION
+- Liveness: curl http://127.0.0.1:8000/health
+- Readiness: curl http://127.0.0.1:8000/ready
+
+3. N8N WORKFLOW EXECUTION
+- Dashboard URL: http://localhost:5678
+- Workflow File: workflows/n8n/workflows/marketvoice_review_triage.json
+- Webhook Test Harness: python workflows/n8n/scripts/trigger_webhook_test.py
+
+4. HUMAN-IN-THE-LOOP CASE RESOLUTION
+POST http://127.0.0.1:8000/v1/workflow/human-review
+Content-Type: application/json
+{"case_id": "CASE_8498366AF58B6461", "action_type": "VENDOR_INQUIRY", "action_notes": "Defect confirmed with vendor.", "performed_by": "QA_LEAD_01"}

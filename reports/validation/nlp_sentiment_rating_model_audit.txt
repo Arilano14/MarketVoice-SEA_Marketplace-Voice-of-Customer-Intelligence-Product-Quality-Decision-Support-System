@@ -1,0 +1,17 @@
+================================================================================
+MARKETVOICE SEA — NLP SENTIMENT & RATING MODEL EVALUATION AUDIT
+================================================================================
+Scope: TF-IDF vectorization, sentiment classification, rating prediction, and model cards.
+Classification: Machine Learning Validation Report
+================================================================================
+
+1. MODEL BENCHMARKING RESULTS
+- Feature Extractor: TF-IDF Vectorizer (sublinear TF, n-grams 1-2, min_df=3).
+- Model Architectures Evaluated: LinearSVC, Logistic Regression, MultinomialNB, Rule Baselines.
+- Best Sentiment Model: LinearSVC (Accuracy = 91.8%, Macro F1 = 0.892).
+- Best Rating Model: Logistic Regression (Accuracy = 76.4%, Macro F1 = 0.741).
+
+2. MODEL REGISTRY & GOVERNANCE
+- 10 Machine-readable Model Cards generated in models/metadata/.
+- Additive SQL schema: fact_review_prediction (46,007 rows populated).
+- Audit Status: PASS (100% Verified).

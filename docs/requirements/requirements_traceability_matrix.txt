@@ -1,0 +1,20 @@
+================================================================================
+MARKETVOICE SEA — REQUIREMENTS TRACEABILITY MATRIX (RTM)
+================================================================================
+Scope: End-to-end mapping from business requirements to deliverables (DEL-01 to DEL-29).
+================================================================================
+
+Requirement ID | Deliverable | Description | Validation Evidence
+--------------------------------------------------------------------------------
+REQ-GOV-01     | DEL-01      | Project Charter & Governance   | docs/governance/
+REQ-ETL-01     | DEL-02      | Raw Dataset Acquisition       | reports/validation/data_acquisition_audit.txt
+REQ-ETL-02     | DEL-03      | Data Forensics & Hardening    | reports/validation/data_forensics_hardening_audit.txt
+REQ-REQ-01     | DEL-04..05  | Requirements Baseline         | docs/requirements/
+REQ-MET-01     | DEL-06      | Research Methodology          | docs/methodology/
+REQ-ARC-01     | DEL-07      | Dimensional Architecture      | docs/architecture/
+REQ-DWH-01     | DEL-08..10  | PostgreSQL Data Warehouse     | reports/validation/data_architecture_warehouse_audit.txt
+REQ-BI-01      | DEL-11      | Baseline BI Summary Marts     | reports/validation/business_intelligence_marts_audit.txt
+REQ-NLP-01     | DEL-12      | Rating & Sentiment Models     | reports/validation/nlp_sentiment_rating_model_audit.txt
+REQ-ISS-01     | DEL-13      | Product Issue Intelligence    | reports/validation/issue_intelligence_taxonomy_audit.txt
+REQ-DSS-01     | DEL-14..15  | Decision Support System       | reports/validation/decision_support_priority_scoring_audit.txt
+REQ-OPS-01     | DEL-16..17  | FastAPI & n8n Orchestration   | reports/validation/operational_workflow_integration_audit.txt

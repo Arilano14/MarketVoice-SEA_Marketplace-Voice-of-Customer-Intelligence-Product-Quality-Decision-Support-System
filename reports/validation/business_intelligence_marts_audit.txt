@@ -1,0 +1,18 @@
+================================================================================
+MARKETVOICE SEA — BUSINESS INTELLIGENCE MARTS VALIDATION AUDIT
+================================================================================
+Scope: Analytical SQL summary views, product ranking, and dissatisfaction overrepresentation.
+Classification: BI Engineering Audit Report
+================================================================================
+
+1. ANALYTICAL SUMMARY MARTS INVENTORY
+- mv_source_summary: Macro-level customer experience overview per marketplace source.
+- mv_category_benchmark: Category average ratings, review volume, and defect frequency.
+- mv_product_quality_ranking: Lowest-rated product risk ranking for QA triage.
+- mv_issue_low_rating_overrepresentation: Statistical z-test dissatisfaction overrepresentation.
+- mv_product_defect_matrix: Product-to-issue co-occurrence and defect intensity matrix.
+
+2. VALIDATION RESULTS
+- All 14 analytical mart views operational in PostgreSQL.
+- Two-Proportion Z-Test calculations verified for low-rating dissatisfaction metrics.
+- Audit Status: PASS (100% Verified).

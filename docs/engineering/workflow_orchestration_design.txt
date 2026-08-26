@@ -1,0 +1,19 @@
+================================================================================
+MARKETVOICE SEA — N8N WORKFLOW ORCHESTRATION DESIGN
+================================================================================
+Scope: 12-node DAG topology, switch routing rules, idempotency checks, and operational ledger.
+================================================================================
+
+1. WORKFLOW ARCHITECTURE (workflows/n8n/workflows/marketvoice_review_triage.json)
+1. Webhook Trigger: Inbound event listener.
+2. Payload & PII Sanitizer: Regex masking of emails, phone numbers, and handles.
+3. Compute Idempotency Key: SHA-256 deterministic key generation.
+4. Database Idempotency Check: Query operational_event_log for duplicate event key.
+5. Idempotency Router: Route cached result if duplicate; proceed if new.
+6. FastAPI Review Analyze: POST /v1/review/analyze.
+7. FastAPI Decision Evaluate: POST /v1/decision/evaluate.
+8. Decision Switch Router: Branching on priority tier (P1, P2, P3, P4).
+9. Insert Human Review Case: Persistence to human_review_case (for P1/P2).
+10. Insert Operational Event Log: Persistence to operational_event_log.
+11. Insert Workflow Execution Metrics: Persistence to workflow_execution.
+12. Format Response Webhook: Return JSON triage result.

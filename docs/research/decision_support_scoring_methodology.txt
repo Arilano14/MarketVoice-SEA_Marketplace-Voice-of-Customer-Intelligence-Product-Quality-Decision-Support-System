@@ -1,0 +1,19 @@
+================================================================================
+MARKETVOICE SEA — DECISION SUPPORT SYSTEM (DSS) SCORING METHODOLOGY
+================================================================================
+Scope: Multi-criteria Priority Ranking Score (PRS) mathematics, reason codes, and sensitivity analysis.
+================================================================================
+
+1. MATHEMATICAL FORMULATION
+Priority Ranking Score (PRS):
+PRS = w1 * Support + w2 * Dissatisfaction_Ratio + w3 * Recurrence + w4 * Severity + w5 * Confidence
+
+Default Weight Vector:
+- w1 (Issue Support Volume)             = 0.25
+- w2 (Low-Rating Overrepresentation)    = 0.25
+- w3 (Review Recurrence Score)          = 0.20
+- w4 (Rating Severity Proxy)            = 0.15
+- w5 (Aspect Classification Confidence) = 0.15
+
+2. REASON CODE GENERATOR
+Generates human-readable explanations (e.g. HIGH_DEFECT_INTENSITY, CHRONIC_DISSATISFACTION, HIGH_CONFIDENCE_DEFECT).

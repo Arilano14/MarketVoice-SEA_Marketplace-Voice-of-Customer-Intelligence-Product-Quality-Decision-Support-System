@@ -1,0 +1,11 @@
+================================================================================
+MARKETVOICE SEA — DATA GOVERNANCE & PRIVACY POLICY
+================================================================================
+Scope: Data security standards, local dataset isolation, PII sanitization, and synthetic events.
+================================================================================
+
+1. DATA GOVERNANCE PRINCIPLES
+- Local Storage Isolation: Raw e-commerce datasets remain strictly in data/raw/ (gitignored).
+- Zero Customer PII: Review texts pass through deterministic regex sanitization before persistence.
+- Synthetic Demonstration: Operational workflows use documented synthetic event fixtures.
+- Source Provenance: Strict attribution separating Shopee Source A from Tokopedia Source B.

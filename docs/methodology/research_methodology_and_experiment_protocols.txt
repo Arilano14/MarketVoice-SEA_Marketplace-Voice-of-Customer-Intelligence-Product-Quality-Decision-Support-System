@@ -1,0 +1,15 @@
+================================================================================
+MARKETVOICE SEA — RESEARCH METHODOLOGY & EXPERIMENTAL PROTOCOLS
+================================================================================
+Scope: Research design, hypothesis testing, experiment tracking, and model evaluation protocols.
+================================================================================
+
+1. RESEARCH DESIGN & HYPOTHESIS TESTING
+- Statistical Framework: Two-Proportion Z-Test on low-rating dissatisfaction segments.
+- Statistical Significance: Alpha = 0.05 threshold for overrepresentation detection.
+- Cross-Validation: 5-Fold Stratified Cross-Validation for machine learning classifiers.
+
+2. EVALUATION METRICS
+- Classification: Accuracy, Macro Precision, Macro Recall, Macro F1, Weighted F1.
+- Inter-Annotator Agreement: Cohen's Kappa, Krippendorff's Alpha on Gold Benchmark sample.
+- Ranking Stability: Spearman Rank Correlation (rho) under Monte Carlo weight perturbation.

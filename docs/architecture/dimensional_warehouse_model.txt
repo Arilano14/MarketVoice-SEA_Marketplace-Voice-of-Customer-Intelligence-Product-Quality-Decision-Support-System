@@ -1,0 +1,22 @@
+================================================================================
+MARKETVOICE SEA — DIMENSIONAL WAREHOUSE MODEL SPECIFICATION
+================================================================================
+Scope: Kimball star schema, conformed dimensions, fact tables, and additive analytical marts.
+================================================================================
+
+1. SCHEMA: marketvoice_warehouse
+
+2. CONFORMED DIMENSIONS
+- dim_source: Marketplace data sources (SRC_SHOPEE, SRC_TOKOPEDIA).
+- dim_channel: Customer acquisition channels.
+- dim_category: Harmonized product categories (34 categories).
+- dim_product: Product master dimension (3,664 products).
+- dim_rating: Star rating metadata (1 to 5 stars).
+- dim_issue: Product defect and quality taxonomy (7 categories).
+- dim_priority_tier: Operational decision tiers (P1 to P4).
+
+3. FACT TABLES & MARTS
+- fact_review: 46,007 customer review transactions.
+- fact_review_prediction: Machine learning sentiment and rating model inferences.
+- fact_review_issue: 18,863 multi-label aspect defect occurrences.
+- fact_decision_queue: 5,090 prioritized action items with calculated Priority Ranking Score.

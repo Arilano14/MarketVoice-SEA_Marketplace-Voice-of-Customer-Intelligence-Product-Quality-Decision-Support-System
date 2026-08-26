@@ -1,0 +1,16 @@
+================================================================================
+MARKETVOICE SEA — PROJECT CHARTER & QUALITY STANDARDS
+================================================================================
+Scope: Business problem statement, project scope, deliverable milestones, and Definition of Done.
+================================================================================
+
+1. PROBLEM STATEMENT
+E-commerce customer reviews contain critical voice-of-customer signals regarding product defects,
+logistics delays, and packaging failures. MarketVoice SEA provides an automated data intelligence
+and decision support pipeline to transform raw reviews into prioritized quality improvement actions.
+
+2. PROJECT DEFINITION OF DONE
+- Data Integrity: Zero data loss and 100% referential integrity in data warehouse fact tables.
+- Model Performance: Cross-validated Macro F1 exceeding baseline thresholds.
+- Test Coverage: 100% pass rate across automated unit, integration, and regression suites.
+- Security Hygiene: Zero exposed secrets and automated PII sanitization.

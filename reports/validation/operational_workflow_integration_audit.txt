@@ -1,0 +1,17 @@
+================================================================================
+MARKETVOICE SEA — OPERATIONAL WORKFLOW & INFERENCE SERVICE AUDIT
+================================================================================
+Scope: FastAPI microservice, n8n webhook orchestration, idempotency ledger, and Human-in-the-Loop.
+Classification: Operational Integration Validation Report
+================================================================================
+
+1. FASTAPI MICROSERVICE VALIDATION
+- REST Endpoints: /health, /ready, /model, /v1/review/analyze, /v1/decision/evaluate, /v1/workflow/human-review.
+- Contract Compliance: 100% Pydantic schema validation.
+- Readiness Probe: Database connection, loaded NLP models, and taxonomy validated.
+
+2. N8N WORKFLOW AUTOMATION
+- DAG Topology: 12-node triage pipeline (workflows/n8n/workflows/marketvoice_review_triage.json).
+- Idempotency & PII: Deterministic SHA-256 idempotency key and regex PII masking verified.
+- Additive Operational Tables: operational_event_log, workflow_execution, human_review_case.
+- Audit Status: PASS (100% Verified).
