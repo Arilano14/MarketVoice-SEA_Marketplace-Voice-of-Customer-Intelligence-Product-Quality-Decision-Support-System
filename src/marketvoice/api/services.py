@@ -11,7 +11,6 @@ from typing import Dict, List, Optional, Tuple
 from datetime import datetime
 
 from marketvoice.analytics.taxonomy import ISSUE_TAXONOMY, TAXONOMY_VERSION
-from marketvoice.analytics.issue_classifier import ISSUE_KEYWORDS
 from marketvoice.decision.priority_score import (
     DEFAULT_WEIGHTS,
     CALCULATION_VERSION,
@@ -30,7 +29,6 @@ class InferenceService:
     def __init__(self, db_settings: Optional[DBSettings] = None):
         self.db_settings = db_settings or DBSettings.from_env()
         self.taxonomy = ISSUE_TAXONOMY
-        self.keywords = ISSUE_KEYWORDS
         self.weights = DEFAULT_WEIGHTS
 
     def analyze_review_text(
@@ -71,7 +69,7 @@ class InferenceService:
         # Aspect matching against frozen Taxonomy v1.0
         for iid, meta in self.taxonomy.items():
             name = meta["name"]
-            kw_list = self.keywords.get(iid, [])
+            kw_list = meta.get("keywords", [])
             matched_kws = [kw for kw in kw_list if kw in text_lower]
 
             if matched_kws:

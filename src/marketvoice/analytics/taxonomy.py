@@ -340,6 +340,16 @@ CANDIDATE_TAXONOMY = [
     },
 ]
 
+# Canonical dictionary mapping issue_id -> metadata
+ISSUE_TAXONOMY: Dict[int, Dict] = {
+    item["issue_id"]: {
+        "name": item["issue_name"],
+        "definition": item["definition"],
+        "keywords": item["evidence_keywords"],
+    }
+    for item in CANDIDATE_TAXONOMY
+}
+
 
 def validate_taxonomy_against_corpus(
     negative_texts: pd.Series,

@@ -26,8 +26,7 @@ from marketvoice.analytics.taxonomy import ISSUE_TAXONOMY, TAXONOMY_VERSION
 from marketvoice.decision.priority_score import DEFAULT_WEIGHTS, CALCULATION_VERSION
 from marketvoice.database.connection import DBSettings, connect
 from marketvoice.database.schema import SCHEMA
-from marketvoice.integration.idempotency import compute_idempotency_key
-from marketvoice.integration.event_processor import mask_pii
+from marketvoice.integration.idempotency import compute_idempotency_key, mask_pii
 
 router = APIRouter()
 _service = InferenceService()
