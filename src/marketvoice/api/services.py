@@ -20,7 +20,6 @@ from marketvoice.decision.reason_codes import generate_reason_codes
 from marketvoice.decision.decision_queue import PRIORITY_TIERS, score_to_tier
 from marketvoice.database.connection import DBSettings, connect
 from marketvoice.database.schema import SCHEMA
-from marketvoice.integration.idempotency import compute_idempotency_key
 
 
 class InferenceService:

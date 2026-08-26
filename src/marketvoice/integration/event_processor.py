@@ -132,26 +132,47 @@ def process_review_event(
         )
 
         detected_issues = analysis["detected_issues"]
-        primary_issue_id = analysis["primary_issue_id"] or 1
 
-        # 5. Step 2: Contextual Decision Evaluation
-        decision = service.evaluate_decision_context(
-            source_id=source_id,
-            issue_id=primary_issue_id,
-            product_id=product_id,
-            category_id=category_id,
-            current_rating=rating,
-        )
-
-        priority_score = float(decision["priority_score"])
-        tier_code = str(decision["priority_tier_code"])
-        reason_codes = list(decision["reason_codes"])
-
-        # 6. Step 3: Decision Routing
-        if tier_code in ["P1_CRITICAL", "P2_HIGH_PRIORITY"]:
-            routing_dest = "HUMAN_REVIEW_QUEUE"
-        else:
+        if not detected_issues:
+            # Positive or general review with zero detected defect issues
+            priority_score = 10.0
+            tier_code = "P4_INFORMATIONAL"
             routing_dest = "MONITORING_LOG"
+            reason_codes = ["RC_BASELINE_MONITORING"]
+            decision = {
+                "grain_type": "SINGLE_REVIEW_INCIDENTAL",
+                "entity_id": str(product_id or category_id or source_id),
+                "issue_id": 0,
+                "issue_name": "No Defect Detected",
+                "priority_score": 10.0,
+                "priority_tier_code": "P4_INFORMATIONAL",
+                "priority_tier_name": "Informational",
+                "guidance_recommendation": "Positive or general review; standard automated logging.",
+                "reason_codes": reason_codes,
+                "context_metrics": {},
+                "sub_scores": {},
+            }
+        else:
+            primary_issue_id = analysis["primary_issue_id"] or 1
+
+            # 5. Step 2: Contextual Decision Evaluation
+            decision = service.evaluate_decision_context(
+                source_id=source_id,
+                issue_id=primary_issue_id,
+                product_id=product_id,
+                category_id=category_id,
+                current_rating=rating,
+            )
+
+            priority_score = float(decision["priority_score"])
+            tier_code = str(decision["priority_tier_code"])
+            reason_codes = list(decision["reason_codes"])
+
+            # 6. Step 3: Decision Routing
+            if tier_code in ["P1_CRITICAL", "P2_HIGH_PRIORITY"]:
+                routing_dest = "HUMAN_REVIEW_QUEUE"
+            else:
+                routing_dest = "MONITORING_LOG"
 
         api_latency_ms = int((time.time() - start_time) * 1000)
 
