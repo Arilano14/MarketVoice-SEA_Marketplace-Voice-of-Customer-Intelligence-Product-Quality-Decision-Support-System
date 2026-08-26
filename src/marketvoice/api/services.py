@@ -223,7 +223,7 @@ class InferenceService:
                         JOIN {SCHEMA}.dim_category dc ON dc.category_sk = fdq.category_sk
                         JOIN {SCHEMA}.dim_source ds ON ds.source_sk = fdq.source_sk
                         JOIN {SCHEMA}.dim_priority_tier dpt ON dpt.tier_id = fdq.tier_id
-                        WHERE (dc.source_native_category = %s OR dc.category_sk::text = %s)
+                        WHERE (LOWER(dc.source_native_category) = LOWER(%s) OR dc.category_sk::text = %s)
                           AND ds.source_id = %s AND fdq.issue_id = %s
                     """, (str(category_id), str(category_id), str(source_id), int(issue_id)))
                     row = cur.fetchone()

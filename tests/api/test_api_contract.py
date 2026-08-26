@@ -132,7 +132,7 @@ class TestDecisionEvaluateEndpoint:
             "request_id": str(uuid.uuid4()),
             "source_id": "SRC_PRDECT_ID_V1",
             "issue_id": 2,
-            "category_id": "Elektronik",
+            "category_id": "Computers and Laptops",
             "payload_version": "1.0",
         }
         resp = client.post("/v1/decision/evaluate", json=payload)
