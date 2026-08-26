@@ -1,0 +1,32 @@
+path,action,reason,references_found,runtime_dependency,replacement,preservation_status,validation_status
+SECURITY.md,REWRITE,"Security & privacy policy hardening (responsible disclosure, data governance)",README.md,Governance baseline,SECURITY.md,Preserved & Hardened,PASS
+pyproject.toml,REWRITE,Declare verified empirical production dependencies,Project toolchain,Build & test runtime,pyproject.toml,Preserved & Upgraded,PASS
+docs/operations/operational_runbook.md,REWRITE,Strip conversational narration and update canonical runner paths,docs/engineering/documentation_index.md,Operations guide,docs/operations/operational_runbook.md,Preserved & Cleaned,PASS
+reports/archive/project_development_history.txt,CREATE,Consolidated technical history chronicle across Phases 1-11,Documentation suite,Audit archive,reports/archive/project_development_history.txt,Created,PASS
+docs/plans/phase_05_implementation_plan.md,CONSOLIDATE_DELETE,Consolidated into project_development_history.txt,0 active imports,None,reports/archive/project_development_history.txt,Consolidated,PASS
+docs/plans/phase_06_implementation_plan.md,CONSOLIDATE_DELETE,Consolidated into project_development_history.txt,0 active imports,None,reports/archive/project_development_history.txt,Consolidated,PASS
+docs/plans/phase_07_implementation_plan.md,CONSOLIDATE_DELETE,Consolidated into project_development_history.txt,0 active imports,None,reports/archive/project_development_history.txt,Consolidated,PASS
+docs/research/phase_09_issue_taxonomy.md,RENAME,Functional naming convention,docs/engineering/documentation_index.md,Taxonomy definition,docs/research/issue_taxonomy.md,Preserved,PASS
+docs/research/phase_10_decision_support.md,RENAME,Functional naming convention,docs/engineering/documentation_index.md,DSS mathematics,docs/research/decision_support.md,Preserved,PASS
+docs/engineering/documentation_index.md,CREATE,Authoritative documentation sitemap & canonical source-of-truth index,README.md,Documentation navigation,docs/engineering/documentation_index.md,Created,PASS
+models/README.md,CREATE,Model registry documentation & governance policy,models/metadata/,Model governance,models/README.md,Created,PASS
+dashboards/power_bi/README.md,CREATE,Power BI decision intelligence semantic layer specifications,Phase 12 BI,BI integration,dashboards/power_bi/README.md,Created,PASS
+workflows/n8n/marketvoice_review_triage.json,DELETE,Redundant top-level duplicate; canonical preserved in workflows/n8n/workflows/,0 runtime dependencies,None,workflows/n8n/workflows/marketvoice_review_triage.json,Preserved at canonical path,PASS
+workflows/n8n/credentials/,DELETE,Removed credentials template folder for strict security hygiene,0 runtime dependencies,None,Local n8n credential store,Cleaned,PASS
+workflows/n8n/fixtures/synthetic_p1_event.json,CREATE,Standalone synthetic P1 review event fixture,n8n webhook test harness,Test automation,workflows/n8n/fixtures/synthetic_p1_event.json,Created,PASS
+workflows/n8n/fixtures/synthetic_p2_event.json,CREATE,Standalone synthetic P2 review event fixture,n8n webhook test harness,Test automation,workflows/n8n/fixtures/synthetic_p2_event.json,Created,PASS
+workflows/n8n/fixtures/synthetic_p3_event.json,CREATE,Standalone synthetic P3 review event fixture,n8n webhook test harness,Test automation,workflows/n8n/fixtures/synthetic_p3_event.json,Created,PASS
+workflows/n8n/fixtures/synthetic_p4_event.json,CREATE,Standalone synthetic P4 review event fixture,n8n webhook test harness,Test automation,workflows/n8n/fixtures/synthetic_p4_event.json,Created,PASS
+scripts/runners/start_api.py,MOVE,FastAPI microservice launcher organized into scripts/runners/,docs/operations/operational_runbook.md,Service runtime launcher,scripts/runners/start_api.py,Preserved,PASS
+scripts/acquisition/register_dataset.py,MOVE,Dataset registration script organized into scripts/acquisition/,data/raw/README.md,Acquisition utility,scripts/acquisition/register_dataset.py,Preserved,PASS
+scripts/audit/audit_raw_datasets.py,MOVE,Data audit script organized into scripts/audit/,Forensic profiling,Audit tool,scripts/audit/audit_raw_datasets.py,Preserved,PASS
+scripts/audit/execute_data_hardening.py,MOVE,Data hardening script organized into scripts/audit/,Phase 2 baseline,Hardening tool,scripts/audit/execute_data_hardening.py,Preserved,PASS
+scripts/audit/validate_research_design.py,MOVE,Research design validation script organized into scripts/audit/,Phase 4 baseline,Validation tool,scripts/audit/validate_research_design.py,Preserved,PASS
+scripts/audit/validate_requirements.py,MOVE,Requirements alignment validator organized into scripts/audit/,Phase 3 baseline,Traceability tool,scripts/audit/validate_requirements.py,Preserved,PASS
+tests/unit/test_environment.py,MOVE,Relocated to unit tests folder,pytest suite,Unit testing,tests/unit/test_environment.py,Preserved,PASS
+tests/unit/test_etl_warehouse.py,MOVE,ETL & warehouse loading unit tests (formerly test_phase06.py),pytest suite,Unit testing,tests/unit/test_etl_warehouse.py,Preserved,PASS
+tests/unit/test_semantic_marts.py,MOVE,Analytical summary marts unit tests (formerly test_phase07.py),pytest suite,Unit testing,tests/unit/test_semantic_marts.py,Preserved,PASS
+tests/unit/test_nlp_models.py,MOVE,TF-IDF vectorizer & classifier unit tests (formerly test_modeling.py),pytest suite,Unit testing,tests/unit/test_nlp_models.py,Preserved,PASS
+tests/unit/test_issue_intelligence.py,MOVE,Issue taxonomy & aspect classification unit tests,pytest suite,Unit testing,tests/unit/test_issue_intelligence.py,Preserved,PASS
+tests/regression/test_gold_benchmark.py,MOVE,Gold validation benchmark regression tests (formerly test_analytical_validation.py),pytest suite,Regression testing,tests/regression/test_gold_benchmark.py,Preserved,PASS
+tests/regression/test_decision_support.py,MOVE,DSS priority scoring & sensitivity tests (formerly test_decision_support.py),pytest suite,Regression testing,tests/regression/test_decision_support.py,Preserved,PASS
