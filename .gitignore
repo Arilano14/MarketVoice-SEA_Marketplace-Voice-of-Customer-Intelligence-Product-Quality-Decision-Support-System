@@ -21,6 +21,9 @@ logs/*
 env/
 venv/
 .pipdeps/
+.n8n/
+workflows/n8n/data/
+workflows/n8n/node_modules/
 
 # Python
 __pycache__/
