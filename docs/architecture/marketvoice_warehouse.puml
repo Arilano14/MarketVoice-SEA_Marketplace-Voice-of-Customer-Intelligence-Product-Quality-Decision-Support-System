@@ -1,0 +1,293 @@
+@startuml
+!theme plain
+hide circle
+skinparam linetype ortho
+skinparam shadowing false
+title MarketVoice SEA — Relational Data Warehouse ERD
+
+entity "marketvoice_warehouse.data_quality_result" as data_quality_result {
+  * pipeline_run_id : uuid <<PK>>
+  * dq_check_id : text <<PK>>
+    severity : text
+    passed : boolean
+    actual_value : text
+    expected_value : text
+    evidence : text
+    measured_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.dim_category" as dim_category {
+  * category_sk : integer <<PK>>
+    source_sk : smallint
+    source_native_category : text
+    category_value_count_observations : integer
+}
+
+entity "marketvoice_warehouse.dim_issue" as dim_issue {
+  * issue_id : smallint <<PK>>
+    issue_name : character varying
+    issue_definition : text
+    evidence_keywords : text
+    in_scope : text
+    non_examples : text
+    ambiguity_rule : text
+    taxonomy_version : character varying
+    created_phase : character varying
+    status : character varying
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.dim_priority_tier" as dim_priority_tier {
+  * tier_id : smallint <<PK>>
+    tier_code : character varying
+    tier_name : character varying
+    score_min : numeric
+    score_max : numeric
+    guidance_recommendation : text
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.dim_product" as dim_product {
+  * product_sk : integer <<PK>>
+    source_sk : smallint
+    source_native_product_id : text
+    source_native_product_name : text
+    product_name_variant_count : smallint
+}
+
+entity "marketvoice_warehouse.dim_rating" as dim_rating {
+  * rating_sk : smallint <<PK>>
+    rating_value : smallint
+    rating_label : text
+    rating_bucket : text
+}
+
+entity "marketvoice_warehouse.dim_reason_code" as dim_reason_code {
+  * reason_code : character varying <<PK>>
+    reason_title : character varying
+    trigger_condition : text
+    dimension_category : character varying
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.dim_severity" as dim_severity {
+  * severity_id : smallint <<PK>>
+    severity_name : character varying
+    severity_definition : text
+    rating_range : character varying
+    status_note : character varying
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.dim_shop" as dim_shop {
+  * shop_sk : integer <<PK>>
+    source_sk : smallint
+    source_native_shop_id : text
+    shop_observation_count : integer
+}
+
+entity "marketvoice_warehouse.dim_source" as dim_source {
+  * source_sk : smallint <<PK>>
+    source_id : text
+    source_display_name : text
+    source_license : text
+    source_doi_or_ref : text
+    source_data_url : text
+    source_file_sha256 : text
+    source_row_count_manifest : integer
+    source_column_count : integer
+    source_locale : text
+    registered_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.fact_decision_queue" as fact_decision_queue {
+  * decision_sk : integer <<PK>>
+    source_sk : integer
+    grain_type : character varying
+    product_sk : integer
+    category_sk : integer
+    issue_id : smallint
+    priority_score : numeric
+    tier_id : smallint
+    severity_impact_score : numeric
+    dissatisfaction_score : numeric
+    recurrence_score : numeric
+    volume_score : numeric
+    confidence_score : numeric
+    evidence_support : integer
+    distinct_review_events : integer
+    critical_severity_count : integer
+    reason_codes : ARRAY
+    calculation_version : character varying
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.fact_review" as fact_review {
+  * review_sk : bigint <<PK>>
+    source_sk : smallint
+    source_native_row_hash : text
+    source_row_number : integer
+    source_file_sha256 : text
+    rating_sk : smallint
+    rating_value : smallint
+    category_sk : integer
+    product_sk : integer
+    shop_sk : integer
+    review_text : text
+    review_text_len_chars : integer
+    source_gold_sentiment_label : text
+    source_gold_emotion_label : text
+    source_a_location_text : text
+    source_a_product_name_text : text
+    source_a_price_text : text
+    source_a_overall_rating_text : text
+    source_a_number_sold_text : text
+    source_a_total_review_text : text
+    source_b_product_name : text
+    source_b_sold_raw_text : text
+    source_b_product_url : text
+    is_synthetic : boolean
+    pipeline_run_id : uuid
+    ingested_at : timestamp with time zone
+    processed_at : timestamp with time zone
+    loaded_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.fact_review_issue" as fact_review_issue {
+  * assignment_sk : integer <<PK>>
+    review_sk : integer
+    source_sk : integer
+    issue_id : smallint
+    severity_id : smallint
+    matched_keywords : text
+    keyword_count : smallint
+    confidence : numeric
+    model_version : character varying
+    classification_method : character varying
+    taxonomy_version : character varying
+    pipeline_run_id : character varying
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.human_review_case" as human_review_case {
+  * case_sk : bigint <<PK>>
+    case_id : character varying
+    idempotency_key : character varying
+    source_id : character varying
+    product_id : character varying
+    category_id : character varying
+    issue_name : character varying
+    priority_score : numeric
+    tier_code : character varying
+    reason_codes : ARRAY
+    review_status : character varying
+    assigned_reviewer : character varying
+    resolution_notes : text
+    resolution_action : character varying
+    created_at : timestamp with time zone
+    resolved_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.human_review_outcome" as human_review_outcome {
+  * outcome_sk : bigint <<PK>>
+    case_sk : bigint
+    idempotency_key : character varying
+    action_type : character varying
+    action_notes : text
+    performed_by : character varying
+    action_timestamp : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.operational_event_log" as operational_event_log {
+  * event_sk : bigint <<PK>>
+    idempotency_key : character varying
+    request_id : character varying
+    source_id : character varying
+    source_review_id : character varying
+    payload_hash : character varying
+    rating_value : smallint
+    detected_issues_count : smallint
+    priority_score : numeric
+    tier_code : character varying
+    routing_destination : character varying
+    is_duplicate : boolean
+    raw_payload : jsonb
+    api_response : jsonb
+    created_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.pipeline_run" as pipeline_run {
+  * pipeline_run_id : uuid <<PK>>
+    started_at : timestamp with time zone
+    completed_at : timestamp with time zone
+    status : text
+    pipeline_version : text
+    input_rows_total : integer
+    accepted_rows_total : integer
+    rejected_rows_total : integer
+    loaded_rows_total : integer
+    source_a_file_sha256 : text
+    source_b_file_sha256 : text
+    source_a_rows_manifest : integer
+    source_b_rows_manifest : integer
+    source_a_rows_read : integer
+    source_b_rows_read : integer
+    source_a_rows_loaded : integer
+    source_b_rows_loaded : integer
+    critical_dq_fails : integer
+    major_dq_fails : integer
+    notes : text
+}
+
+entity "marketvoice_warehouse.rejected_record_log" as rejected_record_log {
+  * rejection_id : integer <<PK>>
+    pipeline_run_id : uuid
+    source_id : text
+    source_row_number : integer
+    source_native_row_hash : text
+    stage : text
+    severity : text
+    dq_check_id : text
+    reason_code : text
+    reason_text : text
+    raw_row_snippet : text
+    ingested_at : timestamp with time zone
+}
+
+entity "marketvoice_warehouse.workflow_execution" as workflow_execution {
+  * execution_sk : bigint <<PK>>
+    workflow_id : character varying
+    execution_id : character varying
+    idempotency_key : character varying
+    execution_status : character varying
+    retry_count : smallint
+    api_latency_ms : integer
+    total_execution_ms : integer
+    error_details : jsonb
+    created_at : timestamp with time zone
+}
+
+rejected_record_log }|--|| pipeline_run : pipeline_run_id
+data_quality_result }|--|| pipeline_run : pipeline_run_id
+dim_category }|--|| dim_source : source_sk
+dim_product }|--|| dim_source : source_sk
+dim_shop }|--|| dim_source : source_sk
+fact_review }|--|| dim_source : source_sk
+fact_review }|--|| dim_rating : rating_sk
+fact_review }|--|| dim_category : category_sk
+fact_review }|--|| dim_product : product_sk
+fact_review }|--|| dim_shop : shop_sk
+fact_review }|--|| pipeline_run : pipeline_run_id
+fact_review_issue }|--|| fact_review : review_sk
+fact_review_issue }|--|| dim_source : source_sk
+fact_review_issue }|--|| dim_issue : issue_id
+fact_review_issue }|--|| dim_severity : severity_id
+fact_decision_queue }|--|| dim_source : source_sk
+fact_decision_queue }|--|| dim_product : product_sk
+fact_decision_queue }|--|| dim_category : category_sk
+fact_decision_queue }|--|| dim_issue : issue_id
+fact_decision_queue }|--|| dim_priority_tier : tier_id
+workflow_execution }|--|| operational_event_log : idempotency_key
+human_review_case }|--|| operational_event_log : idempotency_key
+human_review_outcome }|--|| human_review_case : case_sk
+@enduml

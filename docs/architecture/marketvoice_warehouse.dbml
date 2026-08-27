@@ -1,0 +1,288 @@
+// MarketVoice SEA — PostgreSQL Warehouse Schema DBML
+
+Table marketvoice_warehouse.data_quality_result {
+  pipeline_run_id uuid [pk]
+  dq_check_id text [pk]
+  severity text [not null]
+  passed boolean [not null]
+  actual_value text
+  expected_value text
+  evidence text
+  measured_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.dim_category {
+  category_sk integer [pk]
+  source_sk smallint [not null]
+  source_native_category text [not null]
+  category_value_count_observations integer [not null]
+}
+
+Table marketvoice_warehouse.dim_issue {
+  issue_id smallint [pk]
+  issue_name character_varying [not null]
+  issue_definition text [not null]
+  evidence_keywords text [not null]
+  in_scope text
+  non_examples text
+  ambiguity_rule text
+  taxonomy_version character_varying [not null]
+  created_phase character_varying [not null]
+  status character_varying [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.dim_priority_tier {
+  tier_id smallint [pk]
+  tier_code character_varying [not null]
+  tier_name character_varying [not null]
+  score_min numeric [not null]
+  score_max numeric [not null]
+  guidance_recommendation text [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.dim_product {
+  product_sk integer [pk]
+  source_sk smallint [not null]
+  source_native_product_id text [not null]
+  source_native_product_name text
+  product_name_variant_count smallint [not null]
+}
+
+Table marketvoice_warehouse.dim_rating {
+  rating_sk smallint [pk]
+  rating_value smallint [not null]
+  rating_label text [not null]
+  rating_bucket text [not null]
+}
+
+Table marketvoice_warehouse.dim_reason_code {
+  reason_code character_varying [pk]
+  reason_title character_varying [not null]
+  trigger_condition text [not null]
+  dimension_category character_varying [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.dim_severity {
+  severity_id smallint [pk]
+  severity_name character_varying [not null]
+  severity_definition text [not null]
+  rating_range character_varying [not null]
+  status_note character_varying [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.dim_shop {
+  shop_sk integer [pk]
+  source_sk smallint [not null]
+  source_native_shop_id text [not null]
+  shop_observation_count integer [not null]
+}
+
+Table marketvoice_warehouse.dim_source {
+  source_sk smallint [pk]
+  source_id text [not null]
+  source_display_name text [not null]
+  source_license text [not null]
+  source_doi_or_ref text
+  source_data_url text
+  source_file_sha256 text [not null]
+  source_row_count_manifest integer [not null]
+  source_column_count integer [not null]
+  source_locale text [not null]
+  registered_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.fact_decision_queue {
+  decision_sk integer [pk]
+  source_sk integer [not null]
+  grain_type character_varying [not null]
+  product_sk integer
+  category_sk integer
+  issue_id smallint [not null]
+  priority_score numeric [not null]
+  tier_id smallint [not null]
+  severity_impact_score numeric [not null]
+  dissatisfaction_score numeric [not null]
+  recurrence_score numeric [not null]
+  volume_score numeric [not null]
+  confidence_score numeric [not null]
+  evidence_support integer [not null]
+  distinct_review_events integer [not null]
+  critical_severity_count integer [not null]
+  reason_codes ARRAY [not null]
+  calculation_version character_varying [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.fact_review {
+  review_sk bigint [pk]
+  source_sk smallint [not null]
+  source_native_row_hash text [not null]
+  source_row_number integer [not null]
+  source_file_sha256 text [not null]
+  rating_sk smallint [not null]
+  rating_value smallint [not null]
+  category_sk integer [not null]
+  product_sk integer
+  shop_sk integer
+  review_text text [not null]
+  review_text_len_chars integer [not null]
+  source_gold_sentiment_label text
+  source_gold_emotion_label text
+  source_a_location_text text
+  source_a_product_name_text text
+  source_a_price_text text
+  source_a_overall_rating_text text
+  source_a_number_sold_text text
+  source_a_total_review_text text
+  source_b_product_name text
+  source_b_sold_raw_text text
+  source_b_product_url text
+  is_synthetic boolean [not null]
+  pipeline_run_id uuid [not null]
+  ingested_at timestamp_with_time_zone [not null]
+  processed_at timestamp_with_time_zone [not null]
+  loaded_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.fact_review_issue {
+  assignment_sk integer [pk]
+  review_sk integer [not null]
+  source_sk integer [not null]
+  issue_id smallint [not null]
+  severity_id smallint [not null]
+  matched_keywords text
+  keyword_count smallint [not null]
+  confidence numeric [not null]
+  model_version character_varying [not null]
+  classification_method character_varying [not null]
+  taxonomy_version character_varying [not null]
+  pipeline_run_id character_varying
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.human_review_case {
+  case_sk bigint [pk]
+  case_id character_varying [not null]
+  idempotency_key character_varying [not null]
+  source_id character_varying [not null]
+  product_id character_varying
+  category_id character_varying
+  issue_name character_varying [not null]
+  priority_score numeric [not null]
+  tier_code character_varying [not null]
+  reason_codes ARRAY [not null]
+  review_status character_varying [not null]
+  assigned_reviewer character_varying
+  resolution_notes text
+  resolution_action character_varying
+  created_at timestamp_with_time_zone [not null]
+  resolved_at timestamp_with_time_zone
+}
+
+Table marketvoice_warehouse.human_review_outcome {
+  outcome_sk bigint [pk]
+  case_sk bigint
+  idempotency_key character_varying [not null]
+  action_type character_varying [not null]
+  action_notes text [not null]
+  performed_by character_varying [not null]
+  action_timestamp timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.operational_event_log {
+  event_sk bigint [pk]
+  idempotency_key character_varying [not null]
+  request_id character_varying [not null]
+  source_id character_varying [not null]
+  source_review_id character_varying [not null]
+  payload_hash character_varying [not null]
+  rating_value smallint [not null]
+  detected_issues_count smallint [not null]
+  priority_score numeric [not null]
+  tier_code character_varying [not null]
+  routing_destination character_varying [not null]
+  is_duplicate boolean [not null]
+  raw_payload jsonb [not null]
+  api_response jsonb [not null]
+  created_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.pipeline_run {
+  pipeline_run_id uuid [pk]
+  started_at timestamp_with_time_zone [not null]
+  completed_at timestamp_with_time_zone
+  status text [not null]
+  pipeline_version text [not null]
+  input_rows_total integer [not null]
+  accepted_rows_total integer [not null]
+  rejected_rows_total integer [not null]
+  loaded_rows_total integer [not null]
+  source_a_file_sha256 text [not null]
+  source_b_file_sha256 text [not null]
+  source_a_rows_manifest integer [not null]
+  source_b_rows_manifest integer [not null]
+  source_a_rows_read integer [not null]
+  source_b_rows_read integer [not null]
+  source_a_rows_loaded integer [not null]
+  source_b_rows_loaded integer [not null]
+  critical_dq_fails integer [not null]
+  major_dq_fails integer [not null]
+  notes text
+}
+
+Table marketvoice_warehouse.rejected_record_log {
+  rejection_id integer [pk]
+  pipeline_run_id uuid [not null]
+  source_id text [not null]
+  source_row_number integer [not null]
+  source_native_row_hash text
+  stage text [not null]
+  severity text [not null]
+  dq_check_id text [not null]
+  reason_code text [not null]
+  reason_text text [not null]
+  raw_row_snippet text
+  ingested_at timestamp_with_time_zone [not null]
+}
+
+Table marketvoice_warehouse.workflow_execution {
+  execution_sk bigint [pk]
+  workflow_id character_varying [not null]
+  execution_id character_varying [not null]
+  idempotency_key character_varying [not null]
+  execution_status character_varying [not null]
+  retry_count smallint [not null]
+  api_latency_ms integer [not null]
+  total_execution_ms integer [not null]
+  error_details jsonb
+  created_at timestamp_with_time_zone [not null]
+}
+
+// Relationships
+Ref: marketvoice_warehouse.rejected_record_log.pipeline_run_id > marketvoice_warehouse.pipeline_run.pipeline_run_id
+Ref: marketvoice_warehouse.data_quality_result.pipeline_run_id > marketvoice_warehouse.pipeline_run.pipeline_run_id
+Ref: marketvoice_warehouse.dim_category.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.dim_product.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.dim_shop.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.fact_review.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.fact_review.rating_sk > marketvoice_warehouse.dim_rating.rating_sk
+Ref: marketvoice_warehouse.fact_review.category_sk > marketvoice_warehouse.dim_category.category_sk
+Ref: marketvoice_warehouse.fact_review.product_sk > marketvoice_warehouse.dim_product.product_sk
+Ref: marketvoice_warehouse.fact_review.shop_sk > marketvoice_warehouse.dim_shop.shop_sk
+Ref: marketvoice_warehouse.fact_review.pipeline_run_id > marketvoice_warehouse.pipeline_run.pipeline_run_id
+Ref: marketvoice_warehouse.fact_review_issue.review_sk > marketvoice_warehouse.fact_review.review_sk
+Ref: marketvoice_warehouse.fact_review_issue.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.fact_review_issue.issue_id > marketvoice_warehouse.dim_issue.issue_id
+Ref: marketvoice_warehouse.fact_review_issue.severity_id > marketvoice_warehouse.dim_severity.severity_id
+Ref: marketvoice_warehouse.fact_decision_queue.source_sk > marketvoice_warehouse.dim_source.source_sk
+Ref: marketvoice_warehouse.fact_decision_queue.product_sk > marketvoice_warehouse.dim_product.product_sk
+Ref: marketvoice_warehouse.fact_decision_queue.category_sk > marketvoice_warehouse.dim_category.category_sk
+Ref: marketvoice_warehouse.fact_decision_queue.issue_id > marketvoice_warehouse.dim_issue.issue_id
+Ref: marketvoice_warehouse.fact_decision_queue.tier_id > marketvoice_warehouse.dim_priority_tier.tier_id
+Ref: marketvoice_warehouse.workflow_execution.idempotency_key > marketvoice_warehouse.operational_event_log.idempotency_key
+Ref: marketvoice_warehouse.human_review_case.idempotency_key > marketvoice_warehouse.operational_event_log.idempotency_key
+Ref: marketvoice_warehouse.human_review_outcome.case_sk > marketvoice_warehouse.human_review_case.case_sk

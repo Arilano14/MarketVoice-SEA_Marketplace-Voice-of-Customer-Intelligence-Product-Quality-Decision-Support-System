@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketVoice SEA — Relational Data Warehouse ERD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #1f2937;
+      --bg-card-hover: #374151;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --border-color: #374151;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: white;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.45rem 0.9rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-blue);
+      color: white;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      border-color: #1d4ed8;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    }
+    .main-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      flex: 1;
+      height: calc(100vh - 73px);
+    }
+    .sidebar {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      overflow-y: auto;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .search-box {
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.55rem 0.75rem 0.55rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--accent-blue);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.65rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .table-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .table-item {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.15s ease;
+      color: var(--text-secondary);
+    }
+    .table-item:hover, .table-item.active {
+      background: var(--bg-card);
+      border-color: var(--border-color);
+      color: var(--text-primary);
+    }
+    .table-item.active {
+      border-left: 3px solid var(--accent-blue);
+    }
+    .table-pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+    }
+    .pill-fact { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+    .pill-dim { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
+    .pill-ops { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+    .pill-sys { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+    
+    .canvas-container {
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #172033 0%, #0b0f19 100%);
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    .canvas-controls {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(31, 41, 55, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      z-index: 10;
+    }
+    .ctrl-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.35rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .ctrl-btn:hover {
+      background: var(--bg-card-hover);
+      color: white;
+    }
+    .stats-bar {
+      display: flex;
+      gap: 1.5rem;
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-val {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+    .stat-lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    #diagram-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-width: 100%;
+      min-height: 100%;
+      transition: transform 0.2s ease;
+      transform-origin: center top;
+    }
+    .mermaid {
+      background: transparent;
+    }
+    
+    /* Table detail modal */
+    .detail-panel {
+      display: none;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 450px;
+      max-height: 500px;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+      z-index: 100;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    .detail-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+    }
+    .detail-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+    .detail-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+    .detail-body {
+      padding: 1rem;
+      overflow-y: auto;
+      font-size: 0.85rem;
+    }
+    .col-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .col-table th, .col-table td {
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+    }
+    .col-table th {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .col-pk {
+      color: var(--accent-amber);
+      font-weight: 600;
+    }
+    .col-type {
+      font-family: var(--font-mono);
+      color: var(--accent-purple);
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="brand-badge">POSTGRESQL</span>
+      <div>
+        <h1>MarketVoice SEA — Relational Schema ERD</h1>
+        <p>Enterprise Data Warehouse, Issue Intelligence & Operational Workflow Topology</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="../docs/architecture/marketvoice_warehouse.dbml" download class="btn">Download DBML</a>
+      <a href="../docs/architecture/marketvoice_warehouse.puml" download class="btn">Download PlantUML</a>
+      <button class="btn btn-primary" onclick="resetZoom()">Reset View</button>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <aside class="sidebar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="tableSearch" class="search-input" placeholder="Search tables..." oninput="filterTables()">
+      </div>
+
+      <div>
+        <div class="section-title">Schema Tables (19)</div>
+        <div class="table-list" id="tableListContainer">
+
+          <div class="table-item" onclick="showTableDetail('data_quality_result')" data-name="data_quality_result">
+            <span>data_quality_result</span>
+            <span class="table-pill pill-sys">SYSTEM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_category')" data-name="dim_category">
+            <span>dim_category</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_issue')" data-name="dim_issue">
+            <span>dim_issue</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_priority_tier')" data-name="dim_priority_tier">
+            <span>dim_priority_tier</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_product')" data-name="dim_product">
+            <span>dim_product</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_rating')" data-name="dim_rating">
+            <span>dim_rating</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_reason_code')" data-name="dim_reason_code">
+            <span>dim_reason_code</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_severity')" data-name="dim_severity">
+            <span>dim_severity</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_shop')" data-name="dim_shop">
+            <span>dim_shop</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('dim_source')" data-name="dim_source">
+            <span>dim_source</span>
+            <span class="table-pill pill-dim">DIM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('fact_decision_queue')" data-name="fact_decision_queue">
+            <span>fact_decision_queue</span>
+            <span class="table-pill pill-fact">FACT</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('fact_review')" data-name="fact_review">
+            <span>fact_review</span>
+            <span class="table-pill pill-fact">FACT</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('fact_review_issue')" data-name="fact_review_issue">
+            <span>fact_review_issue</span>
+            <span class="table-pill pill-fact">FACT</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('human_review_case')" data-name="human_review_case">
+            <span>human_review_case</span>
+            <span class="table-pill pill-ops">OPS</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('human_review_outcome')" data-name="human_review_outcome">
+            <span>human_review_outcome</span>
+            <span class="table-pill pill-ops">OPS</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('operational_event_log')" data-name="operational_event_log">
+            <span>operational_event_log</span>
+            <span class="table-pill pill-ops">OPS</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('pipeline_run')" data-name="pipeline_run">
+            <span>pipeline_run</span>
+            <span class="table-pill pill-sys">SYSTEM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('rejected_record_log')" data-name="rejected_record_log">
+            <span>rejected_record_log</span>
+            <span class="table-pill pill-sys">SYSTEM</span>
+          </div>
+          <div class="table-item" onclick="showTableDetail('workflow_execution')" data-name="workflow_execution">
+            <span>workflow_execution</span>
+            <span class="table-pill pill-ops">OPS</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="canvas-container">
+      <div class="canvas-controls">
+        <button class="ctrl-btn" onclick="zoomIn()" title="Zoom In">+</button>
+        <button class="ctrl-btn" onclick="zoomOut()" title="Zoom Out">-</button>
+        <button class="ctrl-btn" onclick="resetZoom()" title="Reset Zoom">⟲</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-val">19</span>
+          <span class="stat-lbl">Base Tables</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">23</span>
+          <span class="stat-lbl">Foreign Keys</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">14</span>
+          <span class="stat-lbl">Analytical Mart Views</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">46,007</span>
+          <span class="stat-lbl">Review Facts</span>
+        </div>
+      </div>
+
+      <div id="diagram-wrapper">
+        <pre class="mermaid">
+erDiagram
+  data_quality_result {
+    uuid pipeline_run_id PK
+    text dq_check_id PK
+    text severity 
+    boolean passed 
+    text actual_value 
+    text expected_value 
+    text evidence 
+    timestamp_with_time_zone measured_at 
+  }
+  dim_category {
+    integer category_sk PK
+    smallint source_sk 
+    text source_native_category 
+    integer category_value_count_observations 
+  }
+  dim_issue {
+    smallint issue_id PK
+    character_varying issue_name 
+    text issue_definition 
+    text evidence_keywords 
+    text in_scope 
+    text non_examples 
+    text ambiguity_rule 
+    character_varying taxonomy_version 
+    character_varying created_phase 
+    character_varying status 
+    timestamp_with_time_zone created_at 
+  }
+  dim_priority_tier {
+    smallint tier_id PK
+    character_varying tier_code 
+    character_varying tier_name 
+    numeric score_min 
+    numeric score_max 
+    text guidance_recommendation 
+    timestamp_with_time_zone created_at 
+  }
+  dim_product {
+    integer product_sk PK
+    smallint source_sk 
+    text source_native_product_id 
+    text source_native_product_name 
+    smallint product_name_variant_count 
+  }
+  dim_rating {
+    smallint rating_sk PK
+    smallint rating_value 
+    text rating_label 
+    text rating_bucket 
+  }
+  dim_reason_code {
+    character_varying reason_code PK
+    character_varying reason_title 
+    text trigger_condition 
+    character_varying dimension_category 
+    timestamp_with_time_zone created_at 
+  }
+  dim_severity {
+    smallint severity_id PK
+    character_varying severity_name 
+    text severity_definition 
+    character_varying rating_range 
+    character_varying status_note 
+    timestamp_with_time_zone created_at 
+  }
+  dim_shop {
+    integer shop_sk PK
+    smallint source_sk 
+    text source_native_shop_id 
+    integer shop_observation_count 
+  }
+  dim_source {
+    smallint source_sk PK
+    text source_id 
+    text source_display_name 
+    text source_license 
+    text source_doi_or_ref 
+    text source_data_url 
+    text source_file_sha256 
+    integer source_row_count_manifest 
+    integer source_column_count 
+    text source_locale 
+    timestamp_with_time_zone registered_at 
+  }
+  fact_decision_queue {
+    integer decision_sk PK
+    integer source_sk 
+    character_varying grain_type 
+    integer product_sk 
+    integer category_sk 
+    smallint issue_id 
+    numeric priority_score 
+    smallint tier_id 
+    numeric severity_impact_score 
+    numeric dissatisfaction_score 
+    numeric recurrence_score 
+    numeric volume_score 
+    numeric confidence_score 
+    integer evidence_support 
+    integer distinct_review_events 
+    integer critical_severity_count 
+    ARRAY reason_codes 
+    character_varying calculation_version 
+    timestamp_with_time_zone created_at 
+  }
+  fact_review {
+    bigint review_sk PK
+    smallint source_sk 
+    text source_native_row_hash 
+    integer source_row_number 
+    text source_file_sha256 
+    smallint rating_sk 
+    smallint rating_value 
+    integer category_sk 
+    integer product_sk 
+    integer shop_sk 
+    text review_text 
+    integer review_text_len_chars 
+    text source_gold_sentiment_label 
+    text source_gold_emotion_label 
+    text source_a_location_text 
+    text source_a_product_name_text 
+    text source_a_price_text 
+    text source_a_overall_rating_text 
+    text source_a_number_sold_text 
+    text source_a_total_review_text 
+    text source_b_product_name 
+    text source_b_sold_raw_text 
+    text source_b_product_url 
+    boolean is_synthetic 
+    uuid pipeline_run_id 
+    timestamp_with_time_zone ingested_at 
+    timestamp_with_time_zone processed_at 
+    timestamp_with_time_zone loaded_at 
+  }
+  fact_review_issue {
+    integer assignment_sk PK
+    integer review_sk 
+    integer source_sk 
+    smallint issue_id 
+    smallint severity_id 
+    text matched_keywords 
+    smallint keyword_count 
+    numeric confidence 
+    character_varying model_version 
+    character_varying classification_method 
+    character_varying taxonomy_version 
+    character_varying pipeline_run_id 
+    timestamp_with_time_zone created_at 
+  }
+  human_review_case {
+    bigint case_sk PK
+    character_varying case_id 
+    character_varying idempotency_key 
+    character_varying source_id 
+    character_varying product_id 
+    character_varying category_id 
+    character_varying issue_name 
+    numeric priority_score 
+    character_varying tier_code 
+    ARRAY reason_codes 
+    character_varying review_status 
+    character_varying assigned_reviewer 
+    text resolution_notes 
+    character_varying resolution_action 
+    timestamp_with_time_zone created_at 
+    timestamp_with_time_zone resolved_at 
+  }
+  human_review_outcome {
+    bigint outcome_sk PK
+    bigint case_sk 
+    character_varying idempotency_key 
+    character_varying action_type 
+    text action_notes 
+    character_varying performed_by 
+    timestamp_with_time_zone action_timestamp 
+  }
+  operational_event_log {
+    bigint event_sk PK
+    character_varying idempotency_key 
+    character_varying request_id 
+    character_varying source_id 
+    character_varying source_review_id 
+    character_varying payload_hash 
+    smallint rating_value 
+    smallint detected_issues_count 
+    numeric priority_score 
+    character_varying tier_code 
+    character_varying routing_destination 
+    boolean is_duplicate 
+    jsonb raw_payload 
+    jsonb api_response 
+    timestamp_with_time_zone created_at 
+  }
+  pipeline_run {
+    uuid pipeline_run_id PK
+    timestamp_with_time_zone started_at 
+    timestamp_with_time_zone completed_at 
+    text status 
+    text pipeline_version 
+    integer input_rows_total 
+    integer accepted_rows_total 
+    integer rejected_rows_total 
+    integer loaded_rows_total 
+    text source_a_file_sha256 
+    text source_b_file_sha256 
+    integer source_a_rows_manifest 
+    integer source_b_rows_manifest 
+    integer source_a_rows_read 
+    integer source_b_rows_read 
+    integer source_a_rows_loaded 
+    integer source_b_rows_loaded 
+    integer critical_dq_fails 
+    integer major_dq_fails 
+    text notes 
+  }
+  rejected_record_log {
+    integer rejection_id PK
+    uuid pipeline_run_id 
+    text source_id 
+    integer source_row_number 
+    text source_native_row_hash 
+    text stage 
+    text severity 
+    text dq_check_id 
+    text reason_code 
+    text reason_text 
+    text raw_row_snippet 
+    timestamp_with_time_zone ingested_at 
+  }
+  workflow_execution {
+    bigint execution_sk PK
+    character_varying workflow_id 
+    character_varying execution_id 
+    character_varying idempotency_key 
+    character_varying execution_status 
+    smallint retry_count 
+    integer api_latency_ms 
+    integer total_execution_ms 
+    jsonb error_details 
+    timestamp_with_time_zone created_at 
+  }
+  pipeline_run ||--o{ rejected_record_log : "references"
+  pipeline_run ||--o{ data_quality_result : "references"
+  dim_source ||--o{ dim_category : "references"
+  dim_source ||--o{ dim_product : "references"
+  dim_source ||--o{ dim_shop : "references"
+  dim_source ||--o{ fact_review : "references"
+  dim_rating ||--o{ fact_review : "references"
+  dim_category ||--o{ fact_review : "references"
+  dim_product ||--o{ fact_review : "references"
+  dim_shop ||--o{ fact_review : "references"
+  pipeline_run ||--o{ fact_review : "references"
+  fact_review ||--o{ fact_review_issue : "references"
+  dim_source ||--o{ fact_review_issue : "references"
+  dim_issue ||--o{ fact_review_issue : "references"
+  dim_severity ||--o{ fact_review_issue : "references"
+  dim_source ||--o{ fact_decision_queue : "references"
+  dim_product ||--o{ fact_decision_queue : "references"
+  dim_category ||--o{ fact_decision_queue : "references"
+  dim_issue ||--o{ fact_decision_queue : "references"
+  dim_priority_tier ||--o{ fact_decision_queue : "references"
+  operational_event_log ||--o{ workflow_execution : "references"
+  operational_event_log ||--o{ human_review_case : "references"
+  human_review_case ||--o{ human_review_outcome : "references"
+        </pre>
+      </div>
+    </main>
+  </div>
+
+  <div id="detailPanel" class="detail-panel">
+    <div class="detail-header">
+      <span id="detailTitle" class="detail-title">table_name</span>
+      <button class="detail-close" onclick="closeDetail()">×</button>
+    </div>
+    <div class="detail-body" id="detailBody">
+      <!-- Columns table -->
+    </div>
+  </div>
+
+  <script>
+    const schemaData = {"tables": {"data_quality_result": {"columns": [{"name": "pipeline_run_id", "type": "uuid", "nullable": false}, {"name": "dq_check_id", "type": "text", "nullable": false}, {"name": "severity", "type": "text", "nullable": false}, {"name": "passed", "type": "boolean", "nullable": false}, {"name": "actual_value", "type": "text", "nullable": true}, {"name": "expected_value", "type": "text", "nullable": true}, {"name": "evidence", "type": "text", "nullable": true}, {"name": "measured_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["pipeline_run_id", "dq_check_id"]}, "dim_category": {"columns": [{"name": "category_sk", "type": "integer", "nullable": false}, {"name": "source_sk", "type": "smallint", "nullable": false}, {"name": "source_native_category", "type": "text", "nullable": false}, {"name": "category_value_count_observations", "type": "integer", "nullable": false}], "pk": ["category_sk"]}, "dim_issue": {"columns": [{"name": "issue_id", "type": "smallint", "nullable": false}, {"name": "issue_name", "type": "character varying", "nullable": false}, {"name": "issue_definition", "type": "text", "nullable": false}, {"name": "evidence_keywords", "type": "text", "nullable": false}, {"name": "in_scope", "type": "text", "nullable": true}, {"name": "non_examples", "type": "text", "nullable": true}, {"name": "ambiguity_rule", "type": "text", "nullable": true}, {"name": "taxonomy_version", "type": "character varying", "nullable": false}, {"name": "created_phase", "type": "character varying", "nullable": false}, {"name": "status", "type": "character varying", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["issue_id"]}, "dim_priority_tier": {"columns": [{"name": "tier_id", "type": "smallint", "nullable": false}, {"name": "tier_code", "type": "character varying", "nullable": false}, {"name": "tier_name", "type": "character varying", "nullable": false}, {"name": "score_min", "type": "numeric", "nullable": false}, {"name": "score_max", "type": "numeric", "nullable": false}, {"name": "guidance_recommendation", "type": "text", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["tier_id"]}, "dim_product": {"columns": [{"name": "product_sk", "type": "integer", "nullable": false}, {"name": "source_sk", "type": "smallint", "nullable": false}, {"name": "source_native_product_id", "type": "text", "nullable": false}, {"name": "source_native_product_name", "type": "text", "nullable": true}, {"name": "product_name_variant_count", "type": "smallint", "nullable": false}], "pk": ["product_sk"]}, "dim_rating": {"columns": [{"name": "rating_sk", "type": "smallint", "nullable": false}, {"name": "rating_value", "type": "smallint", "nullable": false}, {"name": "rating_label", "type": "text", "nullable": false}, {"name": "rating_bucket", "type": "text", "nullable": false}], "pk": ["rating_sk"]}, "dim_reason_code": {"columns": [{"name": "reason_code", "type": "character varying", "nullable": false}, {"name": "reason_title", "type": "character varying", "nullable": false}, {"name": "trigger_condition", "type": "text", "nullable": false}, {"name": "dimension_category", "type": "character varying", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["reason_code"]}, "dim_severity": {"columns": [{"name": "severity_id", "type": "smallint", "nullable": false}, {"name": "severity_name", "type": "character varying", "nullable": false}, {"name": "severity_definition", "type": "text", "nullable": false}, {"name": "rating_range", "type": "character varying", "nullable": false}, {"name": "status_note", "type": "character varying", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["severity_id"]}, "dim_shop": {"columns": [{"name": "shop_sk", "type": "integer", "nullable": false}, {"name": "source_sk", "type": "smallint", "nullable": false}, {"name": "source_native_shop_id", "type": "text", "nullable": false}, {"name": "shop_observation_count", "type": "integer", "nullable": false}], "pk": ["shop_sk"]}, "dim_source": {"columns": [{"name": "source_sk", "type": "smallint", "nullable": false}, {"name": "source_id", "type": "text", "nullable": false}, {"name": "source_display_name", "type": "text", "nullable": false}, {"name": "source_license", "type": "text", "nullable": false}, {"name": "source_doi_or_ref", "type": "text", "nullable": true}, {"name": "source_data_url", "type": "text", "nullable": true}, {"name": "source_file_sha256", "type": "text", "nullable": false}, {"name": "source_row_count_manifest", "type": "integer", "nullable": false}, {"name": "source_column_count", "type": "integer", "nullable": false}, {"name": "source_locale", "type": "text", "nullable": false}, {"name": "registered_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["source_sk"]}, "fact_decision_queue": {"columns": [{"name": "decision_sk", "type": "integer", "nullable": false}, {"name": "source_sk", "type": "integer", "nullable": false}, {"name": "grain_type", "type": "character varying", "nullable": false}, {"name": "product_sk", "type": "integer", "nullable": true}, {"name": "category_sk", "type": "integer", "nullable": true}, {"name": "issue_id", "type": "smallint", "nullable": false}, {"name": "priority_score", "type": "numeric", "nullable": false}, {"name": "tier_id", "type": "smallint", "nullable": false}, {"name": "severity_impact_score", "type": "numeric", "nullable": false}, {"name": "dissatisfaction_score", "type": "numeric", "nullable": false}, {"name": "recurrence_score", "type": "numeric", "nullable": false}, {"name": "volume_score", "type": "numeric", "nullable": false}, {"name": "confidence_score", "type": "numeric", "nullable": false}, {"name": "evidence_support", "type": "integer", "nullable": false}, {"name": "distinct_review_events", "type": "integer", "nullable": false}, {"name": "critical_severity_count", "type": "integer", "nullable": false}, {"name": "reason_codes", "type": "ARRAY", "nullable": false}, {"name": "calculation_version", "type": "character varying", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["decision_sk"]}, "fact_review": {"columns": [{"name": "review_sk", "type": "bigint", "nullable": false}, {"name": "source_sk", "type": "smallint", "nullable": false}, {"name": "source_native_row_hash", "type": "text", "nullable": false}, {"name": "source_row_number", "type": "integer", "nullable": false}, {"name": "source_file_sha256", "type": "text", "nullable": false}, {"name": "rating_sk", "type": "smallint", "nullable": false}, {"name": "rating_value", "type": "smallint", "nullable": false}, {"name": "category_sk", "type": "integer", "nullable": false}, {"name": "product_sk", "type": "integer", "nullable": true}, {"name": "shop_sk", "type": "integer", "nullable": true}, {"name": "review_text", "type": "text", "nullable": false}, {"name": "review_text_len_chars", "type": "integer", "nullable": false}, {"name": "source_gold_sentiment_label", "type": "text", "nullable": true}, {"name": "source_gold_emotion_label", "type": "text", "nullable": true}, {"name": "source_a_location_text", "type": "text", "nullable": true}, {"name": "source_a_product_name_text", "type": "text", "nullable": true}, {"name": "source_a_price_text", "type": "text", "nullable": true}, {"name": "source_a_overall_rating_text", "type": "text", "nullable": true}, {"name": "source_a_number_sold_text", "type": "text", "nullable": true}, {"name": "source_a_total_review_text", "type": "text", "nullable": true}, {"name": "source_b_product_name", "type": "text", "nullable": true}, {"name": "source_b_sold_raw_text", "type": "text", "nullable": true}, {"name": "source_b_product_url", "type": "text", "nullable": true}, {"name": "is_synthetic", "type": "boolean", "nullable": false}, {"name": "pipeline_run_id", "type": "uuid", "nullable": false}, {"name": "ingested_at", "type": "timestamp with time zone", "nullable": false}, {"name": "processed_at", "type": "timestamp with time zone", "nullable": false}, {"name": "loaded_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["review_sk"]}, "fact_review_issue": {"columns": [{"name": "assignment_sk", "type": "integer", "nullable": false}, {"name": "review_sk", "type": "integer", "nullable": false}, {"name": "source_sk", "type": "integer", "nullable": false}, {"name": "issue_id", "type": "smallint", "nullable": false}, {"name": "severity_id", "type": "smallint", "nullable": false}, {"name": "matched_keywords", "type": "text", "nullable": true}, {"name": "keyword_count", "type": "smallint", "nullable": false}, {"name": "confidence", "type": "numeric", "nullable": false}, {"name": "model_version", "type": "character varying", "nullable": false}, {"name": "classification_method", "type": "character varying", "nullable": false}, {"name": "taxonomy_version", "type": "character varying", "nullable": false}, {"name": "pipeline_run_id", "type": "character varying", "nullable": true}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["assignment_sk"]}, "human_review_case": {"columns": [{"name": "case_sk", "type": "bigint", "nullable": false}, {"name": "case_id", "type": "character varying", "nullable": false}, {"name": "idempotency_key", "type": "character varying", "nullable": false}, {"name": "source_id", "type": "character varying", "nullable": false}, {"name": "product_id", "type": "character varying", "nullable": true}, {"name": "category_id", "type": "character varying", "nullable": true}, {"name": "issue_name", "type": "character varying", "nullable": false}, {"name": "priority_score", "type": "numeric", "nullable": false}, {"name": "tier_code", "type": "character varying", "nullable": false}, {"name": "reason_codes", "type": "ARRAY", "nullable": false}, {"name": "review_status", "type": "character varying", "nullable": false}, {"name": "assigned_reviewer", "type": "character varying", "nullable": true}, {"name": "resolution_notes", "type": "text", "nullable": true}, {"name": "resolution_action", "type": "character varying", "nullable": true}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}, {"name": "resolved_at", "type": "timestamp with time zone", "nullable": true}], "pk": ["case_sk"]}, "human_review_outcome": {"columns": [{"name": "outcome_sk", "type": "bigint", "nullable": false}, {"name": "case_sk", "type": "bigint", "nullable": true}, {"name": "idempotency_key", "type": "character varying", "nullable": false}, {"name": "action_type", "type": "character varying", "nullable": false}, {"name": "action_notes", "type": "text", "nullable": false}, {"name": "performed_by", "type": "character varying", "nullable": false}, {"name": "action_timestamp", "type": "timestamp with time zone", "nullable": false}], "pk": ["outcome_sk"]}, "operational_event_log": {"columns": [{"name": "event_sk", "type": "bigint", "nullable": false}, {"name": "idempotency_key", "type": "character varying", "nullable": false}, {"name": "request_id", "type": "character varying", "nullable": false}, {"name": "source_id", "type": "character varying", "nullable": false}, {"name": "source_review_id", "type": "character varying", "nullable": false}, {"name": "payload_hash", "type": "character varying", "nullable": false}, {"name": "rating_value", "type": "smallint", "nullable": false}, {"name": "detected_issues_count", "type": "smallint", "nullable": false}, {"name": "priority_score", "type": "numeric", "nullable": false}, {"name": "tier_code", "type": "character varying", "nullable": false}, {"name": "routing_destination", "type": "character varying", "nullable": false}, {"name": "is_duplicate", "type": "boolean", "nullable": false}, {"name": "raw_payload", "type": "jsonb", "nullable": false}, {"name": "api_response", "type": "jsonb", "nullable": false}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["event_sk"]}, "pipeline_run": {"columns": [{"name": "pipeline_run_id", "type": "uuid", "nullable": false}, {"name": "started_at", "type": "timestamp with time zone", "nullable": false}, {"name": "completed_at", "type": "timestamp with time zone", "nullable": true}, {"name": "status", "type": "text", "nullable": false}, {"name": "pipeline_version", "type": "text", "nullable": false}, {"name": "input_rows_total", "type": "integer", "nullable": false}, {"name": "accepted_rows_total", "type": "integer", "nullable": false}, {"name": "rejected_rows_total", "type": "integer", "nullable": false}, {"name": "loaded_rows_total", "type": "integer", "nullable": false}, {"name": "source_a_file_sha256", "type": "text", "nullable": false}, {"name": "source_b_file_sha256", "type": "text", "nullable": false}, {"name": "source_a_rows_manifest", "type": "integer", "nullable": false}, {"name": "source_b_rows_manifest", "type": "integer", "nullable": false}, {"name": "source_a_rows_read", "type": "integer", "nullable": false}, {"name": "source_b_rows_read", "type": "integer", "nullable": false}, {"name": "source_a_rows_loaded", "type": "integer", "nullable": false}, {"name": "source_b_rows_loaded", "type": "integer", "nullable": false}, {"name": "critical_dq_fails", "type": "integer", "nullable": false}, {"name": "major_dq_fails", "type": "integer", "nullable": false}, {"name": "notes", "type": "text", "nullable": true}], "pk": ["pipeline_run_id"]}, "rejected_record_log": {"columns": [{"name": "rejection_id", "type": "integer", "nullable": false}, {"name": "pipeline_run_id", "type": "uuid", "nullable": false}, {"name": "source_id", "type": "text", "nullable": false}, {"name": "source_row_number", "type": "integer", "nullable": false}, {"name": "source_native_row_hash", "type": "text", "nullable": true}, {"name": "stage", "type": "text", "nullable": false}, {"name": "severity", "type": "text", "nullable": false}, {"name": "dq_check_id", "type": "text", "nullable": false}, {"name": "reason_code", "type": "text", "nullable": false}, {"name": "reason_text", "type": "text", "nullable": false}, {"name": "raw_row_snippet", "type": "text", "nullable": true}, {"name": "ingested_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["rejection_id"]}, "workflow_execution": {"columns": [{"name": "execution_sk", "type": "bigint", "nullable": false}, {"name": "workflow_id", "type": "character varying", "nullable": false}, {"name": "execution_id", "type": "character varying", "nullable": false}, {"name": "idempotency_key", "type": "character varying", "nullable": false}, {"name": "execution_status", "type": "character varying", "nullable": false}, {"name": "retry_count", "type": "smallint", "nullable": false}, {"name": "api_latency_ms", "type": "integer", "nullable": false}, {"name": "total_execution_ms", "type": "integer", "nullable": false}, {"name": "error_details", "type": "jsonb", "nullable": true}, {"name": "created_at", "type": "timestamp with time zone", "nullable": false}], "pk": ["execution_sk"]}}, "foreign_keys": [{"source_table": "rejected_record_log", "source_column": "pipeline_run_id", "target_table": "pipeline_run", "target_column": "pipeline_run_id", "name": "fk_rejected_pipeline_run"}, {"source_table": "data_quality_result", "source_column": "pipeline_run_id", "target_table": "pipeline_run", "target_column": "pipeline_run_id", "name": "fk_dq_result_pipeline_run"}, {"source_table": "dim_category", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fk_dim_category_source"}, {"source_table": "dim_product", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fk_dim_product_source"}, {"source_table": "dim_shop", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fk_dim_shop_source"}, {"source_table": "fact_review", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fk_fact_source"}, {"source_table": "fact_review", "source_column": "rating_sk", "target_table": "dim_rating", "target_column": "rating_sk", "name": "fk_fact_rating"}, {"source_table": "fact_review", "source_column": "category_sk", "target_table": "dim_category", "target_column": "category_sk", "name": "fk_fact_category"}, {"source_table": "fact_review", "source_column": "product_sk", "target_table": "dim_product", "target_column": "product_sk", "name": "fk_fact_product"}, {"source_table": "fact_review", "source_column": "shop_sk", "target_table": "dim_shop", "target_column": "shop_sk", "name": "fk_fact_shop"}, {"source_table": "fact_review", "source_column": "pipeline_run_id", "target_table": "pipeline_run", "target_column": "pipeline_run_id", "name": "fk_fact_pipeline_run"}, {"source_table": "fact_review_issue", "source_column": "review_sk", "target_table": "fact_review", "target_column": "review_sk", "name": "fact_review_issue_review_sk_fkey"}, {"source_table": "fact_review_issue", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fact_review_issue_source_sk_fkey"}, {"source_table": "fact_review_issue", "source_column": "issue_id", "target_table": "dim_issue", "target_column": "issue_id", "name": "fact_review_issue_issue_id_fkey"}, {"source_table": "fact_review_issue", "source_column": "severity_id", "target_table": "dim_severity", "target_column": "severity_id", "name": "fact_review_issue_severity_id_fkey"}, {"source_table": "fact_decision_queue", "source_column": "source_sk", "target_table": "dim_source", "target_column": "source_sk", "name": "fact_decision_queue_source_sk_fkey"}, {"source_table": "fact_decision_queue", "source_column": "product_sk", "target_table": "dim_product", "target_column": "product_sk", "name": "fact_decision_queue_product_sk_fkey"}, {"source_table": "fact_decision_queue", "source_column": "category_sk", "target_table": "dim_category", "target_column": "category_sk", "name": "fact_decision_queue_category_sk_fkey"}, {"source_table": "fact_decision_queue", "source_column": "issue_id", "target_table": "dim_issue", "target_column": "issue_id", "name": "fact_decision_queue_issue_id_fkey"}, {"source_table": "fact_decision_queue", "source_column": "tier_id", "target_table": "dim_priority_tier", "target_column": "tier_id", "name": "fact_decision_queue_tier_id_fkey"}, {"source_table": "workflow_execution", "source_column": "idempotency_key", "target_table": "operational_event_log", "target_column": "idempotency_key", "name": "workflow_execution_idempotency_key_fkey"}, {"source_table": "human_review_case", "source_column": "idempotency_key", "target_table": "operational_event_log", "target_column": "idempotency_key", "name": "human_review_case_idempotency_key_fkey"}, {"source_table": "human_review_outcome", "source_column": "case_sk", "target_table": "human_review_case", "target_column": "case_sk", "name": "human_review_outcome_case_sk_fkey"}], "views": ["mv_category_summary", "mv_issue_by_category", "mv_issue_by_product", "mv_issue_emerging", "mv_issue_low_rating_overrepresentation", "mv_issue_summary", "mv_pipeline_health", "mv_priority_category_queue", "mv_priority_product_queue", "mv_product_risk_index", "mv_product_summary", "mv_shop_summary", "mv_source_a_label_breakdown", "mv_source_summary"]};
+    let currentZoom = 1.0;
+
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      er: {
+        useMaxWidth: false,
+        layoutDirection: 'TB'
+      },
+      themeVariables: {
+        darkMode: true,
+        background: '#0b0f19',
+        primaryColor: '#1f2937',
+        primaryBorderColor: '#3b82f6',
+        primaryTextColor: '#f9fafb',
+        lineColor: '#60a5fa',
+        secondaryColor: '#111827',
+        tertiaryColor: '#1f2937'
+      }
+    });
+
+    function zoomIn() {
+      currentZoom += 0.15;
+      applyZoom();
+    }
+    function zoomOut() {
+      if (currentZoom > 0.3) {
+        currentZoom -= 0.15;
+        applyZoom();
+      }
+    }
+    function resetZoom() {
+      currentZoom = 1.0;
+      applyZoom();
+    }
+    function applyZoom() {
+      document.getElementById('diagram-wrapper').style.transform = `scale(${currentZoom})`;
+    }
+
+    function filterTables() {
+      const query = document.getElementById('tableSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.table-item');
+      items.forEach(item => {
+        const name = item.getAttribute('data-name').toLowerCase();
+        if (name.includes(query)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function showTableDetail(tableName) {
+      const tinfo = schemaData.tables[tableName];
+      if (!tinfo) return;
+
+      document.getElementById('detailTitle').textContent = tableName;
+      let html = `<table class="col-table">
+        <thead>
+          <tr><th>Column</th><th>Type</th><th>Constraint</th></tr>
+        </thead>
+        <tbody>`;
+      
+      const pks = new Set(tinfo.pk || []);
+      tinfo.columns.forEach(col => {
+        const isPk = pks.has(col.name);
+        html += `<tr>
+          <td class="${isPk ? 'col-pk' : ''}">${col.name}</td>
+          <td class="col-type">${col.type}</td>
+          <td>${isPk ? '🔑 PRIMARY KEY' : (col.nullable ? 'NULL' : 'NOT NULL')}</td>
+        </tr>`;
+      });
+      
+      html += `</tbody></table>`;
+      document.getElementById('detailBody').innerHTML = html;
+      document.getElementById('detailPanel').style.display = 'flex';
+
+      // Highlight in sidebar
+      document.querySelectorAll('.table-item').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-name') === tableName);
+      });
+    }
+
+    function closeDetail() {
+      document.getElementById('detailPanel').style.display = 'none';
+      document.querySelectorAll('.table-item').forEach(el => el.classList.remove('active'));
+    }
+  </script>
+</body>
+</html>
