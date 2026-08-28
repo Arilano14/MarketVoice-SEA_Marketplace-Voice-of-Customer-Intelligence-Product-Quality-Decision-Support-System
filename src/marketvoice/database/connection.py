@@ -39,6 +39,24 @@ class UnsafeDatabaseError(Exception):
     """§22 raised if destructive guard fails. Do NOT suppress."""
 
 
+def _load_dotenv_if_present() -> None:
+    """Load local .env file if present without overriding existing env vars."""
+    env_file = os.path.join(_PROJECT_ROOT, ".env")
+    if os.path.isfile(env_file):
+        try:
+            with open(env_file, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    k, v = line.split("=", 1)
+                    k, v = k.strip(), v.strip()
+                    if k not in os.environ:
+                        os.environ[k] = v
+        except Exception:
+            pass
+
+
 @dataclass
 class DBSettings:
     host: str
@@ -51,12 +69,19 @@ class DBSettings:
 
     @classmethod
     def from_env(cls) -> "DBSettings":
+        _load_dotenv_if_present()
+        password = os.getenv("POSTGRES_PASSWORD")
+        if not password:
+            raise ValueError(
+                "Missing required environment variable 'POSTGRES_PASSWORD'. "
+                "Please configure POSTGRES_PASSWORD in your environment or local .env file."
+            )
         return cls(
             host=os.getenv("POSTGRES_HOST", "localhost"),
             port=int(os.getenv("POSTGRES_PORT", "5432")),
             dbname=os.getenv("POSTGRES_DB", "marketvoice_dev"),
             user=os.getenv("POSTGRES_USER", "openpg"),
-            password=os.getenv("POSTGRES_PASSWORD", "openpgpwd"),
+            password=password,
             test_dbname=os.getenv("POSTGRES_TEST_DB", "marketvoice_test"),
             dev_dbname=os.getenv("POSTGRES_DEV_DB", "marketvoice_dev"),
         )
