@@ -1,0 +1,1893 @@
+{
+  "dim_source": {
+    "status": "OK",
+    "row_count": 2,
+    "columns": [
+      {
+        "name": "source_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_display_name",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_license",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_doi_or_ref",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_data_url",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_file_sha256",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_row_count_manifest",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_column_count",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_locale",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "registered_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_category": {
+    "status": "OK",
+    "row_count": 34,
+    "columns": [
+      {
+        "name": "category_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_native_category",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "category_value_count_observations",
+        "type": "integer",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_product": {
+    "status": "OK",
+    "row_count": 3664,
+    "columns": [
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_native_product_id",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_native_product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name_variant_count",
+        "type": "smallint",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_issue": {
+    "status": "OK",
+    "row_count": 5,
+    "columns": [
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "issue_definition",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "evidence_keywords",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "in_scope",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "non_examples",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "ambiguity_rule",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "taxonomy_version",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_phase",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_severity": {
+    "status": "OK",
+    "row_count": 4,
+    "columns": [
+      {
+        "name": "severity_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "severity_name",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "severity_definition",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_range",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "status_note",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_rating": {
+    "status": "OK",
+    "row_count": 5,
+    "columns": [
+      {
+        "name": "rating_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_value",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_label",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_bucket",
+        "type": "text",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_priority_tier": {
+    "status": "OK",
+    "row_count": 4,
+    "columns": [
+      {
+        "name": "tier_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "tier_code",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "tier_name",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "score_min",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "score_max",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "guidance_recommendation",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_reason_code": {
+    "status": "OK",
+    "row_count": 7,
+    "columns": [
+      {
+        "name": "reason_code",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "reason_title",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "trigger_condition",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "dimension_category",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "dim_shop": {
+    "status": "OK",
+    "row_count": 158,
+    "columns": [
+      {
+        "name": "shop_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_native_shop_id",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "shop_observation_count",
+        "type": "integer",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "fact_review": {
+    "status": "OK",
+    "row_count": 46007,
+    "columns": [
+      {
+        "name": "review_sk",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_native_row_hash",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_row_number",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_file_sha256",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_sk",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_value",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "category_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "shop_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_text",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "review_text_len_chars",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_gold_sentiment_label",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_gold_emotion_label",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_location_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_product_name_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_price_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_overall_rating_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_number_sold_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_total_review_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_b_product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_b_sold_raw_text",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_b_product_url",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "is_synthetic",
+        "type": "boolean",
+        "nullable": "NO"
+      },
+      {
+        "name": "pipeline_run_id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "ingested_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      },
+      {
+        "name": "processed_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      },
+      {
+        "name": "loaded_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "fact_review_issue": {
+    "status": "OK",
+    "row_count": 18863,
+    "columns": [
+      {
+        "name": "assignment_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "review_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "severity_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "matched_keywords",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "keyword_count",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "confidence",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "model_version",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "classification_method",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "taxonomy_version",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "pipeline_run_id",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "fact_decision_queue": {
+    "status": "OK",
+    "row_count": 5090,
+    "columns": [
+      {
+        "name": "decision_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_sk",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "grain_type",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "priority_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "tier_id",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "severity_impact_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "dissatisfaction_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "recurrence_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "volume_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "confidence_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "evidence_support",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "distinct_review_events",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "critical_severity_count",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "reason_codes",
+        "type": "ARRAY",
+        "nullable": "NO"
+      },
+      {
+        "name": "calculation_version",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "human_review_case": {
+    "status": "OK",
+    "row_count": 13,
+    "columns": [
+      {
+        "name": "case_sk",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "case_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "product_id",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_id",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "priority_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "tier_code",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "reason_codes",
+        "type": "ARRAY",
+        "nullable": "NO"
+      },
+      {
+        "name": "review_status",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "assigned_reviewer",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "resolution_notes",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "resolution_action",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      },
+      {
+        "name": "resolved_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "human_review_outcome": {
+    "status": "OK",
+    "row_count": 14,
+    "columns": [
+      {
+        "name": "outcome_sk",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "case_sk",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "action_type",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "action_notes",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "performed_by",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "action_timestamp",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "operational_event_log": {
+    "status": "OK",
+    "row_count": 37,
+    "columns": [
+      {
+        "name": "event_sk",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "request_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "source_review_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "payload_hash",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "rating_value",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "detected_issues_count",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "priority_score",
+        "type": "numeric",
+        "nullable": "NO"
+      },
+      {
+        "name": "tier_code",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "routing_destination",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "is_duplicate",
+        "type": "boolean",
+        "nullable": "NO"
+      },
+      {
+        "name": "raw_payload",
+        "type": "jsonb",
+        "nullable": "NO"
+      },
+      {
+        "name": "api_response",
+        "type": "jsonb",
+        "nullable": "NO"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "workflow_execution": {
+    "status": "OK",
+    "row_count": 37,
+    "columns": [
+      {
+        "name": "execution_sk",
+        "type": "bigint",
+        "nullable": "NO"
+      },
+      {
+        "name": "workflow_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "execution_id",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "execution_status",
+        "type": "character varying",
+        "nullable": "NO"
+      },
+      {
+        "name": "retry_count",
+        "type": "smallint",
+        "nullable": "NO"
+      },
+      {
+        "name": "api_latency_ms",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "total_execution_ms",
+        "type": "integer",
+        "nullable": "NO"
+      },
+      {
+        "name": "error_details",
+        "type": "jsonb",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "data_quality_result": {
+    "status": "OK",
+    "row_count": 11,
+    "columns": [
+      {
+        "name": "pipeline_run_id",
+        "type": "uuid",
+        "nullable": "NO"
+      },
+      {
+        "name": "dq_check_id",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "severity",
+        "type": "text",
+        "nullable": "NO"
+      },
+      {
+        "name": "passed",
+        "type": "boolean",
+        "nullable": "NO"
+      },
+      {
+        "name": "actual_value",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "expected_value",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "evidence",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "measured_at",
+        "type": "timestamp with time zone",
+        "nullable": "NO"
+      }
+    ]
+  },
+  "mv_issue_summary": {
+    "status": "OK",
+    "row_count": 10,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_rate_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "negative_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "critical_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "high_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "mean_confidence",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "taxonomy_version",
+        "type": "character varying",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_product_summary": {
+    "status": "OK",
+    "row_count": 3664,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name_variant_count",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "category",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "high_rating_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_review_text_len",
+        "type": "integer",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_category_summary": {
+    "status": "OK",
+    "row_count": 34,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "category",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_1_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_2_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_3_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_4_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_5_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "negative_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "neutral_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "positive_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_review_text_len",
+        "type": "integer",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_priority_product_queue": {
+    "status": "OK",
+    "row_count": 4913,
+    "columns": [
+      {
+        "name": "decision_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "priority_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "priority_tier",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "guidance_recommendation",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "severity_impact_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "dissatisfaction_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "recurrence_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "volume_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "confidence_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "evidence_support",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "distinct_review_events",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "critical_severity_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "reason_codes",
+        "type": "ARRAY",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_priority_category_queue": {
+    "status": "OK",
+    "row_count": 167,
+    "columns": [
+      {
+        "name": "decision_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "priority_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "priority_tier",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "guidance_recommendation",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "severity_impact_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "dissatisfaction_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "recurrence_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "volume_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "confidence_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "evidence_support",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "distinct_review_events",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "reason_codes",
+        "type": "ARRAY",
+        "nullable": "YES"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_issue_low_rating_overrepresentation": {
+    "status": "OK",
+    "row_count": 10,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "segment",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_issue_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_total_reviews",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_issue_rate",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_issue_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_total_reviews",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_issue_rate",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "dissatisfaction_rate_ratio",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "min_support_met",
+        "type": "boolean",
+        "nullable": "YES"
+      },
+      {
+        "name": "analysis_type",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "data_limitation",
+        "type": "text",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_product_risk_index": {
+    "status": "OK",
+    "row_count": 2259,
+    "columns": [
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "total_issue_types",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "max_priority_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_priority_score",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "total_issue_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "total_critical_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "p1_critical_issues_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "p2_high_issues_count",
+        "type": "bigint",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_source_summary": {
+    "status": "OK",
+    "row_count": 2,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_display_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_1_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_2_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_3_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_4_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rating_5_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "negative_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "neutral_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "positive_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_review_text_len",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_count",
+        "type": "integer",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_issue_by_category": {
+    "status": "OK",
+    "row_count": 167,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_review_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "category_issue_rate_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "negative_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_issue_by_product": {
+    "status": "OK",
+    "row_count": 4913,
+    "columns": [
+      {
+        "name": "product_sk",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_name",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_review_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_issue_rate_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "negative_volume",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_shop_summary": {
+    "status": "OK",
+    "row_count": 158,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "shop_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_pct",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "product_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_review_text_len",
+        "type": "integer",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_source_a_label_breakdown": {
+    "status": "OK",
+    "row_count": 5,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "sentiment_label",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "emotion_label",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "review_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "avg_rating",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "pct_of_source",
+        "type": "numeric",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_issue_emerging": {
+    "status": "OK",
+    "row_count": 10,
+    "columns": [
+      {
+        "name": "source_id",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_id",
+        "type": "smallint",
+        "nullable": "YES"
+      },
+      {
+        "name": "issue_name",
+        "type": "character varying",
+        "nullable": "YES"
+      },
+      {
+        "name": "segment",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_issue_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_total_reviews",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "low_rating_issue_rate",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_issue_count",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_total_reviews",
+        "type": "bigint",
+        "nullable": "YES"
+      },
+      {
+        "name": "baseline_issue_rate",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "dissatisfaction_rate_ratio",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "min_support_met",
+        "type": "boolean",
+        "nullable": "YES"
+      },
+      {
+        "name": "analysis_type",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "data_limitation",
+        "type": "text",
+        "nullable": "YES"
+      }
+    ]
+  },
+  "mv_pipeline_health": {
+    "status": "OK",
+    "row_count": 1,
+    "columns": [
+      {
+        "name": "pipeline_run_id",
+        "type": "uuid",
+        "nullable": "YES"
+      },
+      {
+        "name": "pipeline_version",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "nullable": "YES"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "nullable": "YES"
+      },
+      {
+        "name": "duration_seconds",
+        "type": "numeric",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_a_rows_read",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "source_b_rows_read",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "loaded_rows_total",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "rejected_rows_total",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "critical_dq_fails",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "major_dq_fails",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "dq_check_count",
+        "type": "integer",
+        "nullable": "YES"
+      },
+      {
+        "name": "dq_pass_count",
+        "type": "integer",
+        "nullable": "YES"
+      }
+    ]
+  }
+}

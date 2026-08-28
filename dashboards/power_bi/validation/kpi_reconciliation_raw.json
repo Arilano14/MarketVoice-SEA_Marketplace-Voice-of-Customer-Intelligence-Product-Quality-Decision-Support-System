@@ -1,0 +1,215 @@
+{
+  "Total Reviews": 46007,
+  "Source Distribution": [
+    {
+      "source_display_name": "Source A - PRDECT-ID Indonesian Reviews V1",
+      "source_id": "SRC_PRDECT_ID_V1",
+      "count": 5400,
+      "pct": "11.74"
+    },
+    {
+      "source_display_name": "Source B - Tokopedia Reviews 2019",
+      "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+      "count": 40607,
+      "pct": "88.26"
+    }
+  ],
+  "Average Rating": 4.46,
+  "Rating Distribution": [
+    {
+      "rating_value": 1,
+      "count": 2375,
+      "pct": "5.16"
+    },
+    {
+      "rating_value": 2,
+      "count": 943,
+      "pct": "2.05"
+    },
+    {
+      "rating_value": 3,
+      "count": 2287,
+      "pct": "4.97"
+    },
+    {
+      "rating_value": 4,
+      "count": 7941,
+      "pct": "17.26"
+    },
+    {
+      "rating_value": 5,
+      "count": 32461,
+      "pct": "70.56"
+    }
+  ],
+  "Negative Reviews": 3318,
+  "Negative Review %": 7.21,
+  "Total Detected Issues": 18863,
+  "Reviews With Issues": 15270,
+  "Issue Attachment Rate %": 33.19,
+  "Issue Distribution": [
+    {
+      "issue_id": 1,
+      "issue_name": "Product Defect / Quality",
+      "count": 2999,
+      "pct": "15.90"
+    },
+    {
+      "issue_id": 2,
+      "issue_name": "Packaging / Shipping Damage",
+      "count": 3908,
+      "pct": "20.72"
+    },
+    {
+      "issue_id": 3,
+      "issue_name": "Order Inaccuracy / Missing Items",
+      "count": 2272,
+      "pct": "12.04"
+    },
+    {
+      "issue_id": 4,
+      "issue_name": "Delivery / Logistics Issue",
+      "count": 3326,
+      "pct": "17.63"
+    },
+    {
+      "issue_id": 5,
+      "issue_name": "Seller Service / Responsiveness",
+      "count": 6358,
+      "pct": "33.71"
+    }
+  ],
+  "Average Model Confidence": 0.3758,
+  "Decision Queue Total": 5090,
+  "Decision Grain Distribution": [
+    {
+      "grain_type": "CATEGORY_X_ISSUE",
+      "count": 167,
+      "pct": "3.28"
+    },
+    {
+      "grain_type": "PRODUCT_X_ISSUE",
+      "count": 4913,
+      "pct": "96.52"
+    },
+    {
+      "grain_type": "SOURCE_X_ISSUE",
+      "count": 10,
+      "pct": "0.20"
+    }
+  ],
+  "Priority Tier Distribution": [
+    {
+      "tier_id": 2,
+      "tier_code": "P2_HIGH_PRIORITY",
+      "tier_name": "Near-Term Review Recommendation",
+      "count": 192,
+      "pct": "3.77"
+    },
+    {
+      "tier_id": 3,
+      "tier_code": "P3_MONITORING",
+      "tier_name": "Quality Monitoring Recommendation",
+      "count": 724,
+      "pct": "14.22"
+    },
+    {
+      "tier_id": 4,
+      "tier_code": "P4_INFORMATIONAL",
+      "tier_name": "Informational Logging",
+      "count": 4174,
+      "pct": "82.00"
+    }
+  ],
+  "PRS Summary": {
+    "min": 3.62,
+    "max": 68.62,
+    "avg": 18.24,
+    "median": 15.31
+  },
+  "Actionable Cases (P1+P2)": 192,
+  "Actionable Cases %": 3.77,
+  "Operational Event Log Count": 37,
+  "Human Review Case Count": 13,
+  "Human Review Outcome Count": 14,
+  "Workflow Execution Count": 37,
+  "Data Quality Results": [
+    {
+      "dq_check_id": "DQ-PRE-DUPLICATE-NATURAL-KEY",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-FK-ORPHAN-CATEGORY",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-FK-ORPHAN-PRODUCT",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-FK-ORPHAN-SHOP",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-INVALID-RATING-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SOURCE-RECONCILIATION",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "total=46007 (A=5400+B=40607=46007)",
+      "expected_value": "sum_by_source == total"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SRC_A-PRODUCT-LINKAGE-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SRC_A-SHOP-LINKAGE-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SRC_B-EMOTION-LEAKAGE-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SRC_B-SENTIMENT-LEAKAGE-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    },
+    {
+      "dq_check_id": "DQ-PRE-SYNTHETIC-ZERO",
+      "severity": "CRITICAL",
+      "passed": true,
+      "actual_value": "0",
+      "expected_value": "0"
+    }
+  ]
+}
