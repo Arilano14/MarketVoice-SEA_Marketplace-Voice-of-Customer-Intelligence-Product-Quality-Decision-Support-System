@@ -3,7 +3,7 @@
 **Document ID**: `ARCH-PBI-001`  
 **System**: MarketVoice SEA Business Intelligence & Reporting Layer  
 **Governing Phase**: Phase 12 (Final Delivery)  
-**Author**: Antigravity Intelligence Architecture  
+**Author**: MarketVoice SEA Engineering Team  
 **Validated**: 2026-08-28  
 
 ---

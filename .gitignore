@@ -17,6 +17,8 @@ logs/*
 # Environment & Credentials
 .env
 *.env
+*.secret.*
+credentials/
 .venv/
 env/
 venv/
@@ -24,6 +26,18 @@ venv/
 .n8n/
 workflows/n8n/data/
 workflows/n8n/node_modules/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.journal
+*.log
+
+# Cache & Build
+cache/
+.cache/
+build/
+dist/
+*.egg-info/
 
 # Python
 __pycache__/
