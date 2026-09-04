@@ -5,7 +5,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host "  MarketVoice SEA — n8n Local Workflow Orchestrator" -ForegroundColor Cyan
+Write-Host "  MarketVoice SEA - n8n Local Workflow Orchestrator" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 
 # 1. Ensure working directory
@@ -26,8 +26,10 @@ try {
 if (Test-Path "$N8nDir\.env") {
     Write-Host "[OK] Loading environment configuration from .env" -ForegroundColor Green
     Get-Content "$N8nDir\.env" | Where-Object { $_ -match "^[^#].+=.+" } | ForEach-Object {
-        $key, $val = $_ -split '=', 2
-        [System.Environment]::SetEnvironmentVariable($key.Trim(), $val.Trim(), [System.EnvironmentVariableTarget]::Process)
+        $parts = $_ -split '=', 2
+        $key = $parts[0].Trim()
+        $val = $parts[1].Trim()
+        [System.Environment]::SetEnvironmentVariable($key, $val, [System.EnvironmentVariableTarget]::Process)
     }
 }
 
