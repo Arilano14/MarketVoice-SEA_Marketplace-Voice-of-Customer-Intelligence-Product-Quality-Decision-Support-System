@@ -1,0 +1,14 @@
+{
+  "fixture_id": "SYNTHETIC_P3_EVENT",
+  "description": "Moderate packaging issue on category level (Target: P3 Quality Monitoring)",
+  "request_id": "2d3deb4d-5b7d-4bad-9bdd-4b0d7b3dcb8f",
+  "source_id": "SRC_PRDECT_ID_V1",
+  "review_id": "SYNTH_REV_003_P3",
+  "product_id": null,
+  "category_id": "Elektronik",
+  "review_text": "Kardus agak penyok sedikit di sudut tapi fungsi barang masih normal. Pengiriman agak lambat 4 hari baru sampai.",
+  "rating": 3,
+  "expected_routing": "MONITORING_LOG",
+  "expected_tier": "P3_MONITORING",
+  "expected_pii_masked": false
+}

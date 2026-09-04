@@ -1,0 +1,14 @@
+{
+  "fixture_id": "SYNTHETIC_P2_EVENT",
+  "description": "High priority order inaccuracy defect (Target: P2 High Priority / Human Review Queue)",
+  "request_id": "1c2deb4d-4b7d-4bad-9bdd-3b0d7b3dcb7e",
+  "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+  "review_id": "SYNTH_REV_002_P2",
+  "product_id": "387142786",
+  "category_id": "Handphone & Aksesoris",
+  "review_text": "Barang salah kirim, pesanan tidak sesuai gambar! Pesan warna hitam dikirim warna putih dan ukuran beda!",
+  "rating": 1,
+  "expected_routing": "HUMAN_REVIEW_QUEUE",
+  "expected_tier": "P2_HIGH_PRIORITY",
+  "expected_pii_masked": false
+}

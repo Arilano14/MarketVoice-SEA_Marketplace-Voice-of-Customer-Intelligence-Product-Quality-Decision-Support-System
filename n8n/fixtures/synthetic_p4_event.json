@@ -1,0 +1,14 @@
+{
+  "fixture_id": "SYNTHETIC_P4_EVENT",
+  "description": "Incidental positive review with PII to test sanitization and baseline logging (Target: P4 Informational)",
+  "request_id": "3e4deb4d-6b7d-4bad-9bdd-5b0d7b3dcb90",
+  "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+  "review_id": "SYNTH_REV_004_P4",
+  "product_id": "418660637",
+  "category_id": "Handphone & Aksesoris",
+  "review_text": "Barang original mantap fast charging berfungsi baik! Terima kasih seller @top_store hubungi saya di cs@buyer.co.id yaa!",
+  "rating": 5,
+  "expected_routing": "MONITORING_LOG",
+  "expected_tier": "P4_INFORMATIONAL",
+  "expected_pii_masked": true
+}

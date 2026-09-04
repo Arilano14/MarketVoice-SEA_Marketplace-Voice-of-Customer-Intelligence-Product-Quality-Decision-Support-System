@@ -1,0 +1,29 @@
+{
+  "name": "marketvoice-sea-n8n",
+  "version": "1.0.0",
+  "description": "MarketVoice SEA — Operational Automation & Workflow Orchestration with n8n",
+  "scripts": {
+    "start": "npx n8n start",
+    "start:local": "npx n8n start --port 5678",
+    "start:tunnel": "npx n8n start --tunnel",
+    "validate": "python scripts/validate_workflow_syntax.py",
+    "test:webhook": "python scripts/trigger_webhook_test.py",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "keywords": [
+    "marketvoice",
+    "n8n",
+    "workflow-automation",
+    "review-triage",
+    "human-in-the-loop",
+    "decision-support"
+  ],
+  "author": "MarketVoice SEA Engineering Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "n8n": "^1.81.4"
+  }
+}
