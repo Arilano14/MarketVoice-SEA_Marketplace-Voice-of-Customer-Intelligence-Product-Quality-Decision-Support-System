@@ -268,7 +268,8 @@ Every primary metric reconciles with **0.00% variance** between PostgreSQL SQL q
 │   ├── workflow/                              # n8n workflow contract tests
 │   └── regression/                            # Decision support and gold benchmark regression
 ├── scripts/                                   # Functional utility scripts (acquisition, audit, runners)
-├── workflows/n8n/                             # Version-controlled n8n workflows and fixtures
+├── n8n/                                       # Dedicated n8n workspace, workflows, scripts, and fixtures
+├── workflows/n8n/                             # Canonical version-controlled n8n workflows archive
 ├── models/metadata/                           # NLP model parameter and benchmark metadata
 ├── dashboards/power_bi/                       # Power BI documentation, DAX measures, and specs
 ├── docs/                                      # Architecture, engineering, governance, methodology docs
