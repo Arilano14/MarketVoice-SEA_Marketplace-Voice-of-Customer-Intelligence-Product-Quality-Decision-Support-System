@@ -1,0 +1,58 @@
+[
+  {
+    "fixture_id": "SYNTHETIC_P1_EVENT",
+    "description": "High priority chronic product defect driving customer dissatisfaction (Target: P2 High Priority / Human Review Queue)",
+    "request_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+    "review_id": "SYNTH_REV_001_P1",
+    "product_id": "24670745",
+    "category_id": "Komputer & Aksesoris",
+    "review_text": "Barang rusak parah, tinta bocor dan tidak terdeteksi sama sekali di printer! Tolong refund dana saya segera ke user@example.com atau wa 081234567890. Kecewa banget!",
+    "rating": 1,
+    "expected_routing": "HUMAN_REVIEW_QUEUE",
+    "expected_tier": "P2_HIGH_PRIORITY",
+    "expected_pii_masked": true
+  },
+  {
+    "fixture_id": "SYNTHETIC_P2_EVENT",
+    "description": "High priority order inaccuracy defect (Target: P2 High Priority / Human Review Queue)",
+    "request_id": "1c2deb4d-4b7d-4bad-9bdd-3b0d7b3dcb7e",
+    "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+    "review_id": "SYNTH_REV_002_P2",
+    "product_id": "387142786",
+    "category_id": "Handphone & Aksesoris",
+    "review_text": "Barang salah kirim, pesanan tidak sesuai gambar! Pesan warna hitam dikirim warna putih dan ukuran beda!",
+    "rating": 1,
+    "expected_routing": "HUMAN_REVIEW_QUEUE",
+    "expected_tier": "P2_HIGH_PRIORITY",
+    "expected_pii_masked": false
+  },
+  {
+    "fixture_id": "SYNTHETIC_P3_EVENT",
+    "description": "Moderate packaging issue on category level (Target: P3 Quality Monitoring)",
+    "request_id": "2d3deb4d-5b7d-4bad-9bdd-4b0d7b3dcb8f",
+    "source_id": "SRC_PRDECT_ID_V1",
+    "review_id": "SYNTH_REV_003_P3",
+    "product_id": null,
+    "category_id": "Elektronik",
+    "review_text": "Kardus agak penyok sedikit di sudut tapi fungsi barang masih normal. Pengiriman agak lambat 4 hari baru sampai.",
+    "rating": 3,
+    "expected_routing": "MONITORING_LOG",
+    "expected_tier": "P3_MONITORING",
+    "expected_pii_masked": false
+  },
+  {
+    "fixture_id": "SYNTHETIC_P4_EVENT",
+    "description": "Incidental positive review with PII to test sanitization and baseline logging (Target: P4 Informational)",
+    "request_id": "3e4deb4d-6b7d-4bad-9bdd-5b0d7b3dcb90",
+    "source_id": "SRC_TOKOPEDIA_REVIEWS_2019",
+    "review_id": "SYNTH_REV_004_P4",
+    "product_id": "418660637",
+    "category_id": "Handphone & Aksesoris",
+    "review_text": "Barang original mantap fast charging berfungsi baik! Terima kasih seller @top_store hubungi saya di cs@buyer.co.id yaa!",
+    "rating": 5,
+    "expected_routing": "MONITORING_LOG",
+    "expected_tier": "P4_INFORMATIONAL",
+    "expected_pii_masked": true
+  }
+]
