@@ -39,6 +39,7 @@ if (-not (Test-Path $DataDir)) {
 }
 
 $env:N8N_USER_FOLDER = $DataDir
+$env:N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "false"
 
 Write-Host ""
 Write-Host ">> Starting n8n server on http://localhost:5678 ..." -ForegroundColor Yellow

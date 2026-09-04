@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "name": "MarketVoice SEA — n8n Workspace",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "data/database.sqlite*": false,
+      "node_modules": true
+    },
+    "json.schemas": [
+      {
+        "fileMatch": ["workflows/*.json"],
+        "url": "https://raw.githubusercontent.com/n8n-io/n8n/master/packages/workflow/schemas/workflow.json"
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-azuretools.vscode-docker"
+    ]
+  }
+}

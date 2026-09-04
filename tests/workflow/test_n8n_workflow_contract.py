@@ -17,9 +17,12 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, "src"))
 
 @pytest.fixture(scope="module")
 def workflow_json():
-    wf_path = os.path.join(PROJECT_ROOT, "workflows", "n8n", "workflows", "marketvoice_review_triage.json")
-    if not os.path.exists(wf_path):
-        wf_path = os.path.join(PROJECT_ROOT, "workflows", "n8n", "marketvoice_review_triage.json")
+    candidates = [
+        os.path.join(PROJECT_ROOT, "n8n", "workflows", "marketvoice_review_triage.json"),
+        os.path.join(PROJECT_ROOT, "workflows", "n8n", "workflows", "marketvoice_review_triage.json"),
+        os.path.join(PROJECT_ROOT, "workflows", "n8n", "marketvoice_review_triage.json"),
+    ]
+    wf_path = next((p for p in candidates if os.path.exists(p)), candidates[0])
     assert os.path.exists(wf_path), f"Workflow file not found at {wf_path}"
     with open(wf_path, "r", encoding="utf-8") as f:
         return json.load(f)

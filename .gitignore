@@ -26,6 +26,8 @@ venv/
 .n8n/
 workflows/n8n/data/
 workflows/n8n/node_modules/
+n8n/data/
+n8n/node_modules/
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal

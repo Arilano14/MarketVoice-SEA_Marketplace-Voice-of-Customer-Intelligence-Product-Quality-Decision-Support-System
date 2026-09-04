@@ -1,84 +1,117 @@
-# MarketVoice SEA — n8n Workflow Automation Architecture
+# MarketVoice SEA — n8n Dedicated Workspace & Workflow Automation
 
-**Module**: Operational Workflow & Decision Triage Orchestration  
-**Classification**: `SYNTHETIC_OPERATIONAL_DEMONSTRATION`  
-**Runtime Options**: Node.js CLI (`npx n8n`) or Containerized (`docker compose`)  
-**Port**: `5678` (Web Dashboard & Webhook Intake)  
+**Path**: `C:\Users\Arilano\Downloads\Project ARICE\Project SEA\n8n`  
+**Modul**: Operational Decision Support System (DSS) Review Triage & Orchestration  
+**Status**: `SYNTHETIC_OPERATIONAL_DEMONSTRATION`  
+**Port**: `5678` (Web UI & Webhook Intake)  
+**Database Integrasi**: PostgreSQL `localhost:5432` (`marketvoice_dev` -> `marketvoice_warehouse`)  
+**Microservice Integrasi**: FastAPI `http://localhost:8000` (`/v1/review/analyze`, `/v1/decision/evaluate`)  
 
 ---
 
-## 1. Directory Tree Structure
+## 1. Struktur Workspace Khusus n8n
+
+Folder ini adalah workspace mandiri (*self-contained dedicated workspace*) khusus untuk seluruh operasi n8n:
 
 ```text
-workflows/n8n/
-├── README.md                              # Technical guide & operational documentation
-├── package.json                           # Node.js manifest & lifecycle scripts
-├── .env.example                           # Template environment configuration
-├── .env                                   # Local runtime configuration (Postgres, API host, port)
-├── docker-compose.yml                     # Dockerized n8n deployment with persistent volume
-├── workflows/                             # Version-controlled workflow JSON definitions
-│   └── marketvoice_review_triage.json     # Main operational review triage & DSS orchestration
-├── fixtures/                              # Standalone synthetic review event payloads (P1–P4)
+n8n/
+├── n8n.code-workspace                     # VS Code / Antigravity Dedicated Workspace file
+├── README.md                              # Dokumentasi teknis & panduan operasional
+├── package.json                           # Manifest Node.js & lifecycle npm scripts
+├── .env.example                           # Template variabel lingkungan
+├── .env                                   # Konfigurasi aktif (Postgres, FastAPI host, port)
+├── docker-compose.yml                     # Opsi deployment containerized dengan volume persisten
+├── workflows/                             # Definisi workflow JSON versi terkontrol
+│   └── marketvoice_review_triage.json     # 12-node DAG review triage & routing
+├── fixtures/                              # Event synthetic review payloads (P1–P4) mandiri
 │   ├── synthetic_p1_event.json            # P1 Chronic defect event
 │   ├── synthetic_p2_event.json            # P2 Order inaccuracy event
-│   ├── synthetic_p3_event.json            # P3 Moderate packaging event
-│   └── synthetic_p4_event.json            # P4 Informational positive review with PII
-├── scripts/                               # Automation & testing helper utilities
+│   ├── synthetic_p3_event.json            # P3 Packaging issue event
+│   ├── synthetic_p4_event.json            # P4 Informational review with PII
+│   └── sample_review_events.json          # Dataset gabungan fixtures
+├── scripts/                               # Skrip otomasi, launcher & validasi
+│   ├── start_n8n.bat                      # Windows 1-Click Batch Launcher (Double-click ready)
 │   ├── start_n8n.ps1                      # Windows PowerShell automated launcher
-│   ├── start_n8n.sh                       # Unix/Mac/WSL automated launcher
-│   ├── trigger_webhook_test.py            # Automated webhook integration test harness
+│   ├── start_n8n.sh                       # Unix/Mac/WSL launcher
+│   ├── check_system_health.py             # Pemeriksa kesehatan sistem & zero-error audit
+│   ├── trigger_webhook_test.py            # Test harness pengujian integrasi webhook
 │   └── validate_workflow_syntax.py        # Static schema & node graph validator
-└── data/                                  # Local persistent data directory (.gitignored)
-    └── .gitkeep
+└── data/                                  # Direktori persisten SQLite n8n lokal (.gitignored)
+    ├── database.sqlite                    # Database internal n8n (workflows & executions)
+    └── config                             # Pengaturan runtime n8n
 ```
 
 ---
 
-## 2. Quickstart: Running n8n Locally
+## 2. Pemeriksaan Kesehatan Sistem (*System Error Pre-Flight Check*)
 
-### Option A: Via PowerShell Launcher (Windows Recommended)
+Untuk memastikan tidak ada kesalahan konfigurasi (*system error*), jalankan skrip audit kesehatan:
+
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\workflows\n8n\scripts\start_n8n.ps1
+python n8n\scripts\check_system_health.py
 ```
 
-### Option B: Via npm / npx
-```bash
-cd workflows/n8n
+Skrip ini secara otomatis memverifikasi:
+1. **Node.js & npm runtime**: Deteksi versi dan kesiapan eksekusi.
+2. **Integritas File**: Memastikan seluruh 15 file utama di folder `n8n/` lengkap.
+3. **Validasi DAG Workflow**: Schema JSON 12 node valid tanpa dangling edges.
+4. **Persistensi SQLite**: Integritas tabel database n8n lokal.
+5. **Koneksi PostgreSQL**: Ketersediaan database `marketvoice_dev` dan tabel operasional (`operational_event_log`, `human_review_case`).
+6. **Port Probe & Microservice**: Ketersediaan port 5678 (n8n) dan status FastAPI (port 8000).
+
+---
+
+## 3. Cara Menjalankan n8n (*Quickstart*)
+
+Pilih salah satu cara di bawah ini:
+
+### Opsi A: 1-Click Launcher (Windows Batch - Paling Mudah)
+Cukup double-click file:
+```text
+n8n\scripts\start_n8n.bat
+```
+Atau jalankan dari terminal:
+```cmd
+.\n8n\scripts\start_n8n.bat
+```
+
+### Opsi B: Via PowerShell Launcher
+```powershell
+powershell -ExecutionPolicy Bypass -File .\n8n\scripts\start_n8n.ps1
+```
+
+### Opsi C: Via npm Scripts
+```powershell
+cd n8n
 npm run start:local
-# or directly:
-npx n8n start --port 5678
 ```
 
-### Option C: Via Docker Compose
+### Opsi D: Via Docker Compose
 ```bash
-cd workflows/n8n
+cd n8n
 docker compose up -d
 ```
 
-Once started, open your browser at:  
+Setelah server n8n aktif, buka browser Anda di:  
 👉 **http://localhost:5678**
 
 ---
 
-## 3. Workflow Import & Activation
+## 4. Validasi Sintaks Workflow & Pengujian Otomatis
 
-1. Open n8n UI at `http://localhost:5678`.
-2. Create local admin credentials (instance is local-only).
-3. Navigate to **Workflows** $\to$ **Import from File...**
-4. Select `workflows/n8n/workflows/marketvoice_review_triage.json`.
-5. On PostgreSQL nodes, connect to the local analytical warehouse (`marketvoice_warehouse` schema).
-6. Click **Activate Workflow**.
+### A. Validasi Sintaks & Topologi Node:
+```powershell
+python n8n\scripts\validate_workflow_syntax.py
+```
+
+### B. Menjalankan Simulasi Webhook (P1 - P4):
+*Pastikan FastAPI sudah berjalan (`python scripts/runners/start_api.py`) dan n8n aktif di port 5678*:
+```powershell
+python n8n\scripts\trigger_webhook_test.py
+```
 
 ---
 
-## 4. Automated Testing & Validation
-
-### Validate Workflow JSON Topology & Syntax:
-```powershell
-python workflows/n8n/scripts/validate_workflow_syntax.py
-```
-
-### Trigger Automated Webhook Test Suite:
-```powershell
-python workflows/n8n/scripts/trigger_webhook_test.py
-```
+## 5. Keamanan & Kebijakan Data (.gitignore)
+- `n8n/data/` (termasuk SQLite database dan credentials) sepenuhnya masuk dalam `.gitignore`.
+- Tidak ada password atau kunci rahasia yang di-commit ke repositori git publik.
