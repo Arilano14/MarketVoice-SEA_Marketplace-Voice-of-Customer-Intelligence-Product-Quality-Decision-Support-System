@@ -46,5 +46,5 @@ Write-Host ">> Starting n8n server on http://localhost:5678 ..." -ForegroundColo
 Write-Host ">> Press Ctrl+C to stop the server." -ForegroundColor Yellow
 Write-Host ""
 
-# Launch n8n via npx
-npx n8n start --port 5678
+# Launch n8n via npx non-interactively
+npx -y n8n start --port 5678

@@ -38,4 +38,4 @@ echo ">> Starting n8n server on http://localhost:5678 ..."
 echo ">> Press Ctrl+C to stop the server."
 echo ""
 
-npx n8n start --port 5678
+npx -y n8n start --port 5678
