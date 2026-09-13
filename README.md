@@ -1,12 +1,10 @@
 # MarketVoice SEA — Marketplace Voice-of-Customer Intelligence & Product Quality Decision Support System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
 [![Database: PostgreSQL 15](https://img.shields.io/badge/Database-PostgreSQL%2015-336791.svg)](sql/warehouse/)
 [![Microservice: FastAPI](https://img.shields.io/badge/Microservice-FastAPI-009688.svg)](src/marketvoice/api/)
 [![Orchestration: n8n](https://img.shields.io/badge/Orchestrator-n8n-EA4B71.svg)](workflows/n8n/)
 [![BI: Power BI](https://img.shields.io/badge/BI-Power%20BI-F2C811.svg)](dashboards/power_bi/)
-[![Tests: 146 Passed](https://img.shields.io/badge/Tests-146%20Passed%20(100%25)-brightgreen.svg)](tests/)
 
 ---
 
